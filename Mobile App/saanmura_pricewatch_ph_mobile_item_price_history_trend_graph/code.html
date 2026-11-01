@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Price History &amp; Analytics - SaanMura PriceWatch</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Epilogue & Roboto Flex -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&amp;family=Roboto+Flex:opsz,wght@8..144,300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Verbatim Tailwind Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#8f4e00",
+            "primary-fixed-dim": "#ffb77a",
+            "background": "#f9f9ff",
+            "surface-dim": "#cfdaf2",
+            "on-secondary": "#ffffff",
+            "surface-variant": "#d8e3fb",
+            "on-primary-container": "#6d3a00",
+            "surface-bright": "#f9f9ff",
+            "surface-container": "#e7eeff",
+            "inverse-on-surface": "#ecf1ff",
+            "on-secondary-fixed-variant": "#005226",
+            "on-surface-variant": "#544437",
+            "on-error-container": "#93000a",
+            "surface-tint": "#8f4e00",
+            "secondary": "#006d34",
+            "error-container": "#ffdad6",
+            "on-secondary-container": "#007237",
+            "secondary-container": "#54fd8f",
+            "secondary-fixed-dim": "#2fe378",
+            "tertiary-fixed": "#ffdad8",
+            "outline-variant": "#dac2b1",
+            "on-background": "#111c2d",
+            "outline": "#877365",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#2e1500",
+            "surface-container-highest": "#d8e3fb",
+            "on-surface": "#111c2d",
+            "surface-container-low": "#f0f3ff",
+            "on-primary-fixed-variant": "#6d3a00",
+            "primary-container": "#ff9f43",
+            "tertiary": "#b52330",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#f9f9ff",
+            "on-tertiary-fixed-variant": "#92001b",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#ffdcc2",
+            "surface-container-high": "#dee8ff",
+            "tertiary-fixed-dim": "#ffb3b0",
+            "on-secondary-fixed": "#00210b",
+            "inverse-surface": "#263143",
+            "on-error": "#ffffff",
+            "tertiary-container": "#ff9a98",
+            "on-tertiary-fixed": "#410007",
+            "inverse-primary": "#ffb77a",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#62ff95",
+            "on-tertiary-container": "#93011c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-md": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin-lg": "2.5rem",
+            "gutter-md": "1.25rem",
+            "space-xl": "2.25rem",
+            "gutter-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Epilogue"],
+            "body-lg": ["Roboto Flex"],
+            "price-display-sm": ["Roboto Flex"],
+            "badge-stamp": ["Roboto Flex"],
+            "body-md": ["Roboto Flex"],
+            "headline-xl-mobile": ["Epilogue"],
+            "headline-md": ["Epilogue"],
+            "headline-sm": ["Epilogue"],
+            "body-sm": ["Roboto Flex"],
+            "headline-lg": ["Epilogue"],
+            "label-sm": ["Roboto Flex"],
+            "headline-xl": ["Epilogue"],
+            "price-display-lg": ["Roboto Flex"],
+            "label-md": ["Roboto Flex"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "price-display-sm": ["18px", { "lineHeight": "22px", "fontWeight": "700" }],
+            "badge-stamp": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "price-display-lg": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-32">
+<!-- Mobile Viewport Wrapper (390px - 412px target constraint) -->
+<div class="max-w-[430px] mx-auto min-h-screen bg-background relative shadow-xl overflow-x-hidden">
+<!-- 1. TopAppBar (Shared Component Implementation) -->
+<header class="fixed top-0 left-0 right-0 max-w-[430px] mx-auto w-full z-40 flex items-center justify-between px-margin py-space-sm bg-surface/95 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-2">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 text-on-surface">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight block">Price History &amp; Analytics</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">SaanMura PriceWatch PH</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Share" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button aria-label="Bookmark" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 text-primary" style="font-variation-settings: 'FILL' 1;">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas (offset for fixed header) -->
+<main class="pt-16 px-margin space-y-space-md">
+<!-- 2. Commodity Overview Header Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/30 shadow-[0_1px_3px_rgba(30,41,51,0.04)]">
+<!-- Top Metadata & Category Ribbon -->
+<div class="flex items-start justify-between gap-2 mb-space-sm">
+<span class="inline-flex items-center gap-1 font-badge-stamp text-badge-stamp bg-primary-fixed text-primary px-2 py-0.5 rounded-full font-bold">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+            CANNED MEAT • BASIC NECESSITY (RA 7581)
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">SKU: 4800016012891</span>
+</div>
+<!-- Product Image & Identity Grid -->
+<div class="flex gap-space-md items-center">
+<div class="w-24 h-24 rounded-lg bg-surface-container-low border border-outline-variant/20 p-1 flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Purefoods Corned Beef 150g can" class="w-full h-full object-contain hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1V5MPld9f5NEp76FWP8lXZwm2xoeYi66zuf3KjFoHwYFwFl829A5g9ZD46MtPHscPzYDcHBvu57gmNjJYxRx8muB2tUgUPcqYQIT3oPUXyqRfPUvF0m7sKoiQS1nSdGzK2ES92lUSp7tbIaSSGFP047AO_dD79rT814GlowfdTNT60KLrViyoeRaW5piQvKagzsCkDWlfuqw2K7nG-rjZCxUinRhX6dYcdG7Bo0r234"/>
+</div>
+<div class="flex-1 min-w-0">
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight truncate">
+              Purefoods Corned Beef
+            </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Net Wt. 150g (5.29 oz) • Easy Open Can</p>
+<!-- Current Benchmark Display -->
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-price-display-lg text-price-display-lg text-on-surface">₱42.00</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">avg scanned</span>
+</div>
+<!-- Warning Chip -->
+<div class="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-tertiary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">arrow_upward</span>
+<span>+₱0.50 (+1.2%) vs DTI SRP (₱41.50)</span>
+</div>
+</div>
+</div>
+<!-- Quick Stats Strip (3-column Bento tile) -->
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/20 grid grid-cols-3 gap-2 text-center">
+<div class="p-2 rounded-lg bg-surface-container-low/70">
+<p class="font-badge-stamp text-badge-stamp text-secondary font-bold uppercase tracking-wider">Lowest Deal</p>
+<p class="font-price-display-sm text-price-display-sm text-secondary mt-0.5">₱39.50</p>
+<p class="font-label-sm text-[10px] text-on-surface-variant truncate mt-0.5">Puregold Paso de Blas</p>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low/70">
+<p class="font-badge-stamp text-badge-stamp text-on-surface-variant font-bold uppercase tracking-wider">Official SRP</p>
+<p class="font-price-display-sm text-price-display-sm text-on-surface mt-0.5">₱41.50</p>
+<p class="font-label-sm text-[10px] text-on-surface-variant truncate mt-0.5">DTI NCR E-Presyo</p>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low/70">
+<p class="font-badge-stamp text-badge-stamp text-tertiary font-bold uppercase tracking-wider">Highest Peak</p>
+<p class="font-price-display-sm text-price-display-sm text-tertiary mt-0.5">₱42.80</p>
+<p class="font-label-sm text-[10px] text-on-surface-variant truncate mt-0.5">7-Eleven Mini Mart</p>
+</div>
+</div>
+</section>
+<!-- 3. Interactive Price Line Chart Section -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/30 shadow-[0_1px_3px_rgba(30,41,51,0.04)] space-y-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Trend Analytics</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Metro Manila Wet Markets vs Supermarkets</p>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary bg-secondary-container/40 px-2 py-0.5 rounded-full font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span> Live 24h
+          </span>
+</div>
+<!-- Time Range Switcher Pills -->
+<div class="flex items-center justify-between p-1 bg-surface-container-low rounded-xl">
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded-lg text-on-surface-variant hover:text-primary transition-colors">7D</button>
+<button class="px-3 py-1 text-label-sm font-label-sm rounded-lg bg-primary-container text-on-surface font-semibold shadow-xs">30D</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded-lg text-on-surface-variant hover:text-primary transition-colors">3M</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded-lg text-on-surface-variant hover:text-primary transition-colors">6M</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded-lg text-on-surface-variant hover:text-primary transition-colors">1Y</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded-lg text-on-surface-variant hover:text-primary transition-colors">All</button>
+</div>
+<!-- SVG Line Graph Container -->
+<div class="relative pt-2 pb-1">
+<!-- Active Floating Tooltip Callout -->
+<div class="absolute top-1 right-2 z-10 bg-inverse-surface text-inverse-on-surface rounded-lg px-2.5 py-1.5 shadow-md text-left max-w-[210px] pointer-events-none border border-outline/30">
+<div class="flex items-center justify-between gap-2">
+<span class="font-badge-stamp text-[10px] text-primary-fixed uppercase tracking-wider">Latest Flag</span>
+<span class="font-label-sm text-[11px] font-bold text-tertiary-fixed">▲ ₱42.00</span>
+</div>
+<p class="font-label-sm text-label-sm font-medium leading-tight text-white mt-0.5 truncate">WalterMart Muñoz</p>
+<p class="font-body-sm text-[10px] text-surface-dim">Today, 9:42 AM • +₱0.50 spike</p>
+</div>
+<!-- Native Vector Line Chart -->
+<svg aria-label="Price trend over 30 days" class="w-full h-44 overflow-visible" viewbox="0 0 360 170">
+<defs>
+<lineargradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#ff9f43" stop-opacity="0.32"></stop>
+<stop offset="60%" stop-color="#ff9f43" stop-opacity="0.08"></stop>
+<stop offset="100%" stop-color="#ff9f43" stop-opacity="0.00"></stop>
+</lineargradient>
+<lineargradient id="lineStroke" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#006d34"></stop>
+<stop offset="50%" stop-color="#ff9f43"></stop>
+<stop offset="100%" stop-color="#b52330"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Gridlines & Y-Axis Labels -->
+<!-- ₱43.00 max label -->
+<line opacity="0.4" stroke="#dac2b1" stroke-dasharray="2,3" stroke-width="0.75" x1="38" x2="350" y1="18" y2="18"></line>
+<text fill="#544437" font-family="Roboto Flex" font-size="9" text-anchor="end" x="32" y="21">₱43.00</text>
+<!-- ₱41.50 DTI SRP Ceiling (Distinct colored threshold) -->
+<line opacity="0.85" stroke="#b52330" stroke-dasharray="4,4" stroke-width="1.2" x1="38" x2="350" y1="52" y2="52"></line>
+<text fill="#b52330" font-family="Roboto Flex" font-size="9" font-weight="700" text-anchor="end" x="32" y="55">₱41.50</text>
+<rect fill="#ffdad6" height="15" opacity="0.9" rx="3" width="112" x="238" y="44"></rect>
+<text fill="#93000a" font-family="Roboto Flex" font-size="8.5" font-weight="700" x="242" y="55">DTI CEILING SRP (₱41.50)</text>
+<!-- ₱40.00 label -->
+<line opacity="0.4" stroke="#dac2b1" stroke-dasharray="2,3" stroke-width="0.75" x1="38" x2="350" y1="92" y2="92"></line>
+<text fill="#544437" font-family="Roboto Flex" font-size="9" text-anchor="end" x="32" y="95">₱40.00</text>
+<!-- ₱38.00 base label -->
+<line opacity="0.4" stroke="#dac2b1" stroke-width="0.75" x1="38" x2="350" y1="134" y2="134"></line>
+<text fill="#544437" font-family="Roboto Flex" font-size="9" text-anchor="end" x="32" y="137">₱38.00</text>
+<!-- Gradient Area Fill under trendline -->
+<path d="M 44 100 
+                     C 80 102, 105 110, 140 102 
+                     C 175 94, 195 72, 230 68 
+                     C 265 64, 290 60, 315 54 
+                     C 328 50, 340 45, 345 42
+                     L 345 134 L 44 134 Z" fill="url(#areaGradient)"></path>
+<!-- Historical Trend Smooth Polyline -->
+<path d="M 44 100 
+                     C 80 102, 105 110, 140 102 
+                     C 175 94, 195 72, 230 68 
+                     C 265 64, 290 60, 315 54 
+                     C 328 50, 340 45, 345 42" fill="none" stroke="url(#lineStroke)" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Plotted Data Nodes -->
+<!-- Node 1: Sep 15 -->
+<circle cx="44" cy="100" fill="#006d34" r="3" stroke="#ffffff" stroke-width="1.5"></circle>
+<!-- Node 2: Sep 28 -->
+<circle cx="100" cy="107" fill="#006d34" r="3" stroke="#ffffff" stroke-width="1.5"></circle>
+<!-- Node 3: Oct 05 -->
+<circle cx="150" cy="98" fill="#006d34" r="3" stroke="#ffffff" stroke-width="1.5"></circle>
+<!-- Node 4: Oct 12 -->
+<circle cx="210" cy="74" fill="#ff9f43" r="3" stroke="#ffffff" stroke-width="1.5"></circle>
+<!-- Node 5: Oct 19 -->
+<circle cx="270" cy="62" fill="#ff9f43" r="3" stroke="#ffffff" stroke-width="1.5"></circle>
+<!-- Node 6: Oct 24 -->
+<circle cx="315" cy="54" fill="#b52330" r="3.5" stroke="#ffffff" stroke-width="1.5"></circle>
+<!-- Active Latest Highlight Point -->
+<circle cx="345" cy="42" fill="#b52330" fill-opacity="0.2" r="6"></circle>
+<circle cx="345" cy="42" fill="#b52330" r="3.5" stroke="#ffffff" stroke-width="2"></circle>
+<!-- X-Axis Date Ticks -->
+<text fill="#877365" font-family="Roboto Flex" font-size="8.5" text-anchor="middle" x="44" y="150">Sep 15</text>
+<text fill="#877365" font-family="Roboto Flex" font-size="8.5" text-anchor="middle" x="100" y="150">Sep 28</text>
+<text fill="#877365" font-family="Roboto Flex" font-size="8.5" text-anchor="middle" x="150" y="150">Oct 05</text>
+<text fill="#877365" font-family="Roboto Flex" font-size="8.5" text-anchor="middle" x="210" y="150">Oct 12</text>
+<text fill="#877365" font-family="Roboto Flex" font-size="8.5" text-anchor="middle" x="270" y="150">Oct 19</text>
+<text fill="#111c2d" font-family="Roboto Flex" font-size="8.5" font-weight="700" text-anchor="middle" x="345" y="150">Today</text>
+</svg>
+</div>
+<div class="flex items-center justify-between text-body-sm text-[11px] text-on-surface-variant bg-surface-container-low p-2 rounded-lg">
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-0.5 bg-secondary inline-block"></span> Safe Zone (&lt; SRP)
+          </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-0.5 bg-[#b52330] inline-block border-t border-dashed border-tertiary"></span> SRP Ceiling
+          </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-0.5 bg-tertiary inline-block"></span> Flagged Spike
+          </span>
+</div>
+</section>
+<!-- 4. Store Price Comparison Breakdown -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Store Price Comparison</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Nearby detected retail outlets &amp; wet markets</p>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-0.5 hover:underline">
+<span>Filter</span>
+<span class="material-symbols-outlined text-[16px]">tune</span>
+</button>
+</div>
+<!-- Store Item 1: Puregold (Best Deal) -->
+<article class="bg-surface-container-lowest rounded-xl p-3 border-2 border-secondary/30 shadow-[0_1px_3px_rgba(30,41,51,0.04)] relative">
+<div class="absolute -top-2.5 right-3 bg-secondary text-white font-badge-stamp text-badge-stamp uppercase px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[11px]">savings</span>
+            Sulit Deal (Best Price)
+          </div>
+<div class="flex items-start justify-between mt-1">
+<div class="flex-1 pr-2">
+<div class="flex items-center gap-1.5">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Puregold Paso de Blas</h3>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;" title="DTI / Supermarket Verified">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">pin_drop</span> Valenzuela City • 1.2 km away
+              </p>
+<div class="flex items-center gap-1 mt-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full font-badge-stamp text-badge-stamp bg-secondary-container/30 text-secondary font-bold">
+<span class="material-symbols-outlined text-[11px]">receipt_long</span> POS Receipt Verified
+                </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Scanned Yesterday by Rafael S.</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-price-display-lg text-price-display-lg text-secondary block">₱40.25</span>
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-secondary font-semibold">
+                ▼ ₱1.25 Below SRP
+              </span>
+</div>
+</div>
+</article>
+<!-- Store Item 2: SM Supermarket -->
+<article class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/30 shadow-[0_1px_3px_rgba(30,41,51,0.04)]">
+<div class="flex items-start justify-between">
+<div class="flex-1 pr-2">
+<div class="flex items-center gap-1.5">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">SM Supermarket North EDSA</h3>
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">pin_drop</span> Quezon City • 2.8 km away
+              </p>
+<div class="flex items-center gap-1 mt-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full font-badge-stamp text-badge-stamp bg-surface-container text-on-surface font-semibold">
+<span class="material-symbols-outlined text-[11px]">verified_user</span> Citizen Scanned
+                </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 22 by Maria S.</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-price-display-lg text-price-display-lg text-on-surface block">₱41.50</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+                Matches SRP exactly
+              </span>
+</div>
+</div>
+</article>
+<!-- Store Item 3: Commonwealth Wet Market -->
+<article class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/30 shadow-[0_1px_3px_rgba(30,41,51,0.04)]">
+<div class="flex items-start justify-between">
+<div class="flex-1 pr-2">
+<div class="flex items-center gap-1.5">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Commonwealth Wet Market (Stall 14)</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">pin_drop</span> Palengke Area • 3.5 km away
+              </p>
+<div class="flex items-center gap-1 mt-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full font-badge-stamp text-badge-stamp bg-primary-fixed/40 text-on-primary-container font-semibold">
+<span class="material-symbols-outlined text-[11px]">storefront</span> Wet Market Tag
+                </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 20 • 4 confirmations</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-price-display-lg text-price-display-lg text-secondary block">₱41.00</span>
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-secondary font-semibold">
+                ▼ ₱0.50 Below SRP
+              </span>
+</div>
+</div>
+</article>
+<!-- Store Item 4: WalterMart Muñoz (Flagged Spike) -->
+<article class="bg-surface-container-lowest rounded-xl p-3 border border-error-container shadow-[0_1px_3px_rgba(30,41,51,0.04)]">
+<div class="flex items-start justify-between">
+<div class="flex-1 pr-2">
+<div class="flex items-center gap-1.5">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">WalterMart Muñoz</h3>
+<span class="material-symbols-outlined text-tertiary text-[16px]">report_problem</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">pin_drop</span> Quezon City • 1.9 km away
+              </p>
+<div class="flex items-center gap-1 mt-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full font-badge-stamp text-badge-stamp bg-error-container text-tertiary font-bold">
+                  Over SRP Warning
+                </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Scanned Today by Grace P.</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-price-display-lg text-price-display-lg text-tertiary block">₱42.00</span>
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-tertiary font-semibold">
+                ▲ +₱0.50 Above SRP
+              </span>
+</div>
+</div>
+</article>
+<!-- Store Item 5: 7-Eleven -->
+<article class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/30 shadow-[0_1px_3px_rgba(30,41,51,0.04)]">
+<div class="flex items-start justify-between">
+<div class="flex-1 pr-2">
+<div class="flex items-center gap-1.5">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">7-Eleven Congressional Ave</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">pin_drop</span> 24/7 Branch • 0.8 km away
+              </p>
+<div class="flex items-center gap-1 mt-2">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full font-badge-stamp text-badge-stamp bg-surface-container text-on-surface-variant font-medium">
+                  Convenience Premium
+                </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 23</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-price-display-lg text-price-display-lg text-tertiary block">₱42.80</span>
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-tertiary font-semibold">
+                ▲ +₱1.30 Above SRP
+              </span>
+</div>
+</div>
+</article>
+</section>
+<!-- 5. Historical Scan & Purchase Timeline (Civic Audit Log) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/30 shadow-[0_1px_3px_rgba(30,41,51,0.04)] space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Citizen Audit Trail</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Community price submissions with OCR proof</p>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield</span> DTI Monitored
+          </span>
+</div>
+<div class="relative pl-5 space-y-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant/30">
+<!-- Audit 1 -->
+<div class="relative">
+<span class="absolute -left-5 top-1 w-2.5 h-2.5 rounded-full bg-primary border-2 border-white"></span>
+<div class="bg-surface-container-low/60 rounded-lg p-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-[11px] text-on-primary-fixed">GP</div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Grace P.</span>
+<span class="font-badge-stamp text-[9px] bg-secondary-container/40 text-secondary px-1.5 py-0.2 rounded font-bold">Top Watcher</span>
+</div>
+<span class="font-price-display-sm text-price-display-sm text-tertiary font-bold">₱42.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">WalterMart Muñoz • Shelf Tag Scanned</p>
+<div class="mt-2 flex items-center justify-between text-label-sm text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1 text-secondary font-medium">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">thumb_up</span> 18 Community Upvotes
+                </span>
+<span>Today, 9:42 AM</span>
+</div>
+</div>
+</div>
+<!-- Audit 2 -->
+<div class="relative">
+<span class="absolute -left-5 top-1 w-2.5 h-2.5 rounded-full bg-secondary border-2 border-white"></span>
+<div class="bg-surface-container-low/60 rounded-lg p-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center font-bold text-[11px] text-secondary">RS</div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Rafael S.</span>
+<span class="material-symbols-outlined text-secondary text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-price-display-sm text-price-display-sm text-secondary font-bold">₱40.25</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Puregold Paso de Blas • Official POS Receipt</p>
+<div class="mt-2 flex items-center justify-between text-label-sm text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1 text-secondary font-medium">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">thumb_up</span> 34 Community Upvotes
+                </span>
+<span>Yesterday, 3:15 PM</span>
+</div>
+</div>
+</div>
+<!-- Audit 3 -->
+<div class="relative">
+<span class="absolute -left-5 top-1 w-2.5 h-2.5 rounded-full bg-outline-variant border-2 border-white"></span>
+<div class="bg-surface-container-low/60 rounded-lg p-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-[11px] text-on-surface">MS</div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Maria S.</span>
+</div>
+<span class="font-price-display-sm text-price-display-sm text-on-surface font-bold">₱41.50</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">SM Supermarket North EDSA • Cashier Tag</p>
+<div class="mt-2 flex items-center justify-between text-label-sm text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1 text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[13px]">thumb_up</span> 11 Community Upvotes
+                </span>
+<span>Oct 22, 6:04 PM</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-label-md font-label-md rounded-lg flex items-center justify-center gap-1 transition-colors">
+<span>View all 42 archived submissions</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</section>
+</main>
+<!-- 6. Floating Action & Quick Log Bar (Above Bottom Nav) -->
+<div class="fixed bottom-16 left-0 right-0 max-w-[430px] mx-auto px-margin pb-2 z-40 pointer-events-none">
+<button class="pointer-events-auto w-full py-3 px-4 bg-primary text-white rounded-xl shadow-lg flex items-center justify-between active:scale-[0.98] transition-transform duration-150 border border-primary-fixed-dim/30">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</span>
+<div class="text-left">
+<span class="font-label-md text-label-md font-bold block leading-tight">Log Price at My Current Store</span>
+<span class="font-body-sm text-[11px] text-primary-fixed block leading-tight">Instant OCR receipt &amp; barcode scan</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- 7. BottomNavBar (Shared Component from JSON Blueprint) -->
+<!-- Active Intent: Kasaysayan (History & Price Watch Analytics) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto w-full z-50 flex justify-around items-center px-margin py-space-xs pb-safe bg-surface-container-lowest shadow-[0_-2px_8px_rgba(17,28,45,0.04)]">
+<!-- Tab 1: Bantay Presyo (Inactive) -->
+<a aria-label="Bantay Presyo" class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs px-space-sm hover:text-primary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">trending_up</span>
+<span class="font-label-sm text-label-sm mt-0.5">Bantay Presyo</span>
+</a>
+<!-- Tab 2: Paghambing (Inactive) -->
+<a aria-label="Paghambing" class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs px-space-sm hover:text-primary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+<span class="font-label-sm text-label-sm mt-0.5">Paghambing</span>
+</a>
+<!-- Tab 3: Mag-ulat (Inactive) -->
+<a aria-label="Mag-ulat" class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs px-space-sm hover:text-primary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">add_circle</span>
+<span class="font-label-sm text-label-sm mt-0.5">Mag-ulat</span>
+</a>
+<!-- Tab 4: Kasaysayan (Active Destination - Exact Match to Price History & Analytics) -->
+<a aria-label="Kasaysayan" class="flex flex-col items-center justify-center text-primary font-semibold py-space-xs px-space-sm bg-primary-fixed/40 rounded-full active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-label-sm text-label-sm mt-0.5">Kasaysayan</span>
+</a>
+</nav>
+</div>
+</body></html>

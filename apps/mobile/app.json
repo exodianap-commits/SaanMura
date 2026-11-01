@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "SaanMura",
+    "slug": "saanmura",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "saanmura",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#FFF7F0"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ph.saanmura.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FF9F43"
+      },
+      "package": "ph.saanmura.app",
+      "permissions": [
+        "CAMERA",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow SaanMura to access your camera to scan barcodes and photograph receipt price evidence."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow SaanMura to detect the nearest palengke or grocery store."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

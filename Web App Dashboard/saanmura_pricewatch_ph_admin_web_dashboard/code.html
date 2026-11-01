@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SaanMura PriceWatch PH - Administrator Control Center</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Epilogue & Roboto Flex -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Roboto+Flex:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#ffdad8",
+            "surface-container": "#e7eeff",
+            "surface-container-high": "#dee8ff",
+            "primary": "#8f4e00",
+            "surface-dim": "#cfdaf2",
+            "secondary-container": "#54fd8f",
+            "error-container": "#ffdad6",
+            "inverse-primary": "#ffb77a",
+            "surface-bright": "#f9f9ff",
+            "surface-container-low": "#f0f3ff",
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-tint": "#8f4e00",
+            "inverse-on-surface": "#ecf1ff",
+            "on-secondary-fixed-variant": "#005226",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#2e1500",
+            "secondary-fixed-dim": "#2fe378",
+            "outline": "#877365",
+            "tertiary-fixed-dim": "#ffb3b0",
+            "secondary-fixed": "#62ff95",
+            "surface-container-highest": "#d8e3fb",
+            "tertiary-container": "#ff9a98",
+            "on-tertiary-fixed-variant": "#92001b",
+            "inverse-surface": "#263143",
+            "tertiary": "#b52330",
+            "on-primary-container": "#6d3a00",
+            "surface-variant": "#d8e3fb",
+            "primary-fixed-dim": "#ffb77a",
+            "secondary": "#006d34",
+            "on-tertiary-container": "#93011c",
+            "primary-fixed": "#ffdcc2",
+            "on-surface": "#111c2d",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#007237",
+            "on-secondary-fixed": "#00210b",
+            "on-surface-variant": "#544437",
+            "primary-container": "#ff9f43",
+            "on-background": "#111c2d",
+            "surface": "#f9f9ff",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed": "#410007",
+            "background": "#f9f9ff",
+            "on-primary-fixed-variant": "#6d3a00",
+            "outline-variant": "#dac2b1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin-md": "1.5rem",
+            "margin-lg": "2.5rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2.25rem",
+            "gutter-md": "1.25rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "headline-xl-mobile": ["Epilogue"],
+            "badge-stamp": ["Roboto Flex"],
+            "headline-lg-mobile": ["Epilogue"],
+            "price-display-lg": ["Roboto Flex"],
+            "headline-sm": ["Epilogue"],
+            "headline-lg": ["Epilogue"],
+            "headline-xl": ["Epilogue"],
+            "headline-md": ["Epilogue"],
+            "body-sm": ["Roboto Flex"],
+            "body-md": ["Roboto Flex"],
+            "label-md": ["Roboto Flex"],
+            "body-lg": ["Roboto Flex"],
+            "label-sm": ["Roboto Flex"],
+            "price-display-sm": ["Roboto Flex"]
+          },
+          "fontSize": {
+            "headline-xl-mobile": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "badge-stamp": ["10px", {"lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "price-display-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+            "price-display-sm": ["18px", {"lineHeight": "22px", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #f0f3ff;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #dac2b1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex flex-col">
+<!-- TOP BAR (Shared Component: TopNavBar) -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-[1280px] mx-auto">
+<!-- Left: Logo & Search -->
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 group" href="#">
+<span class="w-8 h-8 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-headline-sm font-headline-sm shadow-sm group-hover:scale-105 transition-transform">
+            ₱
+          </span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container tracking-tight">SaanMura PriceWatch PH</span>
+</a>
+<div class="relative hidden lg:block w-72">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-9 pr-4 py-1.5 font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="Global SKU, store code, contributor ID..." type="text"/>
+</div>
+</div>
+<!-- Center: Navigation Links -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface dark:text-outline-variant dark:hover:text-surface font-medium transition-colors font-label-md text-label-md" href="#">Contributor View</a>
+<a class="text-on-surface-variant hover:text-on-surface dark:text-outline-variant dark:hover:text-surface font-medium transition-colors font-label-md text-label-md" href="#">Verifier Queue</a>
+<!-- ACTIVE: Administrator Control Center -->
+<a class="border-b-2 border-primary text-primary dark:text-primary-container font-semibold pb-1 font-label-md text-label-md" href="#">Administrator Control Center</a>
+</nav>
+<!-- Right: Action Buttons and Avatar -->
+<div class="flex items-center gap-3">
+<button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container transition-colors duration-150 active:scale-[0.98] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">qr_code_scanner</span>
+<span>Scan Barcode</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-semibold hover:brightness-105 transition-all shadow-sm active:scale-[0.98] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>Register Product</span>
+</button>
+<div class="h-5 w-px bg-outline-variant mx-1"></div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" title="Database Sync">
+<span class="material-symbols-outlined text-[20px]">database</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors" title="Help &amp; Reference">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</button>
+</div>
+<img alt="Verified Civic Contributor Profile Avatar" class="w-8 h-8 rounded-full border border-primary-container object-cover ml-1 shadow-sm" data-alt="A portrait of a verified Filipino civic monitoring dashboard administrator in professional casual attire within a brightly lit modern open-government command center in Taguig, Manila, captured in a clean light-mode documentary style with warm amber and slate accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCereo91Pk-OLTKBVC0KcngiyOKr3cBo-Pu5FVJh7kf1jRykZxMhazlgINnPllyLni4XTs8ArxWKkq0KaS3t9j4JcWYQ1wZP9uP9WcftNztQxCXBtQQSQCiXrBWbmkkf8XtqrFKh7CeSJvnGW6xjeC3lPpJrfy5DEgpFlekcdS9BtsMIo64h76YZ19TkmbW7pjOZSA_SiIUyjuvp3l4OttbxkujI_hEmO2LKC-CRGg"/>
+</div>
+</div>
+</header>
+<!-- MAIN WRAPPER: SIDEBAR + DASHBOARD CONTENT -->
+<div class="flex-1 flex max-w-[1280px] w-full mx-auto">
+<!-- SIDEBAR (Shared Component: SideNavBar) -->
+<aside class="w-64 min-h-screen p-4 flex flex-col justify-between shrink-0 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant dark:border-outline shadow-sm dark:shadow-none hidden md:flex">
+<div class="space-y-6">
+<!-- Sub-header & Seal -->
+<div class="flex items-center gap-3 px-2 py-1">
+<div class="w-9 h-9 rounded-lg bg-secondary-container/30 border border-secondary text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div class="leading-tight">
+<div class="font-headline-sm text-headline-sm font-semibold text-primary dark:text-primary-container">Civic Modules</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Palengke &amp; Retail Watch</div>
+</div>
+</div>
+<!-- Primary CTA in Sidebar -->
+<button class="w-full py-2.5 px-3 rounded-lg bg-primary-container text-on-primary-container font-semibold font-label-md text-label-md flex items-center justify-center gap-2 shadow-sm hover:brightness-105 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+<span>Log Price Observation</span>
+</button>
+<!-- Navigation Tabs: Active set to Supabase & RLS Monitor for Admin view -->
+<div class="space-y-1">
+<div class="px-3 pb-1 text-[11px] font-bold text-on-surface-variant/70 uppercase tracking-wider">Main Registry</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container hover:text-on-surface dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+<span>Catalog &amp; Discovery</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container hover:text-on-surface dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+<span>Verification Queue</span>
+<span class="ml-auto bg-tertiary-fixed text-on-tertiary-fixed font-semibold px-1.5 py-0.5 rounded text-[10px]">38</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container hover:text-on-surface dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">add_box</span>
+<span>Submission Workbench</span>
+</a>
+<!-- Active tab: Supabase & RLS Monitor -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary-fixed dark:bg-primary text-on-primary-fixed dark:text-on-primary font-semibold font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">security</span>
+<span>Supabase &amp; RLS Monitor</span>
+</a>
+</div>
+</div>
+<!-- Footer Tab Links inside Sidebar -->
+<div class="space-y-3 pt-6 border-t border-outline-variant/60">
+<div class="px-3 text-[11px] font-bold text-on-surface-variant/70 uppercase tracking-wider">Regulatory Standards</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary">verified</span>
+<span>DTI SRP Reference</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Audit Logs</span>
+</a>
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/40 mt-3">
+<div class="flex items-center gap-2 text-secondary font-semibold font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            PostgreSQL RLS Active
+          </div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mt-1">Anon read restricted to verified civic checkpoints.</p>
+</div>
+</div>
+</aside>
+<!-- MAIN DASHBOARD CONTENT AREA -->
+<main class="flex-1 px-4 lg:px-8 py-6 overflow-x-hidden space-y-6">
+<!-- TOP STATUS & SYSTEM HEALTH BANNER -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/50 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-3 flex-wrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary/10 border border-secondary/30 text-secondary font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+            Supabase RLS Status: Operational
+          </span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">
+<strong>99.98%</strong> uptime • <strong class="text-on-surface">4,821</strong> active price logs recorded today
+          </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px] text-primary">sync</span>
+            DTI Bulletin 2025-Q1 Synced
+          </span>
+</div>
+<!-- Date Filter & Official Export Actions -->
+<div class="flex items-center gap-2 self-start md:self-auto">
+<div class="flex items-center gap-1 text-on-surface-variant bg-surface-container-low px-2.5 py-1 rounded-lg border border-outline-variant/60 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>Today (Metro Manila, PHST)</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface font-label-sm text-label-sm border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export DTI Report (CSV/PDF)</span>
+</button>
+</div>
+</div>
+<!-- REAL-TIME KPI CARDS (Bento Grid Style) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1: Pending Verifications -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/50 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Pending Verifications</span>
+<span class="p-2 rounded-lg bg-primary-fixed text-on-primary-fixed">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">38</span>
+<span class="text-tertiary font-label-sm text-label-sm flex items-center font-bold">
+<span class="material-symbols-outlined text-[14px]">timer</span> SLA &lt; 2h
+            </span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+            19 wet markets, 19 supermarket branches
+          </div>
+</div>
+<!-- Card 2: Flagged Price Spikes -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-tertiary-container/60 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-tertiary font-semibold">Flagged Price Spikes</span>
+<span class="p-2 rounded-lg bg-tertiary-container/30 text-tertiary">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-tertiary">14</span>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-1.5 py-0.5 rounded text-[11px] font-bold">Severe &gt;15% SRP</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">trending_up</span>
+            Highest deviation: Corned Beef (+₱4.50)
+          </div>
+</div>
+<!-- Card 3: Active Civic Contributors -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/50 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Active Civic Contributors</span>
+<span class="p-2 rounded-lg bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">1,248</span>
+<span class="text-secondary font-label-sm text-label-sm font-semibold">+18.2% this week</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">
+            892 Tier-2 Verified Citizen Checkers active
+          </div>
+</div>
+<!-- Card 4: DTI SRP Compliance Rate -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/50 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">DTI SRP Compliance Rate</span>
+<span class="p-2 rounded-lg bg-secondary-container/40 text-secondary">
+<span class="material-symbols-outlined text-[20px]">rule</span>
+</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-secondary">91.4%</span>
+<span class="text-secondary font-label-sm text-label-sm font-bold">± 0.6% vs Q4</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">
+            Metro Manila composite index benchmark
+          </div>
+</div>
+</section>
+<!-- MAIN SPLIT WORKBENCH: OPERATIONS TABLE + INTELLIGENCE & GOVERNANCE SIDEBAR -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- PRIMARY VIEW (2/3 Col): Verification & Triage Operations Table -->
+<div class="xl:col-span-2 space-y-4">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 shadow-sm overflow-hidden">
+<!-- Table Header Toolbar -->
+<div class="p-4 border-b border-outline-variant/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-surface-container-low/40">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2">
+<span>Audit &amp; Verification Triage</span>
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full font-label-sm text-[11px] font-bold">Live Feed</span>
+</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cross-referencing citizen shelf price submissions against official DTI SRP ceiling thresholds.</p>
+</div>
+<!-- Quick Triage Filter Buttons -->
+<div class="flex items-center gap-1.5 flex-wrap">
+<button class="px-2.5 py-1 rounded-lg bg-primary-fixed text-on-primary-fixed font-semibold font-label-sm text-label-sm">All (38)</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/40">Flagged Spikes (14)</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/40">Disputed (5)</button>
+</div>
+</div>
+<!-- The Interactive Data Table -->
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm border-b border-outline-variant/40">
+<th class="py-3 px-4">Commodity / Barcode</th>
+<th class="py-3 px-3">Retail Outlet</th>
+<th class="py-3 px-3 text-right">Reported vs SRP</th>
+<th class="py-3 px-3 text-right">Price Delta</th>
+<th class="py-3 px-3 text-center">Citizen Scout</th>
+<th class="py-3 px-3">Evidence</th>
+<th class="py-3 px-3">Triage Status</th>
+<th class="py-3 px-4 text-center">Admin Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30 font-body-sm text-body-sm">
+<!-- ROW 1: Purefoods Corned Beef 150g (Flagged Spike) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img alt="Purefoods Corned Beef can" class="w-10 h-10 rounded-lg border border-outline-variant/50 object-cover bg-surface" data-alt="A studio product photograph of a canned Purefoods Corned Beef 150g sitting neatly on a pristine white background with warm studio rim lighting, styled with clean consumer packaged goods aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm_Gc_IbOic6dMwiOY58xpV7EUK2pXxizgvg97R-1FZ3xLcLAbmjucgbA9R24FBI6x93oFqxgRFS9KcqnxJP_C68QBXbCTS1RADQg6nPpB--HnDUARidbeUhDKpu2SN4Exw2rH7DWTVk0Jg95PYHzjY_O8kMCW7IhTD6g9AE7bBBOKVbpQLHEw9C4D-P8XHrtsAiZhQPCDrOApbiPG2F0UMbLnaXQ4Krs0Bh5ZOfY"/>
+<div>
+<div class="font-semibold text-on-surface">Purefoods Corned Beef 150g</div>
+<div class="text-[11px] text-on-surface-variant font-mono">BC: 4800016024911</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-medium text-on-surface">WalterMart Muñoz</div>
+<div class="text-[11px] text-on-surface-variant">Quezon City • Supermarket</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="font-bold text-on-surface font-price-display-sm text-price-display-sm">₱46.00</div>
+<div class="text-[11px] text-on-surface-variant">SRP: ₱41.50</div>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold text-[11px]">
+                        ▲ +₱4.50 (+10.8%)
+                      </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex items-center gap-1">
+<span class="font-medium text-on-surface">Maria C.</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary/10 text-secondary text-[10px] font-bold" title="Trust Score 98%">98%</span>
+</div>
+<div class="text-[10px] text-on-surface-variant">Tier-2 Verifier</div>
+</td>
+<td class="py-3 px-3">
+<button class="relative group block rounded border border-outline-variant/80 overflow-hidden hover:ring-2 hover:ring-primary-container">
+<img alt="Shelf tag proof" class="w-8 h-8 object-cover" data-alt="A photo of a supermarket shelf electronic price tag at WalterMart displaying the price 46.00 pesos under bright supermarket fluorescent lighting, captured with high civic audit clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNErQLZ2iR69M7oZI9cxIvTFUMIZrSisTk-YQ6VrbshGQxQmCKBuKzPwaKbVXEjc32ntqYbRXA-MxZLrrDPzKHQzPjd-ZTSxF0tMmjnoIv_g34WG7x52i-SjRsNoPBy35oHACmkKkFUnjk_cUDaoBHWxmkGvEe6bowrFIKMcqjPS3ohkyeVjz0rGN2-qDOm1DVmzOo3v63fN3sGmEWQiGDmGTa4Ust3Mo2Kc1p3zc"/>
+<span class="absolute inset-0 bg-inverse-surface/30 opacity-0 group-hover:opacity-100 flex items-center justify-center text-on-surface text-[12px]">
+<span class="material-symbols-outlined text-[14px] text-white">visibility</span>
+</span>
+</button>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-bold text-[10px] uppercase font-badge-stamp">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                        Price Spike
+                      </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded bg-primary-fixed text-on-primary-fixed hover:bg-primary-container transition-colors" title="Confirm Violation &amp; Post">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+<button class="p-1 rounded bg-surface hover:bg-surface-container text-on-surface-variant border border-outline-variant/40 transition-colors" title="Request Re-scan">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<button class="p-1 rounded bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors" title="Reject &amp; Flag Report">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Lucky Me! Pancit Canton Kalamansi 80g (Within SRP) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img alt="Lucky Me Pancit Canton Kalamansi" class="w-10 h-10 rounded-lg border border-outline-variant/50 object-cover bg-surface" data-alt="A consumer package photography of Lucky Me Pancit Canton Kalamansi yellow and green pouch resting flat on a modern neutral light backdrop with crisp clean lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrTT7Aw075VT3GQavz7g8Lh376pMIxe6gyTiyh_5Xevgm_1hDHkmD5N-gatirXOdPfYcplJ-_20pfVzR9fd5JxyiMG5_NvKfvAoSRi-8eIE7rI4q5b38ygUlAwYzTOq12HtMDr7K0svy-K9lnJiANVjrNgM9KxREADKJWnQP8Y-WRjiyUqyeVY6pEKI16NxgjDj-3qsAMDd8vH2eR-ckwaVWWwDIm2Q0kWKDUDEzE"/>
+<div>
+<div class="font-semibold text-on-surface">Lucky Me! Pancit Canton 80g</div>
+<div class="text-[11px] text-on-surface-variant font-mono">BC: 4807770270016</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-medium text-on-surface">Puregold Jr. Kalentong</div>
+<div class="text-[11px] text-on-surface-variant">Mandaluyong • Grocery</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="font-bold text-on-surface font-price-display-sm text-price-display-sm">₱14.50</div>
+<div class="text-[11px] text-on-surface-variant">SRP: ₱15.00</div>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-bold text-[11px]">
+                        ▼ -₱0.50 (Cheaper)
+                      </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex items-center gap-1">
+<span class="font-medium text-on-surface">Juan D.</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary/10 text-secondary text-[10px] font-bold" title="Trust Score 91%">91%</span>
+</div>
+<div class="text-[10px] text-on-surface-variant">Tier-1 Scout</div>
+</td>
+<td class="py-3 px-3">
+<button class="relative group block rounded border border-outline-variant/80 overflow-hidden hover:ring-2 hover:ring-primary-container">
+<img alt="Receipt proof" class="w-8 h-8 object-cover" data-alt="A macro photo of an authentic supermarket cash register receipt snippet highlighting Lucky Me Kalamansi 14.50 pesos on slightly crumpled receipt paper under ambient daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo7POLOfq92LOxBiEn7jjabMzogXEIKf3mB2zP0CR8eQIBCQfkVF3qhwXt_O0U3z3Ou-1vXptX8InAhhLIcGBOVjS3eXwHNuEtPdU1w-QY2mUxKFHUF4ZVqTERHexIMvrEscexssxavlilIDCPjrkAFouKQ32uCsUOiOEXRAeZN6izD4kBQ6bS22pkPqgIwYjBP6Al6XbVvAxm7q22-V_LHNN-f45gIdQ4OOlHI70"/>
+<span class="absolute inset-0 bg-inverse-surface/30 opacity-0 group-hover:opacity-100 flex items-center justify-center text-on-surface text-[12px]">
+<span class="material-symbols-outlined text-[14px] text-white">visibility</span>
+</span>
+</button>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container/30 text-secondary font-bold text-[10px] uppercase font-badge-stamp">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+                        Compliant
+                      </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded bg-secondary-fixed text-on-secondary-fixed font-bold hover:bg-secondary transition-colors" title="Quick Approve">
+<span class="material-symbols-outlined text-[16px]">done_all</span>
+</button>
+<button class="p-1 rounded bg-surface hover:bg-surface-container text-on-surface-variant border border-outline-variant/40 transition-colors" title="Archive Entry">
+<span class="material-symbols-outlined text-[16px]">archive</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: Mega Sardines Red in Tomato Sauce 155g (Disputed / Geolocation Check) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img alt="Mega Sardines can" class="w-10 h-10 rounded-lg border border-outline-variant/50 object-cover bg-surface" data-alt="A sharp clear product still life of a red can of Mega Sardines with chili in tomato sauce set against a neutral studio backdrop with high dynamic range." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAqp2YPr1tBnh9SSDZtVF3x2OvnCHiX_2OuK1gKCmZ82wO5iAG7c2ygd_TC3yRN8nkZAc9FL1ZqLb1W5E4E8i4baiWNQyJlgUBPaXTKshbL-xVX3M0MA9-lWjmPi8Fad9qEi_HJxdhKP97glrvqKDOPEqFXBRb0YvIMt9oJVXRjeU2bHhF93lysX1G6W3sNxVVVsoHalontx06owEQ-Pbt0d9KAkGj93pWxR1mwYw"/>
+<div>
+<div class="font-semibold text-on-surface">Mega Sardines Red 155g</div>
+<div class="text-[11px] text-on-surface-variant font-mono">BC: 4806511011124</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-medium text-on-surface">Commonwealth Wet Market</div>
+<div class="text-[11px] text-on-surface-variant">Stall #42, Quezon City • Palengke</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="font-bold text-on-surface font-price-display-sm text-price-display-sm">₱24.00</div>
+<div class="text-[11px] text-on-surface-variant">SRP: ₱22.25</div>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold text-[11px]">
+                        ▲ +₱1.75 (+7.8%)
+                      </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex items-center gap-1">
+<span class="font-medium text-on-surface">Ben R.</span>
+<span class="px-1.5 py-0.2 rounded bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold" title="Trust Score 74%">74%</span>
+</div>
+<div class="text-[10px] text-on-surface-variant">Unverified GPS</div>
+</td>
+<td class="py-3 px-3">
+<button class="relative group block rounded border border-outline-variant/80 overflow-hidden hover:ring-2 hover:ring-primary-container">
+<img alt="Cardboard price sign" class="w-8 h-8 object-cover" data-alt="A handheld smartphone photograph capturing a wet market wooden stall price cardboard sign in the Philippines with handwritten chalk numbers, surrounded by vegetable baskets." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs0l03kzLdCHm31tgyIsdkJ4yemAv0aQKIvsNyddC_eOV6BCHyQMCpMyHbxNJiTI-Hn6mg2T4kOZ6E5N7cXqPsPTpSwFEDZJpu8YE_up2c1dxRowQA_eYJCXs-373pISsh8tXUhCjL7SwMvBCTB7Z6tnhTAqGo85ClruUF4a3PLOQL50Rc2V7OnZcx5tw2UpXAFyJduPml7P_8xcxogSWLVKRhvOxiTGFBrG5iMSc"/>
+<span class="absolute inset-0 bg-inverse-surface/30 opacity-0 group-hover:opacity-100 flex items-center justify-center text-on-surface text-[12px]">
+<span class="material-symbols-outlined text-[14px] text-white">visibility</span>
+</span>
+</button>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-[10px] uppercase font-badge-stamp">
+<span class="material-symbols-outlined text-[12px]">pin_drop</span>
+                        Geo-Check Needed
+                      </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded bg-surface hover:bg-surface-container text-primary border border-outline-variant/40 transition-colors" title="Validate GPS Radius">
+<span class="material-symbols-outlined text-[16px]">location_searching</span>
+</button>
+<button class="p-1 rounded bg-secondary-fixed text-on-secondary-fixed font-bold hover:bg-secondary transition-colors" title="Approve with Palengke Variance">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+<button class="p-1 rounded bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors" title="Reject Submission">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: Sinandomeng Well Milled Rice (Special Commodity) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant/50 flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-[20px]">grain</span>
+</div>
+<div>
+<div class="font-semibold text-on-surface">Sinandomeng Rice (1kg)</div>
+<div class="text-[11px] text-on-surface-variant font-mono">Commodity #RICE-WM-01</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="font-medium text-on-surface">Balintawak Public Market</div>
+<div class="text-[11px] text-on-surface-variant">Caloocan • Palengke Hub</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="font-bold text-on-surface font-price-display-sm text-price-display-sm">₱52.00</div>
+<div class="text-[11px] text-on-surface-variant">SRP: ₱52.00</div>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-bold text-[11px]">
+                        Exact Match
+                      </span>
+</td>
+<td class="py-3 px-3 text-center">
+<div class="inline-flex items-center gap-1">
+<span class="font-medium text-on-surface">LGU Insp. Perez</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary text-white text-[10px] font-bold" title="DTI / LGU Official Inspector">T3</span>
+</div>
+<div class="text-[10px] text-secondary font-semibold">Official Badge</div>
+</td>
+<td class="py-3 px-3">
+<button class="relative group block rounded border border-outline-variant/80 overflow-hidden hover:ring-2 hover:ring-primary-container">
+<img alt="Rice sack board tag" class="w-8 h-8 object-cover" data-alt="A clear photo of an open sack of well-milled rice labeled Sinandomeng with a DTI price blackboard indicating 52 pesos per kilo inside a bustling covered Philippine public palengke." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3_etWw47dOHp_hmHT9scKw6_6mzdT4q8HBznSgX462xUhDemx4RMl2v_b_5oe6wnecNmunA3Xw6RADb5nfMrnEUk1Icl4UWDFnYhkssyLD4zfllOt5t2Yj8TJxL1ANzkz_dMGZoEDbnqmCyz73k2E6aW9wwl3C1rOnRCevG8OmDsoTG45Cy8AJsEEctPi6CuWNZhjF9-lol1UQ8AZCmXRL-Au4hvY3VuvYG4Rxc8"/>
+<span class="absolute inset-0 bg-inverse-surface/30 opacity-0 group-hover:opacity-100 flex items-center justify-center text-on-surface text-[12px]">
+<span class="material-symbols-outlined text-[14px] text-white">visibility</span>
+</span>
+</button>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-bold text-[10px] uppercase font-badge-stamp">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+                        DTI Verified
+                      </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container font-bold hover:bg-secondary hover:text-white transition-all text-[11px] flex items-center gap-1" title="Instant Publish to Consumer App">
+<span class="material-symbols-outlined text-[14px]">publish</span>
+<span>Publish</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Batch Actions -->
+<div class="p-3 bg-surface-container-low/60 border-t border-outline-variant/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span>Showing 1 to 4 of 38 triage records</span>
+<span class="text-outline-variant">•</span>
+<button class="text-primary hover:underline font-semibold font-label-sm text-label-sm">Select All Flagged Spikes (14)</button>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-auto">
+<button class="px-2.5 py-1 rounded border border-outline-variant/60 bg-surface hover:bg-surface-container text-on-surface text-[12px] font-medium disabled:opacity-50" disabled="">Previous</button>
+<span class="px-2 font-bold text-on-surface">1</span>
+<button class="px-2.5 py-1 rounded border border-outline-variant/60 bg-surface hover:bg-surface-container text-on-surface text-[12px] font-medium">2</button>
+<button class="px-2.5 py-1 rounded border border-outline-variant/60 bg-surface hover:bg-surface-container text-on-surface text-[12px] font-medium">3</button>
+<button class="px-2.5 py-1 rounded border border-outline-variant/60 bg-surface hover:bg-surface-container text-on-surface text-[12px] font-medium">Next</button>
+</div>
+</div>
+</div>
+<!-- PRICE SPIKE INTELLIGENCE & COMPARISON BREAKDOWN -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Anomaly Distribution: Wet Market vs Supermarket</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Discrepancy spikes against DTI ceiling monitored across NCR major LGUs</p>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold bg-secondary-container/20 px-2 py-1 rounded">
+                Live DTI SRP Delta Monitor
+              </span>
+</div>
+<!-- Visual Bar Comparison Blocks -->
+<div class="space-y-3 pt-2">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="font-medium text-on-surface">Supermarket Chains (SM, Puregold, WalterMart, Robinsons)</span>
+<span class="font-bold text-secondary">94.8% SRP Compliant (5.2% Spikes)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary" style="width: 94.8%"></div>
+<div class="h-full bg-tertiary" style="width: 5.2%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="font-medium text-on-surface">Public Wet Markets (Commonwealth, Mega Q-Mart, Paco, Muñoz)</span>
+<span class="font-bold text-primary">87.1% SRP Compliant (12.9% Spikes)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary" style="width: 87.1%"></div>
+<div class="h-full bg-tertiary" style="width: 12.9%"></div>
+</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-[20px] text-primary shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Administrative Note:</strong> Republic Act No. 7581 (Price Act) mandates that any retail establishment exhibiting &gt;10% markup above published Suggested Retail Price without justified fuel surcharge is issued a formal DTI Notice of Violation (NOV).
+              </p>
+</div>
+</div>
+</div>
+<!-- SECONDARY COLUMN (1/3 Col): Civic Role Governance & Audit Stream -->
+<div class="space-y-6">
+<!-- CIVIC ROLE GOVERNANCE & TRUST MANAGEMENT -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Civic Governance</h3>
+<span class="material-symbols-outlined text-primary text-[20px]">military_tech</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Role permissions and dynamic reputation ranking based on verifier consensus and geotag validity.
+            </p>
+<div class="space-y-3">
+<!-- Tier 3: LGU / DTI Inspector -->
+<div class="p-3 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-[12px]">
+                    T3
+                  </div>
+<div>
+<div class="font-semibold text-on-surface font-label-md text-label-md">DTI / LGU Official Inspector</div>
+<div class="text-[11px] text-on-surface-variant">Instant write privilege • 42 officers</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+</div>
+<!-- Tier 2: Verified Civic Checker -->
+<div class="p-3 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-[12px]">
+                    T2
+                  </div>
+<div>
+<div class="font-semibold text-on-surface font-label-md text-label-md">Verified Civic Checker</div>
+<div class="text-[11px] text-on-surface-variant">&gt;50 valid audits, 95%+ trust score • 892 users</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<!-- Tier 1: Citizen Scout -->
+<div class="p-3 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-bold text-[12px]">
+                    T1
+                  </div>
+<div>
+<div class="font-semibold text-on-surface font-label-md text-label-md">Citizen Scout (Standard)</div>
+<div class="text-[11px] text-on-surface-variant">Requires 2 consensus votes • 314 users</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">how_to_reg</span>
+</div>
+</div>
+<!-- Anti-Tamper Suspicious Activity Alert -->
+<div class="p-3 rounded-lg border border-tertiary-container/80 bg-tertiary-fixed/30 space-y-2">
+<div class="flex items-center gap-2 text-tertiary font-bold font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">gpp_maybe</span>
+<span>Anti-Tamper Heuristic Triggered</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface">
+                IP Cluster <strong>112.198.88.x</strong> submitted 14 bulk price updates in 4 minutes with identical GPS jitter. Automatic cooldown applied.
+              </p>
+<div class="flex items-center gap-2 pt-1">
+<button class="px-2 py-1 rounded bg-tertiary text-on-tertiary text-[11px] font-bold hover:brightness-110">Block Cluster</button>
+<button class="px-2 py-1 rounded bg-surface border border-outline-variant text-[11px] font-medium text-on-surface">Inspect Payloads</button>
+</div>
+</div>
+</div>
+<!-- REAL-TIME AUDIT STREAM -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">System Audit Stream</h3>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+</div>
+<div class="space-y-3 font-body-sm text-body-sm max-h-[320px] overflow-y-auto custom-scroll pr-1">
+<div class="border-l-2 border-primary pl-3 py-1 space-y-0.5">
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="font-mono">14:28:12 PHST</span>
+<span class="text-primary font-semibold">DTI-SYNC</span>
+</div>
+<div class="font-medium text-on-surface">Q1 SRP Ceiling auto-updated for 32 canned goods SKUs</div>
+<div class="text-[11px] text-on-surface-variant">Triggered by DTI Open-Data Webhook</div>
+</div>
+<div class="border-l-2 border-secondary pl-3 py-1 space-y-0.5">
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="font-mono">14:15:04 PHST</span>
+<span class="text-secondary font-semibold">VERIFIED</span>
+</div>
+<div class="font-medium text-on-surface">Lucky Me! Pancit Canton validated at Puregold Jr.</div>
+<div class="text-[11px] text-on-surface-variant">Admin auto-approved via receipt OCR confidence 99.4%</div>
+</div>
+<div class="border-l-2 border-tertiary pl-3 py-1 space-y-0.5">
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="font-mono">13:58:39 PHST</span>
+<span class="text-tertiary font-semibold">FLAGGED</span>
+</div>
+<div class="font-medium text-on-surface">Purefoods Corned Beef 150g exceeds SRP by +₱4.50</div>
+<div class="text-[11px] text-on-surface-variant">WalterMart Muñoz tagged for field re-inspection</div>
+</div>
+<div class="border-l-2 border-outline-variant pl-3 py-1 space-y-0.5">
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="font-mono">13:42:11 PHST</span>
+<span class="text-on-surface-variant font-semibold">SECURITY</span>
+</div>
+<div class="font-medium text-on-surface">PostgreSQL Row-Level Security policies re-validated</div>
+<div class="text-[11px] text-on-surface-variant">All anon tokens restricted to verified read queries</div>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg border border-outline-variant text-on-surface font-label-sm text-label-sm hover:bg-surface-container transition-colors text-center">
+              View Complete Administrative Log →
+            </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- FOOTER (Shared Component: Footer) -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-none mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-6 py-4 max-w-[1280px] mx-auto gap-4">
+<div class="flex items-center gap-2 text-on-surface-variant dark:text-outline-variant font-body-sm text-body-sm text-center md:text-left">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container inline-block"></span>
+<span>© 2025 SaanMura Open Civic Price Monitoring PH • Data governed under Open Government Partnership &amp; DTI Fair Trade Compliance</span>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-4 font-label-sm text-label-sm">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-surface transition-colors hover:underline" href="#">Philippine DTI SRP Standards</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-surface transition-colors hover:underline" href="#">Civic Verification Charter</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-surface transition-colors hover:underline" href="#">Supabase RLS Documentation</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-surface transition-colors hover:underline" href="#">Terms of Fair Data</a>
+</div>
+</div>
+</footer>
+</body></html>

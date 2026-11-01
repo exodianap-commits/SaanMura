@@ -1,0 +1,21 @@
+{
+  "name": "saanmura-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SaanMura (PriceWatch PH) — Civic Price-Monitoring Mobile & Web Ecosystem",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "pnpm --filter @saanmura/web dev",
+    "dev:mobile": "pnpm --filter @saanmura/mobile start",
+    "build:web": "pnpm --filter @saanmura/web build",
+    "build:packages": "pnpm --filter @saanmura/* build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}

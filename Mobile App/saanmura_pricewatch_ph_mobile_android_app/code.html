@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SaanMura PriceWatch PH</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&amp;family=Roboto+Flex:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#111c2d",
+            "on-primary-fixed-variant": "#6d3a00",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#111c2d",
+            "surface-container-lowest": "#ffffff",
+            "inverse-on-surface": "#ecf1ff",
+            "surface-container-low": "#f0f3ff",
+            "primary": "#8f4e00",
+            "on-surface-variant": "#544437",
+            "on-error-container": "#93000a",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#62ff95",
+            "on-primary-fixed": "#2e1500",
+            "surface-container": "#e7eeff",
+            "inverse-primary": "#ffb77a",
+            "outline": "#877365",
+            "secondary-container": "#54fd8f",
+            "secondary-fixed-dim": "#2fe378",
+            "on-secondary-fixed-variant": "#005226",
+            "primary-fixed-dim": "#ffb77a",
+            "inverse-surface": "#263143",
+            "on-secondary-container": "#007237",
+            "on-tertiary-container": "#93011c",
+            "on-tertiary-fixed": "#410007",
+            "surface-tint": "#8f4e00",
+            "surface-container-highest": "#d8e3fb",
+            "surface": "#f9f9ff",
+            "on-primary-container": "#6d3a00",
+            "primary-fixed": "#ffdcc2",
+            "on-error": "#ffffff",
+            "surface-variant": "#d8e3fb",
+            "tertiary-fixed": "#ffdad8",
+            "background": "#f9f9ff",
+            "on-tertiary-fixed-variant": "#92001b",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb3b0",
+            "surface-bright": "#f9f9ff",
+            "primary-container": "#ff9f43",
+            "on-secondary-fixed": "#00210b",
+            "error": "#ba1a1a",
+            "outline-variant": "#dac2b1",
+            "surface-dim": "#cfdaf2",
+            "tertiary-container": "#ff9a98",
+            "tertiary": "#b52330",
+            "surface-container-high": "#dee8ff",
+            "secondary": "#006d34",
+            "error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin-lg": "2.5rem",
+            "space-md": "1rem",
+            "gutter-md": "1.25rem",
+            "gutter-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin-md": "1.5rem",
+            "margin": "1rem",
+            "space-xl": "2.25rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Roboto Flex"],
+            "headline-lg-mobile": ["Epilogue"],
+            "body-sm": ["Roboto Flex"],
+            "badge-stamp": ["Roboto Flex"],
+            "price-display-sm": ["Roboto Flex"],
+            "headline-md": ["Epilogue"],
+            "headline-xl-mobile": ["Epilogue"],
+            "body-lg": ["Roboto Flex"],
+            "headline-sm": ["Epilogue"],
+            "headline-lg": ["Epilogue"],
+            "label-sm": ["Roboto Flex"],
+            "price-display-lg": ["Roboto Flex"],
+            "label-md": ["Roboto Flex"],
+            "headline-xl": ["Epilogue"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "badge-stamp": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "price-display-sm": ["18px", { "lineHeight": "22px", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "headline-xl-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "price-display-lg": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-[#FFF7F0] text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary-fixed">
+<!-- Mobile Screen Container (4-column layout phone frame) -->
+<div class="w-full max-w-md bg-[#FFF7F0] min-h-screen flex flex-col relative pb-28 shadow-xl">
+<!-- 1. Android System Status Bar -->
+<header class="w-full px-5 pt-2.5 pb-1 flex justify-between items-center text-on-surface z-50 bg-[#FFF7F0]">
+<div class="font-label-md text-label-md font-bold tracking-tight">9:41</div>
+<div class="flex items-center space-x-1.5 opacity-90">
+<span class="material-symbols-outlined text-[17px]">network_cell</span>
+<span class="material-symbols-outlined text-[17px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+</div>
+</header>
+<!-- Android Material 3 Top App Bar (Shared Component Anchor) -->
+<div class="bg-surface shadow-sm flex justify-between items-center w-full px-margin h-14 max-w-md mx-auto sticky top-0 z-40">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-primary tracking-tight">SaanMura PriceWatch</span>
+<div class="flex items-center gap-1 -mt-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center">
+              📍 Metro Manila (NCR)
+              <span class="material-symbols-outlined text-[14px] leading-none ml-0.5">expand_more</span>
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<button aria-label="Notifications" class="p-2 rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 relative text-on-surface-variant">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary ring-2 ring-surface"></span>
+</button>
+<button aria-label="Quick Barcode" class="p-2 rounded-full hover:bg-surface-container active:scale-95 transition-transform duration-150 text-primary">
+<span class="material-symbols-outlined text-[22px]" data-icon="barcode_scanner">barcode_scanner</span>
+</button>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="px-margin flex-1 space-y-4 pt-3">
+<!-- 2. Hero Action: Quick Barcode Scanner Banner -->
+<section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-container via-[#ffa954] to-primary p-4 shadow-sm text-on-primary-fixed">
+<div class="flex items-center justify-between gap-3">
+<div class="space-y-1 z-10 flex-1">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/30 backdrop-blur-sm text-on-primary-fixed text-badge-stamp font-badge-stamp uppercase">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+              Instant Shelf Scan
+            </div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-primary-fixed leading-tight">
+              Scan Barcode or Shelf QR
+            </h2>
+<p class="font-body-sm text-body-sm text-on-primary-fixed/90 leading-snug">
+              Compare retail shelves against DTI suggested retail price in 1 second.
+            </p>
+</div>
+<button class="z-10 flex flex-col items-center justify-center w-14 h-14 bg-surface-container-lowest text-primary rounded-2xl shadow-md active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]">photo_camera</span>
+<span class="font-label-sm text-[10px] font-bold">SCAN</span>
+</button>
+</div>
+</section>
+<!-- 3. Market Search Bar with instant barcode trigger -->
+<div class="relative">
+<div class="flex items-center rounded-full bg-surface-container-lowest border border-outline-variant/40 shadow-sm px-3.5 py-2.5 focus-within:ring-2 focus-within:ring-primary-container focus-within:border-transparent transition-all">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span>
+<input class="w-full bg-transparent border-none p-0 text-on-surface placeholder:text-outline/70 font-body-md text-body-md focus:ring-0 focus:outline-none" placeholder="Search brand, grocery, or market..." type="search"/>
+<div class="h-4 w-px bg-outline-variant/50 mx-2"></div>
+<button aria-label="Scanner in search" class="text-primary hover:text-on-primary-container p-0.5 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+</button>
+</div>
+</div>
+<!-- 4. Horizontal Scrollable Category Chips -->
+<nav aria-label="Product categories" class="flex gap-2 overflow-x-auto pb-1 scrollbar-none -mx-margin px-margin">
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md font-bold shadow-sm flex items-center gap-1 active:scale-95 transition-transform">
+          All (4.8k)
+        </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1">
+          🌾 Bigas / Rice
+        </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1">
+          🥫 Canned Goods
+        </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1">
+          🍳 Cooking Oil
+        </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1">
+          🥛 Dairy &amp; Eggs
+        </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1">
+          🍜 Instant Noodles
+        </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1">
+          🥩 Fresh Meat
+        </button>
+</nav>
+<!-- Live Civic Tracker Header & Stats Bar -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Community Price Stream</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Updated 4m ago</span>
+</div>
+<!-- 5. High-Density Grocery Commodity Cards (Compact Layout) -->
+<div class="space-y-3">
+<!-- Card 1: Lucky Me! Pancit Canton Kalamansi -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm p-3 hover:shadow-md transition-shadow">
+<div class="flex gap-3">
+<div class="w-20 h-20 rounded-lg bg-surface-container-low shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant/20 p-1">
+<img alt="Lucky Me! Pancit Canton Kalamansi" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XsI7D0k9ETNC52uR-pGs6ijj1br0TSaWOXon969m4Vs29weAtSGUV1Yn1n1_Bti62FXEk7qOAsBuraSqejBZqqDl-N6VunGNLpY0f7-QHjS0zfOX5vc0-DrmzE20NBYfhtrRC2pxtIpqKTFsEtnIk3hvCQmegjN-zRQSaMwB09LEjlZIP-Ayb8uosJjW4xUE75BIK0LyIJ8YerqwTwcjR3VcBDKDWVH9EywGFmXbMS"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<span class="px-1.5 py-0.5 rounded text-badge-stamp font-badge-stamp bg-[rgba(0,210,106,0.12)] text-[#00A352] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                  DTI VERIFIED
+                </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold bg-secondary-fixed/30 px-1.5 py-0.2 rounded">
+                  ▼ ₱0.25 BELOW SRP
+                </span>
+</div>
+<h3 class="font-headline-sm text-[15px] font-bold text-on-surface truncate mt-1">Lucky Me! Instant Pancit Canton Kalamansi 80g</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary">store</span>
+                Puregold Paso de Blas
+              </p>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-price-display-lg text-[22px] font-bold text-on-surface leading-tight">₱15.00</span>
+<span class="font-body-sm text-body-sm text-outline ml-1 line-through">₱15.25</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-bold hover:underline flex items-center">
+                  Compare
+                  <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm text-outline">
+<span class="truncate">Verified by <strong class="text-on-surface">Carla M.</strong></span>
+<span class="truncate">Contributed by <strong class="text-on-surface">Rafael</strong></span>
+</div>
+</article>
+<!-- Card 2: Purefoods Corned Beef 175g (Spike Alert) -->
+<article class="bg-surface-container-lowest rounded-xl border border-tertiary-container/60 shadow-sm p-3 hover:shadow-md transition-shadow">
+<div class="flex gap-3">
+<div class="w-20 h-20 rounded-lg bg-surface-container-low shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant/20 p-1">
+<img alt="Purefoods Corned Beef 175g" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XD8tvhPoN2m4QdGDD1pMiB5RWkO2qpRzXn31lyizyYo7S8NbRMorRZ4E15p25vdiEcDRAkBQErOps4X9VqPVXvHWR3yzSJxBaxQLQkekpD3VoXgGp2yZ4qdhYdf3Wrc4BYVeLjxiQtErr5WsExgeqGY3aVD4HltnwH5IbHYBw_l-N2T1pz2zzxZ21_fXbKPX2T_CQFqxX73FyftvVSDWJHpdR9jhhVcwdZLCNzdOAy"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<span class="px-1.5 py-0.5 rounded text-badge-stamp font-badge-stamp bg-[rgba(255,90,95,0.12)] text-[#FF5A5F] flex items-center gap-0.5 font-bold">
+<span class="material-symbols-outlined text-[10px]">warning</span>
+                  SPIKE ALERT
+                </span>
+<span class="font-label-sm text-label-sm text-tertiary font-bold bg-tertiary-fixed/40 px-1.5 py-0.2 rounded">
+                  ▲ ₱0.50 ABOVE SRP
+                </span>
+</div>
+<h3 class="font-headline-sm text-[15px] font-bold text-on-surface truncate mt-1">Purefoods Corned Beef 175g</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary">store</span>
+                WalterMart Muñoz
+              </p>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-price-display-lg text-[22px] font-bold text-tertiary leading-tight">₱42.00</span>
+<span class="font-body-sm text-body-sm text-outline ml-1">SRP: ₱41.50</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-bold hover:underline flex items-center">
+                  Compare
+                  <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm text-outline">
+<span class="truncate">Verified by <strong class="text-on-surface">A. Villafuerte</strong></span>
+<span class="truncate">Contributed by <strong class="text-on-surface">Grace P.</strong></span>
+</div>
+</article>
+<!-- Card 3: Mega Sardines in Tomato Sauce 155g -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm p-3 hover:shadow-md transition-shadow">
+<div class="flex gap-3">
+<div class="w-20 h-20 rounded-lg bg-surface-container-low shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant/20 p-1">
+<img alt="Mega Sardines in Tomato Sauce 155g" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Umw4fkBSZvePR_8hZVJ9qZQj5fvULGgFbxQDpQZ0tuiE8cqgG42XXcFoDPKU2DT2_eB8rD74XLCqPrhMFSXotQQVxDIwtV3-ZOhnypPQAtit9-nKXp2p2e-jLK8nw0OOdUvUECVumMU54JQgl1PT6wpj87HX8pSo-NTaPdrLSC7BfeoQlciDoR0VFo_tHSVU5pWXdUjmSKTAKgtDgd6s5bwE42c8hbJuR7XjRFb-g"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<span class="px-1.5 py-0.5 rounded text-badge-stamp font-badge-stamp bg-[rgba(0,210,106,0.12)] text-[#00A352] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                  DTI VERIFIED
+                </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold bg-secondary-fixed/30 px-1.5 py-0.2 rounded">
+                  ▼ ₱0.50 BELOW SRP
+                </span>
+</div>
+<h3 class="font-headline-sm text-[15px] font-bold text-on-surface truncate mt-1">Mega Sardines in Tomato Sauce 155g</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary">store</span>
+                Puregold Cubao
+              </p>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-price-display-lg text-[22px] font-bold text-on-surface leading-tight">₱21.50</span>
+<span class="font-body-sm text-body-sm text-outline ml-1 line-through">₱22.00</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-bold hover:underline flex items-center">
+                  Compare
+                  <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm text-outline">
+<span class="truncate">Verified by <strong class="text-on-surface">Maria S.</strong></span>
+<span class="truncate">Contributed by <strong class="text-on-surface">Juan D.</strong></span>
+</div>
+</article>
+<!-- Card 4: Minola Pure Coconut Cooking Oil 1L -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm p-3 hover:shadow-md transition-shadow">
+<div class="flex gap-3">
+<div class="w-20 h-20 rounded-lg bg-surface-container-low shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant/20 p-1">
+<img alt="Minola Pure Coconut Cooking Oil 1L" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W9bU8yxmqxOmbveIy_94Kn5hAE7p_FxNEcZDFes8MPx7ctoicl8UGvU5WRpuJZFH5gPtRBoK-sSWdjU2hyG8F2fuWTSSoVF2xGmZ5YDscDwgS343egJ8nKG6AupvIrfQDyQ4EDzdkOHUwJFOubx5V4sYmse7Tvc-tlWEMag1UdR9tXOyjWHJKc-IlC6a6fHVqzUhJUIigJZ-LXR-pJbG210ukuAB4lSN1Hn0pcYnI2"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<span class="px-1.5 py-0.5 rounded text-badge-stamp font-badge-stamp bg-[rgba(0,210,106,0.12)] text-[#00A352] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                  DTI VERIFIED
+                </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold bg-secondary-fixed/30 px-1.5 py-0.2 rounded">
+                  ▼ ₱4.50 BELOW SRP
+                </span>
+</div>
+<h3 class="font-headline-sm text-[15px] font-bold text-on-surface truncate mt-1">Minola Pure Coconut Cooking Oil 1L</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary">store</span>
+                SM Hypermarket
+              </p>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-price-display-lg text-[22px] font-bold text-on-surface leading-tight">₱112.00</span>
+<span class="font-body-sm text-body-sm text-outline ml-1 line-through">₱116.50</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-bold hover:underline flex items-center">
+                  Compare
+                  <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm text-outline">
+<span class="truncate">Verified by <strong class="text-on-surface">Engr. Dizon</strong></span>
+<span class="truncate">Contributed by <strong class="text-on-surface">Elena R.</strong></span>
+</div>
+</article>
+<!-- Card 5: Sinandomeng Premium White Rice -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm p-3 hover:shadow-md transition-shadow">
+<div class="flex gap-3">
+<div class="w-20 h-20 rounded-lg bg-surface-container-low shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant/20 p-1">
+<img alt="Sinandomeng Premium White Rice (Per Kg)" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X7WmLEQgV3QiBfe4gf5idOAaM7gh5jL7MK5SU7B2NWVw50OZ9226oYL2FE9eAl--PhYnxZX7rvyGQTqQ_GpyopkPMAOqkKHZ4PsNMeubZxSwei4Dn7ZA9gioPqONrGJM3c122CnCHxFcaz4ZMEClcXnEU7MfeHLyORCpMvBhYPm2JWf5395WGxdXb7WpxXA2kE-0VpgSddoKsf0FFa19N82lMqY-Hx7sx5t9JtoagL"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<span class="px-1.5 py-0.5 rounded text-badge-stamp font-badge-stamp bg-[rgba(255,159,67,0.12)] text-[#D97706] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px]">groups</span>
+                  CONSENSUS
+                </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold bg-secondary-fixed/30 px-1.5 py-0.2 rounded">
+                  DA CEILING: ₱50.00
+                </span>
+</div>
+<h3 class="font-headline-sm text-[15px] font-bold text-on-surface truncate mt-1">Sinandomeng Premium White Rice (Per Kg)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary">store</span>
+                Commonwealth Market
+              </p>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-price-display-lg text-[22px] font-bold text-on-surface leading-tight">₱48.00</span>
+<span class="font-body-sm text-body-sm text-outline ml-1">/kg</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-bold hover:underline flex items-center">
+                  Compare
+                  <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm text-outline">
+<span class="truncate">Verified by <strong class="text-on-surface">DTI Reg IV</strong></span>
+<span class="truncate">Contributed by <strong class="text-on-surface">Mark S.</strong></span>
+</div>
+</article>
+<!-- Card 6: Alaska Fortified Powdered Milk Drink 300g -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm p-3 hover:shadow-md transition-shadow">
+<div class="flex gap-3">
+<div class="w-20 h-20 rounded-lg bg-surface-container-low shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant/20 p-1">
+<img alt="Alaska Fortified Powdered Milk Drink 300g" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xmrt9nrPkcDZiXYG77js0_60fk5Z59hGiGT9CTvoRn9bHinEGEXOQMahzrvhFirArA9zsvOF-W4tm8837StZk-qYI59RumBDQV3zaD-eCBn0HFtff9GSXJWnH9SU9BOxHUOUMVoBpj8AB0i9hHdPteJG2q18O-Zj2k2DPMe56tUWLWCGd0N19RVKNvWd1piEdup00ERuMrhv-SQsPpDMuoVoD4NYbvr5g1Y53ZdFxx"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<span class="px-1.5 py-0.5 rounded text-badge-stamp font-badge-stamp bg-[rgba(0,210,106,0.12)] text-[#00A352] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                  DTI VERIFIED
+                </span>
+<span class="font-label-sm text-label-sm text-outline font-bold bg-surface-container px-1.5 py-0.2 rounded">
+                  MATCHES SRP
+                </span>
+</div>
+<h3 class="font-headline-sm text-[15px] font-bold text-on-surface truncate mt-1">Alaska Fortified Powdered Milk Drink 300g</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary">store</span>
+                Robinsons Galleria
+              </p>
+<div class="flex items-baseline justify-between mt-1">
+<div>
+<span class="font-price-display-lg text-[22px] font-bold text-on-surface leading-tight">₱87.50</span>
+<span class="font-body-sm text-body-sm text-outline ml-1">SRP: ₱87.50</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-bold hover:underline flex items-center">
+                  Compare
+                  <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm text-outline">
+<span class="truncate">Verified by <strong class="text-on-surface">Atty. Gomez</strong></span>
+<span class="truncate">Contributed by <strong class="text-on-surface">Bea</strong></span>
+</div>
+</article>
+</div>
+</main>
+<!-- 6. Floating Action Button: Log Price / Mag-ulat ng Presyo -->
+<div class="fixed bottom-16 right-4 z-40 max-w-md w-auto">
+<button class="flex items-center gap-2 bg-primary-container text-on-primary-fixed px-4 py-3 rounded-full shadow-lg hover:shadow-xl active:scale-95 transition-all border border-white/20">
+<span class="material-symbols-outlined text-[22px]">add_a_photo</span>
+<span class="font-label-md text-label-md font-bold tracking-wide">Mag-ulat ng Presyo</span>
+</button>
+</div>
+<!-- 7. Android Bottom Navigation Bar (Shared Component Anchor) -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-xs py-space-xs max-w-md mx-auto bg-surface shadow-md border-t-0">
+<!-- Catalog (Active Tab) -->
+<button class="flex flex-col items-center justify-center bg-primary-fixed dark:bg-primary text-on-primary-fixed dark:text-on-primary rounded-xl px-2 py-1 font-label-sm text-label-sm active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span>Catalog</span>
+</button>
+<!-- Scan -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-2 py-1 font-label-sm text-label-sm active:scale-95 transition-transform duration-150 hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[20px]" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span>Scan</span>
+</button>
+<!-- Verifier Queue (With Badge) -->
+<button class="relative flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-2 py-1 font-label-sm text-label-sm active:scale-95 transition-transform duration-150 hover:bg-surface-container-high">
+<span class="relative">
+<span class="material-symbols-outlined text-[20px]" data-icon="fact_check">fact_check</span>
+<span class="absolute -top-1 -right-2 bg-tertiary text-on-tertiary text-[9px] font-bold px-1 rounded-full leading-none py-0.5">18</span>
+</span>
+<span>Verify</span>
+</button>
+<!-- History -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-2 py-1 font-label-sm text-label-sm active:scale-95 transition-transform duration-150 hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[20px]" data-icon="volunteer_activism">volunteer_activism</span>
+<span>History</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-2 py-1 font-label-sm text-label-sm active:scale-95 transition-transform duration-150 hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+<span>Profile</span>
+</button>
+</nav>
+</div>
+</body></html>

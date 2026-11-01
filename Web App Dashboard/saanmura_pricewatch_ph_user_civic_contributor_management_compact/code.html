@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User &amp; Civic Contributor Management | SaanMura PriceWatch PH</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Epilogue & Roboto Flex -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&amp;family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600;8..144,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed": "#62ff95",
+            "secondary-container": "#54fd8f",
+            "secondary-fixed-dim": "#2fe378",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "inverse-primary": "#ffb77a",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#93011c",
+            "inverse-surface": "#263143",
+            "on-secondary-fixed-variant": "#005226",
+            "on-error-container": "#93000a",
+            "primary-container": "#ff9f43",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#2e1500",
+            "primary-fixed": "#ffdcc2",
+            "secondary": "#006d34",
+            "on-primary-container": "#6d3a00",
+            "tertiary-container": "#ff9a98",
+            "tertiary": "#b52330",
+            "on-secondary-fixed": "#00210b",
+            "surface-container-high": "#dee8ff",
+            "tertiary-fixed": "#ffdad8",
+            "background": "#f9f9ff",
+            "tertiary-fixed-dim": "#ffb3b0",
+            "on-secondary-container": "#007237",
+            "on-tertiary-fixed": "#410007",
+            "on-background": "#111c2d",
+            "surface": "#f9f9ff",
+            "on-surface": "#111c2d",
+            "inverse-on-surface": "#ecf1ff",
+            "surface-dim": "#cfdaf2",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#d8e3fb",
+            "surface-bright": "#f9f9ff",
+            "on-primary-fixed-variant": "#6d3a00",
+            "primary": "#8f4e00",
+            "on-surface-variant": "#544437",
+            "on-error": "#ffffff",
+            "surface-tint": "#8f4e00",
+            "error-container": "#ffdad6",
+            "surface-container": "#e7eeff",
+            "primary-fixed-dim": "#ffb77a",
+            "surface-container-highest": "#d8e3fb",
+            "outline": "#877365",
+            "surface-container-low": "#f0f3ff",
+            "on-tertiary-fixed-variant": "#92001b",
+            "outline-variant": "#dac2b1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin-md": "1.5rem",
+            "gutter-md": "1.25rem",
+            "margin": "1rem",
+            "space-md": "1rem",
+            "gutter-lg": "1.5rem",
+            "space-xl": "2.25rem",
+            "margin-lg": "2.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Epilogue"],
+            "headline-lg-mobile": ["Epilogue"],
+            "body-sm": ["Roboto Flex"],
+            "label-md": ["Roboto Flex"],
+            "badge-stamp": ["Roboto Flex"],
+            "headline-xl": ["Epilogue"],
+            "label-sm": ["Roboto Flex"],
+            "price-display-sm": ["Roboto Flex"],
+            "headline-xl-mobile": ["Epilogue"],
+            "price-display-lg": ["Roboto Flex"],
+            "headline-sm": ["Epilogue"],
+            "body-md": ["Roboto Flex"],
+            "headline-md": ["Epilogue"],
+            "body-lg": ["Roboto Flex"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "badge-stamp": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "price-display-sm": ["18px", { "lineHeight": "22px", "fontWeight": "700" }],
+            "headline-xl-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "price-display-lg": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.02);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(143, 78, 0, 0.2);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md min-h-screen flex flex-col">
+<!-- ================= TOP NAVIGATION BAR (SHARED COMPONENT) ================= -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-[1280px] mx-auto">
+<!-- Brand Logo & Left Search Bar -->
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 group" href="#">
+<div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-fixed shadow-sm">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container tracking-tight">SaanMura PriceWatch PH</span>
+<span class="text-[10px] uppercase font-bold tracking-wider text-outline -mt-1">Civic Open Data Alliance</span>
+</div>
+</a>
+<!-- Left Search Bar as requested in JSON -->
+<div class="hidden lg:flex items-center relative w-72">
+<span class="material-symbols-outlined absolute left-3 text-outline text-lg pointer-events-none">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 text-xs bg-surface-container-low border border-outline-variant rounded-full text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-primary transition-all font-body-sm" placeholder="Search commodities or LGUs..." type="text"/>
+</div>
+</div>
+<!-- Navigation Links from JSON: Contributor View, Verifier Queue, Administrator Control Center -->
+<nav class="hidden md:flex items-center gap-6 font-label-md text-label-md">
+<a class="text-on-surface-variant hover:text-on-surface dark:text-outline-variant dark:hover:text-surface font-medium transition-colors" href="#">Contributor View</a>
+<a class="text-on-surface-variant hover:text-on-surface dark:text-outline-variant dark:hover:text-surface font-medium transition-colors" href="#">Verifier Queue</a>
+<!-- Active Tab for User Management / Governance / Admin Module -->
+<a class="border-b-2 border-primary text-primary dark:text-primary-container font-semibold pb-1" href="#">Administrator Control Center</a>
+</nav>
+<!-- Trailing Primary & Secondary Actions + Trailing Icons & Profile Avatar -->
+<div class="flex items-center gap-3">
+<!-- Secondary Trailing Action -->
+<button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-primary-container text-primary font-semibold text-xs hover:bg-surface-container transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">qr_code_scanner</span>
+<span>Scan Barcode</span>
+</button>
+<!-- Primary Trailing Action -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-fixed font-semibold text-xs hover:bg-primary-fixed-dim transition-colors shadow-sm active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+<span>Register Product</span>
+</button>
+<!-- Trailing Icon Actions: notifications, database, help -->
+<div class="flex items-center gap-1 pl-2 border-l border-outline-variant">
+<button class="p-1.5 text-outline hover:text-primary hover:bg-surface-container rounded-lg transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-lg">notifications</span>
+</button>
+<button class="p-1.5 text-outline hover:text-primary hover:bg-surface-container rounded-lg transition-colors relative" title="Supabase Database Status">
+<span class="material-symbols-outlined text-lg">database</span>
+<span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<button class="p-1.5 text-outline hover:text-primary hover:bg-surface-container rounded-lg transition-colors" title="Civic Governance Help">
+<span class="material-symbols-outlined text-lg">help</span>
+</button>
+</div>
+<!-- Verified Civic Contributor Profile Avatar -->
+<div class="flex items-center gap-2 pl-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs shadow-sm ring-2 ring-primary-container">
+            AD
+          </div>
+</div>
+</div>
+</div>
+</header>
+<!-- ================= MAIN WORKSPACE (SIDEBAR + CONTENT CANVAS) ================= -->
+<div class="flex-1 flex max-w-[1280px] w-full mx-auto">
+<!-- ================= SIDE NAVIGATION BAR (SHARED COMPONENT) ================= -->
+<aside class="w-64 min-h-[calc(100vh-61px)] p-4 flex flex-col justify-between shrink-0 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant dark:border-outline shadow-sm dark:shadow-none hidden lg:flex">
+<!-- Top Section -->
+<div class="space-y-6">
+<!-- Sidebar Brand/Header -->
+<div class="flex items-center gap-3 px-2 py-1">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-primary dark:text-primary-container leading-tight">Civic Modules</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Palengke &amp; Retail Watch</p>
+</div>
+</div>
+<!-- Primary CTA: Log Price Observation -->
+<button class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-primary-container hover:bg-primary-fixed-dim text-on-primary-fixed font-semibold text-xs shadow-sm active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+<span>Log Price Observation</span>
+</button>
+<!-- Navigation Tabs: Catalog & Discovery, Verification Queue, Submission Workbench, Supabase & RLS Monitor + Contributor Governance -->
+<div class="space-y-1">
+<div class="px-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-outline font-badge-stamp">Platform Engines</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container hover:text-on-surface dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">storefront</span>
+<span>Catalog &amp; Discovery</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container hover:text-on-surface dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">fact_check</span>
+<span>Verification Queue</span>
+<span class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed">19</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container hover:text-on-surface dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">add_box</span>
+<span>Submission Workbench</span>
+</a>
+<!-- Active tab: User Management & Civic Governance -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary-fixed dark:bg-primary text-on-primary-fixed dark:text-on-primary font-semibold font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">manage_accounts</span>
+<span>User &amp; Contributor RBAC</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container hover:text-on-surface dark:hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">security</span>
+<span>Supabase &amp; RLS Monitor</span>
+</a>
+</div>
+</div>
+<!-- Bottom Section / Footer Tabs: DTI SRP Reference, Audit Logs -->
+<div class="pt-4 border-t border-outline-variant space-y-1">
+<div class="px-3 pb-1 text-[11px] font-bold uppercase tracking-wider text-outline font-badge-stamp">Civic Integrity</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors text-xs font-medium" href="#">
+<span class="material-symbols-outlined text-lg text-secondary">verified</span>
+<span>DTI SRP Reference</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors text-xs font-medium" href="#">
+<span class="material-symbols-outlined text-lg text-outline">history</span>
+<span>Audit Logs</span>
+</a>
+<!-- System Status Mini Pill -->
+<div class="mt-3 p-2.5 rounded-lg bg-surface-container border border-outline-variant text-[11px] text-on-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>RLS Nodes Synced</span>
+</div>
+<span class="font-mono text-[10px] text-outline">v2.4-PH</span>
+</div>
+</div>
+</aside>
+<!-- ================= MAIN CONTENT CANVAS ================= -->
+<main class="flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto space-y-4"><!-- COMPACT HEADER BANNER & ACTION TOOLBAR -->
+<section class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="space-y-0.5">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary-fixed/60 text-on-primary-fixed text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs">gavel</span>
+<span>Civic Governance • Role-Based Access Control (RBAC) &amp; Trust System</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-background tracking-tight leading-tight">User &amp; Civic Contributor Management</h1>
+<p class="font-body-sm text-xs text-on-surface-variant max-w-3xl leading-snug">
+Administer civic scouts, trusted palengke verifiers, LGU inspectors, and system administrators. Configure reputation scores, quorum rights, and Supabase RLS.
+</p>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap items-center gap-2 shrink-0">
+<button class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-container-low hover:bg-surface-container text-xs font-semibold text-on-surface transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Export Roster (CSV)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-container-low hover:bg-surface-container text-xs font-semibold text-on-surface transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">policy</span>
+<span>Audit Policies</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-on-primary font-semibold text-xs shadow-sm hover:bg-primary-container hover:text-on-primary-fixed transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">person_add</span>
+<span>Invite / Onboard</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 4 COMPACT KPI METRIC CARDS -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<!-- Metric 1: Total Active Contributors -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-3 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold text-outline font-label-md">Total Active Contributors</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">group</span>
+</div>
+</div>
+<div class="mt-1 flex items-baseline gap-2">
+<span class="font-headline-sm text-xl font-bold text-on-surface tracking-tight">1,248</span>
+<span class="text-[11px] font-bold text-secondary flex items-center">
+<span class="material-symbols-outlined text-xs">arrow_upward</span> +18.2%
+</span>
+</div>
+<div class="mt-1 text-[11px] text-on-surface-variant font-body-sm flex justify-between">
+<span>892 T2</span><span>314 T1</span><span>42 T3</span>
+</div>
+<div class="mt-1.5 w-full bg-surface-container rounded-full h-1 overflow-hidden flex">
+<div class="bg-primary h-full" style="width: 71%" title="Tier 2 Verifiers (71%)"></div>
+<div class="bg-primary-container h-full" style="width: 25%" title="Tier 1 Scouts (25%)"></div>
+<div class="bg-secondary h-full" style="width: 4%" title="Tier 3 Inspectors (4%)"></div>
+</div>
+</div>
+<!-- Metric 2: Average Contributor Trust Score -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-3 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold text-outline font-label-md">Avg Contributor Trust Score</span>
+<div class="w-7 h-7 rounded-lg bg-secondary-container/40 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+<div class="mt-1 flex items-baseline gap-2">
+<span class="font-headline-sm text-xl font-bold text-on-surface tracking-tight">94.6%</span>
+<span class="text-[11px] font-bold text-secondary flex items-center">
+<span class="material-symbols-outlined text-xs">trending_up</span> Solid
+</span>
+</div>
+<p class="mt-1 text-[11px] text-on-surface-variant font-body-sm truncate">
+&lt;0.8% false reports in last 30d
+</p>
+<div class="mt-1.5 w-full bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 94.6%"></div>
+</div>
+</div>
+<!-- Metric 3: Pending Approvals -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-3 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold text-outline font-label-md">Pending Approvals</span>
+<div class="w-7 h-7 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">pending_actions</span>
+</div>
+</div>
+<div class="mt-1 flex items-baseline gap-2">
+<span class="font-headline-sm text-xl font-bold text-on-surface tracking-tight">19</span>
+<span class="text-[10px] font-semibold px-1.5 py-0.2 rounded-full bg-primary-fixed text-on-primary-fixed">Review</span>
+</div>
+<div class="mt-1 flex items-center justify-between text-[11px]">
+<span class="text-on-surface-variant truncate">12 Field • 7 Citizen</span>
+<a class="hover:underline font-semibold text-primary flex items-center gap-0.5 shrink-0" href="#">
+<span>Queue</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+</div>
+<div class="mt-1.5 w-full bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 65%"></div>
+</div>
+</div>
+<!-- Metric 4: Flagged / Cooldown Accounts -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-3 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold text-outline font-label-md">Flagged / Cooldown</span>
+<div class="w-7 h-7 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-base">warning</span>
+</div>
+</div>
+<div class="mt-1 flex items-baseline gap-2">
+<span class="font-headline-sm text-xl font-bold text-tertiary tracking-tight">4</span>
+<span class="text-[10px] font-bold text-tertiary px-1.5 py-0.2 rounded-full bg-tertiary-fixed/30 flex items-center">
+<span class="material-symbols-outlined text-xs mr-0.5">lock</span> Isolated
+</span>
+</div>
+<div class="mt-1 flex items-center justify-between text-[11px]">
+<span class="text-on-surface-variant truncate">Failed geofence jitter</span>
+<a class="hover:underline font-semibold text-tertiary flex items-center gap-0.5 shrink-0" href="#heuristics-panel">
+<span>Inspect</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+</a>
+</div>
+<div class="mt-1.5 w-full bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</section>
+<!-- COMPACT ROLE HIERARCHY & TRUST TIERS POLICY STRIP -->
+<section class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl px-4 py-3 shadow-sm">
+<div class="flex items-center justify-between mb-2 pb-1.5 border-b border-outline-variant/40">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-base">account_tree</span>
+<h3 class="font-label-md text-xs font-bold text-on-surface uppercase tracking-wide">Civic Role Hierarchy &amp; Consensus Weight Engine</h3>
+</div>
+<span class="text-[10px] font-mono text-outline">rbac_auth.v3</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+<!-- T1: Citizen Scout -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/40 space-y-1 hover:border-outline-variant transition-colors">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-surface-container-highest text-on-surface-variant">Tier 1</span>
+<span class="text-[11px] font-semibold text-outline">1.0x Quorum</span>
+</div>
+<h4 class="text-xs font-bold text-on-surface">Citizen Scout</h4>
+<p class="text-[11px] text-on-surface-variant leading-tight">
+Public contributor. Submits photo receipts &amp; shelf tags. Needs 2 peer votes.
+</p>
+<div class="pt-1 flex items-center gap-1 text-[10px] text-outline">
+<span class="material-symbols-outlined text-xs">photo_camera</span>
+<span>Receipt OCR Scan</span>
+</div>
+</div>
+<!-- T2: Verified Civic Checker -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-primary-container/40 space-y-1 hover:border-primary-container transition-colors">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-primary-fixed text-on-primary-fixed">Tier 2</span>
+<span class="text-[11px] font-semibold text-primary">1.5x Quorum</span>
+</div>
+<h4 class="text-xs font-bold text-primary">Verified Civic Checker</h4>
+<p class="text-[11px] text-on-surface-variant leading-tight">
+95%+ accuracy, min 50 logs. Casts authoritative votes &amp; audits peer flags.
+</p>
+<div class="pt-1 flex items-center gap-1 text-[10px] text-secondary">
+<span class="material-symbols-outlined text-xs">verified</span>
+<span>Consensus Validator</span>
+</div>
+</div>
+<!-- T3: DTI / LGU Official Inspector -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-secondary/40 space-y-1 hover:border-secondary transition-colors">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-secondary-fixed text-on-secondary-fixed">Tier 3</span>
+<span class="text-[11px] font-semibold text-secondary">Direct Override</span>
+</div>
+<h4 class="text-xs font-bold text-secondary">DTI / LGU Inspector</h4>
+<p class="text-[11px] text-on-surface-variant leading-tight">
+Accredited officer. Instant price freeze, formal violation notice issuance.
+</p>
+<div class="pt-1 flex items-center gap-1 text-[10px] text-secondary">
+<span class="material-symbols-outlined text-xs">local_police</span>
+<span>Statutory Enforcement</span>
+</div>
+</div>
+<!-- T4: Platform Administrator -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/40 space-y-1 hover:border-outline-variant transition-colors">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-inverse-surface text-inverse-on-surface">Tier 4</span>
+<span class="text-[11px] font-semibold text-outline">Root Auth</span>
+</div>
+<h4 class="text-xs font-bold text-on-surface">System Administrator</h4>
+<p class="text-[11px] text-on-surface-variant leading-tight">
+Full Supabase RLS security maintenance, dispute arbitration, instant cooldown.
+</p>
+<div class="pt-1 flex items-center gap-1 text-[10px] text-primary">
+<span class="material-symbols-outlined text-xs">vpn_key</span>
+<span>PostgreSQL Schema Access</span>
+</div>
+</div>
+</div>
+</section>
+<!-- COMPACT CONTRIBUTOR & USER TABLE WORKBENCH -->
+<section class="bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-4 shadow-sm space-y-3">
+<!-- Compact Control Toolbar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2.5">
+<!-- Search input -->
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-outline text-base pointer-events-none">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 text-xs bg-surface-container-low border border-outline-variant rounded-lg text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-primary transition-all font-body-sm" placeholder="Search contributor, ID, email, palengke jurisdiction..." type="text"/>
+</div>
+<!-- Compact Filter Pills -->
+<div class="flex items-center gap-1 overflow-x-auto pb-0.5">
+<button class="px-2.5 py-1 rounded-md bg-primary-fixed text-on-primary-fixed font-bold text-xs shrink-0 transition-colors">
+All (1,248)
+</button>
+<button class="px-2.5 py-1 rounded-md bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-medium text-xs shrink-0 transition-colors">
+Inspectors (42)
+</button>
+<button class="px-2.5 py-1 rounded-md bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-medium text-xs shrink-0 transition-colors">
+Verified (892)
+</button>
+<button class="px-2.5 py-1 rounded-md bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-medium text-xs shrink-0 transition-colors">
+Scouts (314)
+</button>
+<button class="px-2.5 py-1 rounded-md bg-tertiary-fixed text-tertiary font-bold text-xs shrink-0 transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">warning</span>
+<span>Flagged (4)</span>
+</button>
+</div>
+</div>
+<!-- Dense Ergonomic Table Container -->
+<div class="overflow-x-auto border border-outline-variant/50 rounded-lg custom-scroll">
+<table class="w-full text-left border-collapse text-xs">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant text-outline font-label-md uppercase text-[10px] tracking-wider">
+<th class="py-2 px-3">User / Contributor</th>
+<th class="py-2 px-2.5">Role &amp; Tier</th>
+<th class="py-2 px-2.5">Jurisdiction / Palengke</th>
+<th class="py-2 px-2.5">Submissions &amp; Accuracy</th>
+<th class="py-2 px-2.5">Consensus</th>
+<th class="py-2 px-2.5">RLS Status</th>
+<th class="py-2 px-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30 font-body-sm">
+<!-- User 1: Maria Santos (Tier 2 Verifier) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2 px-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary-fixed text-primary font-bold flex items-center justify-center text-[11px]">
+MS
+</div>
+<div>
+<div class="font-bold text-on-surface flex items-center gap-1 leading-tight">
+<span>Maria Santos</span>
+<span class="material-symbols-outlined text-xs text-secondary" title="Accredited Identity">verified</span>
+</div>
+<div class="text-[10px] text-outline">msantos.civic@gmail.com • PH-QC-0842</div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9px] font-bold uppercase tracking-wider bg-primary-fixed text-on-primary-fixed border border-primary-container/30">
+<span class="material-symbols-outlined text-[10px]">fact_check</span>
+<span>Tier 2 Verifier</span>
+</span>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-medium text-on-surface leading-tight">Commonwealth Wet Market</div>
+<div class="text-[10px] text-outline">Quezon City, NCR</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-semibold text-on-surface leading-tight">348 logs</div>
+<div class="text-[10px] text-secondary font-medium">98.6% valid</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-on-surface text-[11px]">98%</span>
+<div class="w-12 bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 98%"></div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-secondary-container/40 text-on-secondary-fixed-variant">
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span>Signer Active</span>
+</span>
+</td>
+<td class="py-2 px-3 text-right">
+<div class="flex items-center justify-end gap-1 text-outline">
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Edit Role">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Audit History">
+<span class="material-symbols-outlined text-sm">history</span>
+</button>
+<button class="p-1 hover:text-tertiary hover:bg-surface-container rounded transition-colors" title="Suspend Access">
+<span class="material-symbols-outlined text-sm">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User 2: Atty. Eduardo Gomez (Tier 3 DTI Field Officer) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-secondary-fixed/5">
+<td class="py-2 px-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold flex items-center justify-center text-[11px]">
+EG
+</div>
+<div>
+<div class="font-bold text-on-surface flex items-center gap-1 leading-tight">
+<span>Atty. Eduardo Gomez</span>
+<span class="material-symbols-outlined text-xs text-secondary" title="DTI Official">local_police</span>
+</div>
+<div class="text-[10px] text-outline">egomez@dti.gov.ph • DTI-NCR-1104</div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9px] font-bold uppercase tracking-wider bg-secondary-fixed text-on-secondary-fixed border border-secondary/30">
+<span class="material-symbols-outlined text-[10px]">shield</span>
+<span>Tier 3 Officer</span>
+</span>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-medium text-on-surface leading-tight">Regional Palengke Taskforce</div>
+<div class="text-[10px] text-outline">Metro Manila &amp; CALABARZON</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-semibold text-on-surface leading-tight">512 direct audits</div>
+<div class="text-[10px] text-secondary font-medium">100% official</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-on-surface text-[11px]">100%</span>
+<div class="w-12 bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 100%"></div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-secondary-container/40 text-on-secondary-fixed-variant">
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span>SRP Override</span>
+</span>
+</td>
+<td class="py-2 px-3 text-right">
+<div class="flex items-center justify-end gap-1 text-outline">
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Edit Delegations">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Enforcement Records">
+<span class="material-symbols-outlined text-sm">history</span>
+</button>
+<button class="p-1 hover:text-outline hover:bg-surface-container rounded transition-colors" title="Field View">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User 3: Carla Mendoza (Tier 2 Palengke Lead) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2 px-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface font-bold flex items-center justify-center text-[11px]">
+CM
+</div>
+<div>
+<div class="font-bold text-on-surface flex items-center gap-1 leading-tight">
+<span>Carla Mendoza</span>
+<span class="material-symbols-outlined text-xs text-primary" title="Market Lead">store</span>
+</div>
+<div class="text-[10px] text-outline">cmendoza.lead@pasigmarket.ph • PH-PSG-0211</div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9px] font-bold uppercase tracking-wider bg-primary-fixed text-on-primary-fixed border border-primary-container/30">
+<span class="material-symbols-outlined text-[10px]">fact_check</span>
+<span>Tier 2 Lead</span>
+</span>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-medium text-on-surface leading-tight">Pasig City Mega Market</div>
+<div class="text-[10px] text-outline">Pasig City, Metro Manila</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-semibold text-on-surface leading-tight">719 logs</div>
+<div class="text-[10px] text-secondary font-medium">97.4% valid</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-on-surface text-[11px]">96%</span>
+<div class="w-12 bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 96%"></div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-secondary-container/40 text-on-secondary-fixed-variant">
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span>Signer Active</span>
+</span>
+</td>
+<td class="py-2 px-3 text-right">
+<div class="flex items-center justify-end gap-1 text-outline">
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Edit Role">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Audit Logs">
+<span class="material-symbols-outlined text-sm">history</span>
+</button>
+<button class="p-1 hover:text-tertiary hover:bg-surface-container rounded transition-colors" title="Suspend">
+<span class="material-symbols-outlined text-sm">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User 4: Juan Dela Cruz (Tier 1 Scout) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2 px-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container text-outline font-bold flex items-center justify-center text-[11px]">
+JD
+</div>
+<div>
+<div class="font-bold text-on-surface leading-tight">Juan Dela Cruz</div>
+<div class="text-[10px] text-outline">juandelacruz_scout@outlook.ph • PH-MNL-4921</div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9px] font-bold uppercase tracking-wider bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[10px]">person</span>
+<span>Tier 1 Scout</span>
+</span>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-medium text-on-surface leading-tight">WalterMart Muñoz / Balintawak</div>
+<div class="text-[10px] text-outline">EDSA, Quezon City</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-semibold text-on-surface leading-tight">64 logs</div>
+<div class="text-[10px] text-secondary font-medium">91.2% valid</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-on-surface text-[11px]">91%</span>
+<div class="w-12 bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 91%"></div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-surface-container text-outline">
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span>Authenticated</span>
+</span>
+</td>
+<td class="py-2 px-3 text-right">
+<div class="flex items-center justify-end gap-1 text-outline">
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Promote to Tier 2">
+<span class="material-symbols-outlined text-sm">upgrade</span>
+</button>
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Audit Submissions">
+<span class="material-symbols-outlined text-sm">history</span>
+</button>
+<button class="p-1 hover:text-tertiary hover:bg-surface-container rounded transition-colors" title="Flag">
+<span class="material-symbols-outlined text-sm">flag</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User 5: Engr. Ramon Dizon (Tier 2 Verifier) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2 px-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary-fixed text-primary font-bold flex items-center justify-center text-[11px]">
+RD
+</div>
+<div>
+<div class="font-bold text-on-surface flex items-center gap-1 leading-tight">
+<span>Engr. Ramon Dizon</span>
+<span class="material-symbols-outlined text-xs text-secondary">verified</span>
+</div>
+<div class="text-[10px] text-outline">rdizon@angelescivic.org • PH-PAM-1299</div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9px] font-bold uppercase tracking-wider bg-primary-fixed text-on-primary-fixed border border-primary-container/30">
+<span class="material-symbols-outlined text-[10px]">fact_check</span>
+<span>Tier 2 Verifier</span>
+</span>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-medium text-on-surface leading-tight">Nepo Mall &amp; Pampanga Mart</div>
+<div class="text-[10px] text-outline">Angeles City, Pampanga</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-semibold text-on-surface leading-tight">432 logs</div>
+<div class="text-[10px] text-secondary font-medium">96.8% valid</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-on-surface text-[11px]">95%</span>
+<div class="w-12 bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 95%"></div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-secondary-container/40 text-on-secondary-fixed-variant">
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span>Signer Active</span>
+</span>
+</td>
+<td class="py-2 px-3 text-right">
+<div class="flex items-center justify-end gap-1 text-outline">
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Edit Role">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="p-1 hover:text-primary hover:bg-surface-container rounded transition-colors" title="Audit Trail">
+<span class="material-symbols-outlined text-sm">history</span>
+</button>
+<button class="p-1 hover:text-tertiary hover:bg-surface-container rounded transition-colors" title="Revoke">
+<span class="material-symbols-outlined text-sm">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User 6: Ben Ramos (FLAGGED / PROBATION) -->
+<tr class="hover:bg-error-container/30 transition-colors bg-tertiary-fixed/10">
+<td class="py-2 px-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-tertiary text-on-tertiary font-bold flex items-center justify-center text-[11px]">
+BR
+</div>
+<div>
+<div class="font-bold text-tertiary flex items-center gap-1 leading-tight">
+<span>Ben Ramos</span>
+<span class="material-symbols-outlined text-xs text-tertiary" title="Security Flag Triggered">warning</span>
+</div>
+<div class="text-[10px] text-outline">bramos99@mailproxy.me • PH-TAG-7714</div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9px] font-bold uppercase tracking-wider bg-tertiary-fixed text-tertiary border border-tertiary/30">
+<span class="material-symbols-outlined text-[10px]">lock_clock</span>
+<span>Tier 1 Flagged</span>
+</span>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-medium text-tertiary leading-tight">FTI Palengke / Taguig</div>
+<div class="text-[10px] text-tertiary/80">GPS Jitter Anomaly</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="font-semibold text-on-surface leading-tight">18 logs (14 dub.)</div>
+<div class="text-[10px] text-tertiary font-semibold">74.1% valid alert</div>
+</td>
+<td class="py-2 px-2.5">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-tertiary text-[11px]">74%</span>
+<div class="w-12 bg-surface-container rounded-full h-1 overflow-hidden">
+<div class="bg-tertiary h-full" style="width: 74%"></div>
+</div>
+</div>
+</td>
+<td class="py-2 px-2.5">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 rounded text-[10px] font-bold bg-tertiary-fixed text-tertiary">
+<span class="w-1 h-1 rounded-full bg-tertiary animate-ping"></span>
+<span>In 24h Cooldown</span>
+</span>
+</td>
+<td class="py-2 px-3 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="px-2 py-0.5 bg-tertiary text-on-tertiary rounded text-[10px] font-semibold hover:bg-on-tertiary-container transition-colors" title="Investigate Anomaly">
+Audit
+</button>
+<button class="p-1 text-tertiary hover:bg-tertiary-fixed rounded transition-colors" title="Permaban User">
+<span class="material-symbols-outlined text-sm">person_off</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Compact Pagination & Status Bar -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-2 pt-1 text-[11px] text-outline">
+<div class="flex items-center gap-2 font-body-sm">
+<span>Showing <span class="font-bold text-on-surface">1-6</span> of <span class="font-bold text-on-surface">1,248</span> civic actors</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span>Batch Quorum: <span class="text-secondary font-semibold">Active</span></span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-0.5 rounded border border-outline-variant hover:bg-surface-container disabled:opacity-50 text-xs" disabled="">Prev</button>
+<button class="px-2 py-0.5 rounded bg-primary text-on-primary font-bold text-xs">1</button>
+<button class="px-2 py-0.5 rounded border border-outline-variant hover:bg-surface-container text-xs">2</button>
+<button class="px-2 py-0.5 rounded border border-outline-variant hover:bg-surface-container text-xs">3</button>
+<span class="px-0.5 text-outline">...</span>
+<button class="px-2 py-0.5 rounded border border-outline-variant hover:bg-surface-container text-xs">208</button>
+<button class="px-2 py-0.5 rounded border border-outline-variant hover:bg-surface-container text-xs">Next</button>
+</div>
+</div>
+</section>
+<!-- COMPACT DUAL BOTTOM SECTION: ANTI-TAMPER HEURISTICS & SUPABASE RLS MONITOR -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-3" id="heuristics-panel">
+<!-- Left 7 cols: Anti-Tamper & Security Heuristics Panel -->
+<section class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-3.5 shadow-sm space-y-2.5">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-base">security_update_warning</span>
+<h3 class="font-label-md text-xs font-bold text-on-surface uppercase tracking-wide">Anti-Tamper &amp; Security Heuristics</h3>
+</div>
+<span class="px-2 py-0.2 rounded-full text-[9px] font-bold uppercase bg-tertiary-fixed text-tertiary">Realtime Guardian</span>
+</div>
+<!-- Active Security Alert -->
+<div class="p-2.5 rounded-lg bg-tertiary-fixed/20 border border-tertiary/30 space-y-1.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-base">crisis_alert</span>
+<span class="font-bold text-[11px] text-tertiary">CRITICAL GEOFENCE VIOLATION #SEC-4091</span>
+</div>
+<span class="text-[9px] font-mono text-outline">14m ago</span>
+</div>
+<p class="text-[11px] text-on-surface font-body-sm leading-snug">
+<strong class="font-semibold text-tertiary">Ben Ramos (Tier 1 Scout)</strong>: 14 rapid submissions across Taguig and Valenzuela in 6 minutes. Potential spoofing or mock GPS detected.
+</p>
+<div class="pt-1 flex flex-wrap items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-lowest border border-tertiary/40 text-[10px] font-semibold text-tertiary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">timer</span>
+<span>24h Cooldown</span>
+</span>
+<button class="px-2 py-0.5 bg-tertiary text-on-tertiary text-[10px] font-semibold hover:bg-on-tertiary-container transition-colors rounded">
+Require Selfie Verification
+</button>
+<button class="px-2 py-0.5 border border-outline-variant hover:bg-surface-container text-[10px] font-semibold text-on-surface transition-colors rounded">
+Dismiss
+</button>
+</div>
+</div>
+<!-- Secondary Heuristic Check -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/40 flex items-center justify-between gap-2">
+<div class="space-y-0.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-sm">device_hub</span>
+<span class="font-bold text-xs text-on-surface">IMEI Device Clusters</span>
+</div>
+<p class="text-[10px] text-on-surface-variant font-body-sm leading-tight">
+Cross-matching installation hashes to prevent organized merchant collusion.
+</p>
+</div>
+<span class="text-[10px] font-semibold text-secondary shrink-0 bg-secondary-container/30 px-2 py-0.5 rounded-full">0 Anomalies</span>
+</div>
+</section>
+<!-- Right 5 cols: Supabase Row-Level Security (RLS) Policy Summary -->
+<section class="lg:col-span-5 bg-surface-container-lowest border border-outline-variant/60 rounded-xl p-3.5 shadow-sm space-y-2.5">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-base">database</span>
+<h3 class="font-label-md text-xs font-bold text-on-surface uppercase tracking-wide">Supabase RLS Policy Monitor</h3>
+</div>
+<div class="flex items-center gap-1 text-[9px] font-bold text-secondary bg-secondary-container/30 px-1.5 py-0.2 rounded-full">
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span>100% Active</span>
+</div>
+</div>
+<div class="space-y-1.5 font-mono text-[10px]">
+<!-- Policy 1 -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant/40 space-y-0.5">
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary truncate">price_submissions_insert_auth</span>
+<span class="px-1 py-0.2 rounded text-[8px] bg-secondary-fixed text-on-secondary-fixed font-bold shrink-0">PERMISSIVE</span>
+</div>
+<p class="font-sans text-[10px] text-outline leading-tight">Tier-1+ users can INSERT price logs with receipt hash check.</p>
+</div>
+<!-- Policy 2 -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant/40 space-y-0.5">
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary truncate">consensus_votes_tier2_plus_only</span>
+<span class="px-1 py-0.2 rounded text-[8px] bg-secondary-fixed text-on-secondary-fixed font-bold shrink-0">RESTRICTIVE</span>
+</div>
+<p class="font-sans text-[10px] text-outline leading-tight">Restricts mutate events to verified Tier-2 or Tier-3 JWT roles.</p>
+</div>
+<!-- Policy 3 -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant/40 space-y-0.5">
+<div class="flex items-center justify-between">
+<span class="font-bold text-secondary truncate">dti_srp_override_inspectors_only</span>
+<span class="px-1 py-0.2 rounded text-[8px] bg-secondary-fixed text-on-secondary-fixed font-bold shrink-0">RESTRICTIVE</span>
+</div>
+<p class="font-sans text-[10px] text-outline leading-tight">Requires signed gov public key in auth to trigger price ceiling alerts.</p>
+</div>
+</div>
+<div class="pt-1 flex items-center justify-between text-[11px] text-outline border-t border-outline-variant/40">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">cloud_done</span>
+<span>Sync latency: 18ms</span>
+</span>
+<a class="text-primary font-semibold hover:underline flex items-center gap-0.5" href="#">
+<span>Edit SQL</span>
+<span class="material-symbols-outlined text-xs">launch</span>
+</a>
+</div>
+</section>
+</div></main>
+</div>
+<!-- ================= FOOTER (SHARED COMPONENT: CIVIC DATA ATTRIBUTION) ================= -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-none mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-6 py-4 max-w-[1280px] mx-auto gap-4">
+<!-- Copyright & Open Data Attribution -->
+<div class="flex items-center gap-2 text-center md:text-left">
+<span class="material-symbols-outlined text-primary text-base">public</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant">
+          © 2025 SaanMura Open Civic Price Monitoring PH • Data governed under Open Government Partnership &amp; DTI Fair Trade Compliance
+        </p>
+</div>
+<!-- Links from JSON -->
+<div class="flex flex-wrap items-center justify-center gap-4 text-xs font-label-sm text-label-sm">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-surface transition-colors hover:text-primary dark:hover:text-primary-container transition-colors duration-150" href="#">
+          Philippine DTI SRP Standards
+        </a>
+<span class="text-outline-variant">•</span>
+<a class="text-primary dark:text-primary-container underline font-medium hover:text-primary dark:hover:text-primary-container transition-colors duration-150" href="#">
+          Civic Verification Charter
+        </a>
+<span class="text-outline-variant">•</span>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-surface transition-colors hover:text-primary dark:hover:text-primary-container transition-colors duration-150" href="#">
+          Supabase RLS Documentation
+        </a>
+<span class="text-outline-variant">•</span>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-on-surface dark:hover:text-surface transition-colors hover:text-primary dark:hover:text-primary-container transition-colors duration-150" href="#">
+          Terms of Fair Data
+        </a>
+</div>
+</div>
+</footer>
+</body></html>

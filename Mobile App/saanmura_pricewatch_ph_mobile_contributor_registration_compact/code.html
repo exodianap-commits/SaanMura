@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contributor Registration - SaanMura PriceWatch PH</title>
+<!-- Google Fonts: Epilogue & Roboto Flex -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&amp;family=Roboto+Flex:opsz,wght@8..144,400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#8f4e00",
+            "on-tertiary-container": "#93011c",
+            "background": "#f9f9ff",
+            "surface-container": "#e7eeff",
+            "secondary-fixed-dim": "#2fe378",
+            "on-surface-variant": "#544437",
+            "tertiary-fixed-dim": "#ffb3b0",
+            "surface-variant": "#d8e3fb",
+            "secondary": "#006d34",
+            "on-secondary-fixed": "#00210b",
+            "surface-bright": "#f9f9ff",
+            "on-background": "#111c2d",
+            "secondary-fixed": "#62ff95",
+            "error-container": "#ffdad6",
+            "on-surface": "#111c2d",
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "outline-variant": "#dac2b1",
+            "tertiary-container": "#ff9a98",
+            "primary-fixed-dim": "#ffb77a",
+            "surface": "#f9f9ff",
+            "secondary-container": "#54fd8f",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#2e1500",
+            "on-primary-fixed-variant": "#6d3a00",
+            "inverse-surface": "#263143",
+            "surface-container-low": "#f0f3ff",
+            "on-primary-container": "#6d3a00",
+            "primary-container": "#ff9f43",
+            "on-secondary-fixed-variant": "#005226",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#b52330",
+            "surface-container-highest": "#d8e3fb",
+            "error": "#ba1a1a",
+            "primary-fixed": "#ffdcc2",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#ffdad8",
+            "inverse-on-surface": "#ecf1ff",
+            "on-tertiary-fixed": "#410007",
+            "on-tertiary-fixed-variant": "#92001b",
+            "surface-container-high": "#dee8ff",
+            "inverse-primary": "#ffb77a",
+            "surface-dim": "#cfdaf2",
+            "on-secondary-container": "#007237",
+            "outline": "#877365",
+            "surface-tint": "#8f4e00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-xl": "2.25rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-lg": "2.5rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-md": "1.25rem",
+            "margin-md": "1.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Roboto Flex"],
+            "body-sm": ["Roboto Flex"],
+            "headline-lg": ["Epilogue"],
+            "headline-xl": ["Epilogue"],
+            "headline-md": ["Epilogue"],
+            "price-display-lg": ["Roboto Flex"],
+            "headline-sm": ["Epilogue"],
+            "body-lg": ["Roboto Flex"],
+            "price-display-sm": ["Roboto Flex"],
+            "headline-lg-mobile": ["Epilogue"],
+            "headline-xl-mobile": ["Epilogue"],
+            "badge-stamp": ["Roboto Flex"],
+            "label-md": ["Roboto Flex"],
+            "body-md": ["Roboto Flex"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "price-display-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "price-display-sm": ["18px", {"lineHeight": "22px", "fontWeight": "700"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-xl-mobile": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "badge-stamp": ["10px", {"lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+            "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    @keyframes scanAnimation {
+      0% { top: 12%; opacity: 0.2; }
+      50% { top: 82%; opacity: 0.9; }
+      100% { top: 12%; opacity: 0.2; }
+    }
+    .scanner-beam {
+      animation: scanAnimation 3s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.04); opacity: 1; }
+    }
+    .pulse-target {
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col items-center justify-start pb-2">
+<!-- Mobile Frame Container (Strict 390px-max mobile viewport) -->
+<div class="w-full max-w-[420px] bg-background min-h-screen flex flex-col relative shadow-xl border-x border-outline-variant/20">
+<!-- 1. TopAppBar (Transactional Screen: Back action suppresses BottomNavBar) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block tracking-tight">Contributor Registration</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant block -mt-0.5">Republic Act 7581 Price Monitored</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary/10 border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-badge-stamp text-badge-stamp text-secondary tracking-wider uppercase">DTI SECURE</span>
+</div>
+</header>
+<!-- 2. Step Indicator Bar -->
+<section class="px-margin py-2 bg-surface-container-low/70 border-b border-outline-variant/20 flex items-center justify-between gap-1.5">
+<div class="flex-1 flex items-center justify-center gap-1 py-1 px-1.5 rounded-full bg-secondary/15 border border-secondary/25 text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-[11px] font-bold truncate">1. ID Done</span>
+</div>
+<div class="flex-1 flex items-center justify-center gap-1 py-1 px-1.5 rounded-full bg-primary-container text-on-primary-container shadow-xs ring-2 ring-primary-container/20">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary-container animate-pulse"></span>
+<span class="font-label-sm text-[11px] font-bold truncate">2. Biometrics</span>
+</div>
+<div class="flex-1 flex items-center justify-center gap-1 py-1 px-1.5 rounded-full bg-surface-variant/70 text-on-surface-variant/80 opacity-75">
+<span class="font-badge-stamp text-[10px] font-bold">3</span>
+<span class="font-label-sm text-[11px] font-medium truncate">Market Role</span>
+</div>
+</section>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin py-space-md space-y-2.5">
+<!-- 3. Live Biometric Selfie Capture Card (Hero Section) -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-3 shadow-xs space-y-2.5">
+<!-- Compact Section Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">face</span>
+<h2 class="font-headline-sm text-[16px] font-bold text-on-surface leading-tight">Live Face Verification</h2>
+</div>
+<span class="font-badge-stamp text-[10px] bg-secondary/15 text-secondary px-2 py-0.5 rounded-full flex items-center gap-1 font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block animate-pulse"></span> ACTIVE HUD
+    </span>
+</div>
+<!-- Compact Ergonomic Viewfinder (Fixed height ~195px) -->
+<div class="relative w-full h-[195px] rounded-xl overflow-hidden bg-inverse-surface flex items-center justify-center shadow-inner">
+<img alt="Citizen Selfie Viewfinder" class="absolute inset-0 w-full h-full object-cover opacity-85" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFzJTPp32tquWSvx0sVQt3VXG2m5dSP6mY8_WsQB06dctSwtP_xcd9Uymt-xg-d1gTvHHJVTx5Ir92pR3X2Zdi553HGeESnVEoNDTUDXxPI_lRjg0S8V2JnJ0zFumj2p9gjRkgoFnfn8mxcj7u8fIqy2MGS-hzmHhezeAcoluFWkAy1ZiasYiqgLoyWwvlW_D0JFZfjxx3VT-z0pBxKTormJVMUsSmdnDBQSQZjHw"/>
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70"></div>
+<!-- Compact Biometric Oval -->
+<div class="relative w-[135px] h-[165px] rounded-[50%] border-2 border-dashed border-secondary-fixed pulse-target flex items-center justify-center shadow-[0_0_18px_rgba(47,227,120,0.35)]">
+<div class="absolute left-2 right-2 h-[1.5px] bg-secondary-fixed shadow-[0_0_10px_#62ff95] scanner-beam"></div>
+<span class="absolute top-7 left-5 w-1.5 h-1.5 rounded-full bg-secondary-fixed ring-2 ring-secondary/40"></span>
+<span class="absolute top-7 right-5 w-1.5 h-1.5 rounded-full bg-secondary-fixed ring-2 ring-secondary/40"></span>
+<span class="absolute bottom-9 left-7 w-1.5 h-1.5 rounded-full bg-secondary-fixed ring-2 ring-secondary/40"></span>
+<span class="absolute bottom-9 right-7 w-1.5 h-1.5 rounded-full bg-secondary-fixed ring-2 ring-secondary/40"></span>
+<div class="w-6 h-6 border-t border-b border-white/40 flex items-center justify-center pointer-events-none">
+<div class="h-6 w-px bg-white/40"></div>
+</div>
+</div>
+<!-- Floating Top Badges -->
+<div class="absolute top-2 left-2 flex items-center gap-1 bg-black/60 backdrop-blur-xs px-1.5 py-0.5 rounded text-white font-badge-stamp text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span> REC 1080p
+    </div>
+<div class="absolute top-2 right-2 bg-secondary/90 backdrop-blur-xs text-on-secondary px-2 py-0.5 rounded text-[11px] font-semibold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Smile &amp; Blink ✓</span>
+</div>
+<!-- Floating Bottom Telemetry & Quick Action Bar -->
+<div class="absolute bottom-1.5 inset-x-2 flex items-center justify-between text-white/90">
+<span class="font-badge-stamp text-[9px] bg-black/60 backdrop-blur-xs px-1.5 py-0.5 rounded font-mono">60 FPS • ISO 120</span>
+<span class="font-badge-stamp text-[9px] bg-black/60 backdrop-blur-xs px-1.5 py-0.5 rounded text-secondary-fixed font-bold font-mono">ANTI-SPOOF 99.8%</span>
+</div>
+</div>
+<!-- Compact Control Row -->
+<div class="flex items-center gap-2 pt-0.5">
+<button class="py-1.5 px-2.5 rounded-lg border border-outline-variant/40 bg-surface-container-low text-on-surface font-label-sm text-[12px] flex items-center justify-center gap-1 hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">cameraswitch</span>
+<span>Switch</span>
+</button>
+<button class="flex-1 py-2 px-3 rounded-lg bg-primary-container text-on-primary-container font-headline-sm text-[14px] font-bold flex items-center justify-center gap-1.5 shadow-xs hover:brightness-105 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+<span>Snap Selfie</span>
+</button>
+<button class="py-1.5 px-2.5 rounded-lg border border-outline-variant/40 bg-surface-container-low text-on-surface font-label-sm text-[12px] flex items-center justify-center gap-1 hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">replay</span>
+<span>Retake</span>
+</button>
+</div>
+<!-- Micro Metric & Preview Combined Strip -->
+<div class="flex items-center justify-between p-2 bg-surface-container-low/70 rounded-lg border border-outline-variant/25 gap-2">
+<div class="flex items-center gap-2 min-w-0 flex-1">
+<div class="relative w-9 h-9 rounded-full overflow-hidden border border-secondary shrink-0 shadow-xs">
+<img alt="Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqyaKgUjBt_VuCaPWmukhrO_FAZE0OdEilnU9gn8C0s0T1ktNeh7U58FxlpXQ29dfjTvuxbY_vNeZAAw6R9aRCZ63Ov4NZHW9cGhhYSb5r0QujkKfzDMZj8VMZaPW6HxM6TVPYJe6_zzToWWWpQLBjd_xpV8IjHD5pyhLkta5M97Y6Irqa1J-Fi8kar8oViPfZXCQlmoEgfEjKf3tWtxwfb5VNHxhi6ipA8xCgomM"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-secondary rounded-full border border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[8px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-md text-[12px] font-bold text-on-surface truncate">Avatar Verified</span>
+<span class="material-symbols-outlined text-secondary text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<code class="font-mono text-[9px] text-primary block truncate">SHA-256: 8f42...39b7a</code>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0 bg-surface-container-high/80 px-2 py-1 rounded-md text-[11px] text-secondary font-bold">
+<span class="material-symbols-outlined text-[13px]">verified_user</span>
+<span>98% Score</span>
+</div>
+</div>
+</section>
+<!-- 4. Form Inputs -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-3 shadow-xs space-y-2.5">
+<div class="border-b border-outline-variant/20 pb-1.5 flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-[15px] text-on-surface font-bold">Contributor Accreditation</h3>
+<p class="font-body-sm text-[11px] text-on-surface-variant">PhilSys Citizen Database Linked</p>
+</div>
+<span class="font-badge-stamp text-[10px] bg-surface-container-high text-on-surface px-1.5 py-0.5 rounded font-mono">DTI RA-7581</span>
+</div>
+<!-- Two-Column / Compact Inputs Grid -->
+<div class="grid grid-cols-2 gap-2">
+<!-- Full Legal Name -->
+<div class="col-span-2">
+<label class="block font-label-sm text-[11px] text-on-surface mb-0.5 font-medium">
+        Full Legal Name <span class="text-tertiary">*</span>
+</label>
+<div class="relative">
+<input class="w-full px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-bright text-on-surface font-body-sm text-[13px] focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all pl-8" type="text" value="Juan Dela Cruz"/>
+<span class="material-symbols-outlined absolute left-2 top-2 text-outline text-[16px]">person</span>
+</div>
+</div>
+<!-- Philippine Mobile Number -->
+<div>
+<label class="block font-label-sm text-[11px] text-on-surface mb-0.5 font-medium">
+        Mobile (+63) <span class="text-tertiary">*</span>
+</label>
+<div class="flex rounded-lg border border-outline-variant overflow-hidden focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container">
+<div class="bg-surface-container-high px-2 py-1.5 flex items-center gap-1 border-r border-outline-variant text-on-surface font-label-sm text-[12px] shrink-0">
+<span>🇵🇭</span>
+<span class="font-bold">+63</span>
+</div>
+<input class="w-full px-2 py-1.5 bg-surface-bright text-on-surface font-body-sm text-[12px] outline-none border-none min-w-0" type="tel" value="917 842 5501"/>
+</div>
+</div>
+<!-- Government ID Type -->
+<div>
+<label class="block font-label-sm text-[11px] text-on-surface mb-0.5 font-medium">
+        ID Type <span class="text-tertiary">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none px-2 py-1.5 rounded-lg border border-outline-variant bg-surface-bright text-on-surface font-body-sm text-[12px] focus:border-primary-container outline-none truncate pr-6">
+<option selected="">PhilSys ePhilID</option>
+<option>UMID / SSS</option>
+<option>Driver's License</option>
+<option>Passport (DFA)</option>
+</select>
+<span class="material-symbols-outlined absolute right-1.5 top-2 text-outline pointer-events-none text-[18px]">arrow_drop_down</span>
+</div>
+</div>
+<!-- PhilSys ID Number with quick scanner icon -->
+<div class="col-span-2">
+<label class="block font-label-sm text-[11px] text-on-surface mb-0.5 font-medium">
+        PhilSys ID Number <span class="text-tertiary">*</span>
+</label>
+<div class="relative">
+<input class="w-full px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-bright text-on-surface font-mono text-[12px] focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none pl-8 pr-8" type="text" value="3819 - 8402 - 1109 - 7721"/>
+<span class="material-symbols-outlined absolute left-2 top-2 text-outline text-[16px]">credit_card</span>
+<button aria-label="Scan QR" class="material-symbols-outlined absolute right-2 top-1.5 text-primary text-[18px] hover:text-on-primary-container" type="button">qr_code_scanner</button>
+</div>
+</div>
+</div>
+<!-- Compact Side-by-Side Contributor Tier Selector -->
+<div class="space-y-1.5 pt-1">
+<label class="block font-label-sm text-[11px] text-on-surface font-bold">
+      Accreditation Tier <span class="text-tertiary">*</span>
+</label>
+<div class="grid grid-cols-2 gap-2">
+<!-- Tier 1 -->
+<label class="flex flex-col p-2 rounded-lg border border-outline-variant/40 bg-surface-bright hover:bg-surface-container-low transition-all cursor-pointer relative">
+<div class="flex items-center justify-between mb-1">
+<input class="w-3.5 h-3.5 text-primary-container focus:ring-primary-container border-outline" name="contributor_tier" type="radio"/>
+<span class="font-badge-stamp text-[9px] bg-surface-variant text-on-surface-variant px-1 py-0.5 rounded font-bold">TIER 1</span>
+</div>
+<span class="font-label-md text-[12px] font-bold text-on-surface leading-tight">Citizen Scout</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5 leading-snug">Crowdsourced receipts</span>
+</label>
+<!-- Tier 2 Active -->
+<label class="flex flex-col p-2 rounded-lg border-2 border-primary-container bg-primary-fixed/20 shadow-xs cursor-pointer relative">
+<div class="flex items-center justify-between mb-1">
+<input checked="" class="w-3.5 h-3.5 text-primary-container focus:ring-primary-container border-outline" name="contributor_tier" type="radio"/>
+<span class="font-badge-stamp text-[9px] bg-primary-container text-on-primary-container px-1 py-0.5 rounded font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">star</span> GOLD
+          </span>
+</div>
+<span class="font-label-md text-[12px] font-bold text-on-surface leading-tight">Palengke Verifier</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5 leading-snug">Wet market price audits</span>
+</label>
+</div>
+</div>
+<!-- Assigned Market -->
+<div class="pt-0.5">
+<label class="block font-label-sm text-[11px] text-on-surface mb-0.5 font-medium">
+      Assigned Public Market <span class="text-tertiary">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none px-2.5 py-1.5 rounded-lg border border-outline-variant bg-surface-bright text-on-surface font-body-sm text-[12px] focus:border-primary-container outline-none pl-8 pr-7">
+<option selected="">Commonwealth Wet Market — QC (48 Stalls)</option>
+<option>Balintawak Cloverleaf Public Market — QC</option>
+<option>Divisoria Public Wet Market — Manila</option>
+<option>Pasig Mega Market — Pasig City</option>
+<option>Cartimar Public Market — Pasay City</option>
+</select>
+<span class="material-symbols-outlined absolute left-2 top-2 text-outline text-[16px]">storefront</span>
+<span class="material-symbols-outlined absolute right-2 top-2 text-outline pointer-events-none text-[18px]">arrow_drop_down</span>
+</div>
+</div>
+</section>
+<!-- 5. Compliance & Security -->
+<section class="bg-surface-container-low/70 rounded-xl border border-outline-variant/30 p-2.5 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 flex-1 min-w-0">
+<input checked="" class="w-4 h-4 rounded text-primary-container focus:ring-primary-container border-outline shrink-0" id="data_privacy_consent" type="checkbox"/>
+<label class="font-body-sm text-[11px] text-on-surface-variant leading-tight truncate" for="data_privacy_consent">
+      Consent to biometrics under <strong class="text-on-surface font-semibold">RA 10173 (Privacy Act)</strong>
+</label>
+</div>
+<span class="font-badge-stamp text-[9px] bg-surface-container-highest text-on-surface px-1.5 py-0.5 rounded border border-outline-variant/40 shrink-0 font-mono">
+    NPC #PH-2024
+  </span>
+</section>
+</main>
+<!-- 6. Sticky Bottom Action Bar (Docked full-width for mobile conversion) -->
+<div class="sticky bottom-0 z-40 bg-surface/95 backdrop-blur-md px-margin py-2.5 border-t border-outline-variant/20 shadow-lg">
+<button class="w-full py-2.5 px-4 rounded-xl bg-primary-container text-on-primary-container font-headline-sm text-[15px] font-bold flex items-center justify-center gap-1.5 shadow-sm hover:brightness-105 active:scale-[0.98] transition-all" type="button">
+<span>Complete Registration &amp; Verify</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<div class="text-center mt-1.5">
+<p class="font-body-sm text-[11px] text-on-surface-variant">
+      Already have an account? 
+      <a class="text-primary font-bold hover:underline" href="#">Log in</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SaanMura PriceWatch - Profile</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,500;0,600;0,700;0,800;1,600&amp;family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#ff9a98",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#62ff95",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#2e1500",
+            "surface-variant": "#d8e3fb",
+            "on-background": "#111c2d",
+            "inverse-primary": "#ffb77a",
+            "on-surface-variant": "#544437",
+            "surface-dim": "#cfdaf2",
+            "inverse-on-surface": "#ecf1ff",
+            "primary-container": "#ff9f43",
+            "on-secondary-fixed": "#00210b",
+            "background": "#f9f9ff",
+            "error": "#ba1a1a",
+            "on-primary-container": "#6d3a00",
+            "on-secondary-container": "#007237",
+            "on-primary-fixed-variant": "#6d3a00",
+            "on-tertiary-container": "#93011c",
+            "primary": "#8f4e00",
+            "surface-container-highest": "#d8e3fb",
+            "secondary": "#006d34",
+            "surface-bright": "#f9f9ff",
+            "on-error": "#ffffff",
+            "primary-fixed": "#ffdcc2",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#dee8ff",
+            "on-tertiary-fixed-variant": "#92001b",
+            "tertiary-fixed": "#ffdad8",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed-dim": "#2fe378",
+            "secondary-container": "#54fd8f",
+            "primary-fixed-dim": "#ffb77a",
+            "inverse-surface": "#263143",
+            "surface-tint": "#8f4e00",
+            "outline-variant": "#dac2b1",
+            "outline": "#877365",
+            "surface": "#f9f9ff",
+            "on-secondary-fixed-variant": "#005226",
+            "surface-container-low": "#f0f3ff",
+            "surface-container": "#e7eeff",
+            "on-tertiary-fixed": "#410007",
+            "tertiary": "#b52330",
+            "on-surface": "#111c2d",
+            "error-container": "#ffdad6",
+            "tertiary-fixed-dim": "#ffb3b0"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xl": "2.25rem",
+            "space-xs": "0.25rem",
+            "margin-md": "1.5rem",
+            "gutter": "1rem",
+            "gutter-lg": "1.5rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-md": "1rem",
+            "margin-lg": "2.5rem",
+            "gutter-md": "1.25rem"
+          },
+          "fontFamily": {
+            "label-md": ["Roboto Flex"],
+            "headline-md": ["Epilogue"],
+            "headline-lg-mobile": ["Epilogue"],
+            "price-display-sm": ["Roboto Flex"],
+            "price-display-lg": ["Roboto Flex"],
+            "headline-xl": ["Epilogue"],
+            "headline-sm": ["Epilogue"],
+            "body-lg": ["Roboto Flex"],
+            "label-sm": ["Roboto Flex"],
+            "body-sm": ["Roboto Flex"],
+            "badge-stamp": ["Roboto Flex"],
+            "headline-lg": ["Epilogue"],
+            "body-md": ["Roboto Flex"],
+            "headline-xl-mobile": ["Epilogue"]
+          },
+          "fontSize": {
+            "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "price-display-sm": ["18px", {"lineHeight": "22px", "fontWeight": "700"}],
+            "price-display-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "badge-stamp": ["10px", {"lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-xl-mobile": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed flex justify-center pb-24">
+<!-- Main Mobile Canvas Container -->
+<div class="w-full max-w-md bg-surface-container-lowest min-h-screen flex flex-col relative shadow-sm">
+<!-- Top App Bar (Shared Component Anchor) -->
+<header class="bg-surface sticky top-0 z-40 shadow-sm border-b border-outline-variant/30 flex justify-between items-center w-full px-margin h-14 max-w-md mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary tracking-tight">SaanMura PriceWatch</h1>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Share PhilSys Digital QR" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="qr_code_scanner">qr_code_scanner</span>
+</button>
+<button aria-label="Settings" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Scrollable Body Content -->
+<main class="flex-1 px-4 py-4 space-y-4">
+<!-- Identity & PhilSys Verification Card -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-28 h-28 bg-primary-fixed/30 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-start gap-3.5">
+<div class="relative flex-shrink-0">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-primary-container shadow-sm" data-alt="A dignified and warm portrait photograph of a Filipino civic volunteer scout in his early thirties wearing a neat collared shirt against a clean light background. The lighting is soft and professional, capturing a credible civic-dashboard atmosphere with warm orange accents and crisp high fidelity details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPFqLAZmacR2r4yW2ZbyGFcfajsazkIb82tloMwIqRHHmUXz3N3akOVAOrckJIBcGxrh0k0GE_Ea9NUbozGWUOsFY2uEDjT3AYGY4mcmb1yFtVOlkXZGvpwD-JUdSqT1cwGzrS-0oG_WgZGDFBsZsyhbEFwnm2tZZFDl0_Rk1OP3jlTIyw7pME--7_oHz8vDOLKpZ_b_01tCE616iCcESyny1oPUTQXFzFRNQkWi4"/>
+<div class="absolute -bottom-1 -right-1 bg-secondary text-white rounded-full p-0.5 border-2 border-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm font-bold" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Rafael Santos</h2>
+<span class="bg-secondary-fixed/40 text-on-secondary-container px-2 py-0.5 rounded-full font-badge-stamp text-badge-stamp flex items-center gap-1 tracking-wider uppercase">
+<span class="material-symbols-outlined text-xs" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                PhilSys Verified
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-primary font-medium mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="shield_person">shield_person</span>
+              Tier-2 Civic Scout (Metro Manila - Quezon City)
+            </p>
+<div class="mt-2.5 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm border-t border-outline-variant/30 pt-2">
+<span class="font-mono tracking-wide text-on-surface font-medium">PSN: ••••-••••-8921</span>
+<span class="text-secondary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                98.4% Trust Rating
+              </span>
+</div>
+</div>
+</div>
+<!-- Secondary Meta Pill -->
+<div class="mt-3 bg-surface-container-low px-3 py-1.5 rounded-lg flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="calendar_today">calendar_today</span>
+            Member since May 2024
+          </span>
+<span class="text-primary font-medium">QC LGU Field Unit #4</span>
+</div>
+</section>
+<!-- Level Progression & XP Card -->
+<section class="bg-gradient-to-br from-surface-container to-surface-container-low p-4 rounded-xl border border-outline-variant/40">
+<div class="flex justify-between items-center mb-2">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-base" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Level: Tier-2 Senior Scout</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Target: Tier-3 DTI Inspector Delegate</p>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary bg-surface-container-lowest px-2.5 py-1 rounded-lg shadow-sm border border-outline-variant/20">
+            850 / 1,000 XP
+          </span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-highest rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary-container h-2.5 rounded-full transition-all duration-300" style="width: 85%;"></div>
+</div>
+<div class="flex justify-between items-center mt-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span>150 XP remaining for promotion</span>
+<span class="text-secondary font-semibold">85% Completed</span>
+</div>
+</section>
+<!-- Milestone Metrics Bento Grid -->
+<section>
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Civic Contribution Stats</h3>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Q3 Active Period</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Stat 1 -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm">Reports Filed</span>
+<span class="material-symbols-outlined text-primary text-base" data-icon="campaign">campaign</span>
+</div>
+<div class="font-price-display-lg text-price-display-lg text-on-surface font-bold">34</div>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-0.5 mt-0.5">
+<span>▲</span> +6 this week
+            </span>
+</div>
+<!-- Stat 2 -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm">Verified Correct</span>
+<span class="material-symbols-outlined text-secondary text-base" data-icon="fact_check" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+</div>
+<div class="font-price-display-lg text-price-display-lg text-secondary font-bold">31</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">
+              91.2% audit accuracy
+            </span>
+</div>
+<!-- Stat 3 -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm">Hikes Prevented</span>
+<span class="material-symbols-outlined text-tertiary text-base" data-icon="trending_down">trending_down</span>
+</div>
+<div class="font-price-display-lg text-price-display-lg text-primary font-bold tracking-tight">₱1,420</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold mt-0.5">
+              Palengke consumer savings
+            </span>
+</div>
+<!-- Stat 4 -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm">Citizen Points</span>
+<span class="material-symbols-outlined text-primary-container text-base" data-icon="token" style="font-variation-settings: 'FILL' 1;">token</span>
+</div>
+<div class="font-price-display-lg text-price-display-lg text-on-surface font-bold">850</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold mt-0.5">
+              Rank #4 in District
+            </span>
+</div>
+</div>
+</section>
+<!-- Earned Civic Badges & Certifications -->
+<section>
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Earned Badges &amp; Ribbons</h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold">4 / 8 Unlocked</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Badge 1 -->
+<div class="p-2.5 rounded-xl border border-outline-variant/30 bg-surface-container-low flex items-start gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-lg" data-icon="storefront">storefront</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface leading-tight">Palengke Watcher</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">Wet market audit champion</p>
+</div>
+</div>
+<!-- Badge 2 -->
+<div class="p-2.5 rounded-xl border border-outline-variant/30 bg-surface-container-low flex items-start gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-secondary-fixed/50 flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-lg" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface leading-tight">SRP Guardian</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">Zero-defect citizen audits</p>
+</div>
+</div>
+<!-- Badge 3 -->
+<div class="p-2.5 rounded-xl border border-outline-variant/30 bg-surface-container-low flex items-start gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface flex-shrink-0">
+<span class="material-symbols-outlined text-lg" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface leading-tight">Receipt Master</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">25+ POS OCR matches</p>
+</div>
+</div>
+<!-- Badge 4 -->
+<div class="p-2.5 rounded-xl border border-outline-variant/30 bg-surface-container-low flex items-start gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary flex-shrink-0">
+<span class="material-symbols-outlined text-lg" data-icon="notification_important">notification_important</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface leading-tight">Early Whistleblower</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">Prompt unfair spike alerts</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Account & Field Preferences Settings List -->
+<section class="space-y-1">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mb-2">Field Setup &amp; Civic Modules</h3>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 divide-y divide-outline-variant/20 overflow-hidden">
+<!-- Item 1: Field Assigned Areas -->
+<button class="w-full text-left p-3.5 flex items-center justify-between hover:bg-surface-container transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="pin_drop">pin_drop</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">My Field Assigned Areas</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Commonwealth Market, Puregold Cubao, WalterMart</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Item 2: Biometric Verification -->
+<button class="w-full text-left p-3.5 flex items-center justify-between hover:bg-surface-container transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="fingerprint">fingerprint</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Biometric &amp; Selfie Verification</p>
+<p class="font-body-sm text-body-sm text-secondary font-medium">Active &amp; PhilSys Validated (Oct 2025)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Item 3: Offline Scanner Cache -->
+<button class="w-full text-left p-3.5 flex items-center justify-between hover:bg-surface-container transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container" data-icon="cloud_sync">cloud_sync</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Offline Price Scanner Cache</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">12 draft scans ready for synchronization</p>
+</div>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full font-bold">12 Ready</span>
+</button>
+<!-- Item 4: Notification & Alerts -->
+<button class="w-full text-left p-3.5 flex items-center justify-between hover:bg-surface-container transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface" data-icon="notifications_active">notifications_active</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Notification &amp; Price Alerts</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time spike alerts in Quezon City LGU</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Item 5: DTI Republic Act 7581 -->
+<button class="w-full text-left p-3.5 flex items-center justify-between hover:bg-surface-container transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="gavel">gavel</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">DTI RA 7581 Guidelines &amp; Citizen Rights</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Official Price Act legal references &amp; handbook</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Item 6: Privacy Consent -->
+<button class="w-full text-left p-3.5 flex items-center justify-between hover:bg-surface-container transition-colors" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="privacy_tip">privacy_tip</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Data Privacy &amp; PhilSys Consent</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Compliant with RA 10173 Open-Data Charter</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Security Actions & Session Portal -->
+<section class="space-y-2.5 pt-1">
+<button class="w-full py-2.5 px-4 rounded-xl border border-primary text-primary font-label-md text-label-md font-semibold hover:bg-primary-fixed/20 active:scale-98 transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="admin_panel_settings">admin_panel_settings</span>
+          Switch to DTI / Verifier Portal
+        </button>
+<button class="w-full py-2.5 px-4 rounded-xl bg-tertiary/10 text-tertiary font-label-md text-label-md font-semibold border border-tertiary/20 hover:bg-tertiary/20 active:scale-98 transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+          Log Out Contributor Session
+        </button>
+</section>
+<!-- Civic Footer Credentials -->
+<footer class="pt-2 pb-6 text-center text-on-surface-variant space-y-1">
+<p class="font-badge-stamp text-badge-stamp text-outline tracking-wider">
+          SaanMura App v2.4.1 (Build 882) • Republic of the Philippines DTI-CPAB Open Data
+        </p>
+<p class="font-body-sm text-body-sm text-outline">
+          Encrypted with PhilSys Citizen Trust Protocol
+        </p>
+</footer>
+</main>
+<!-- BottomNavBar (Shared Component Anchor) -->
+<!-- Active tab logic: This is the Profile screen, so the 'Profile' destination is marked active with style_active_navigation -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-xs py-space-xs max-w-md mx-auto bg-surface shadow-md">
+<!-- Destination 1: Catalog -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-2 py-1 font-label-sm text-label-sm hover:bg-surface-container-high active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="grid_view">grid_view</span>
+<span>Catalog</span>
+</button>
+<!-- Destination 2: Scan -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-2 py-1 font-label-sm text-label-sm hover:bg-surface-container-high active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span>Scan</span>
+</button>
+<!-- Destination 3: Verify -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-2 py-1 font-label-sm text-label-sm relative hover:bg-surface-container-high active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="fact_check">fact_check</span>
+<span>Verify</span>
+<span class="absolute top-0 right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<!-- Destination 4: History -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-2 py-1 font-label-sm text-label-sm hover:bg-surface-container-high active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="volunteer_activism">volunteer_activism</span>
+<span>History</span>
+</button>
+<!-- Destination 5: Profile (ACTIVE) -->
+<button class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed rounded-xl px-2 py-1 font-label-sm text-label-sm active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span>Profile</span>
+</button>
+</nav>
+</div>
+</body></html>

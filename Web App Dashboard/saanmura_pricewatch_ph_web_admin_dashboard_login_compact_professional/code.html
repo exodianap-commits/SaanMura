@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SaanMura Admin Console - Administrative Gateway</title>
+<!-- Google Fonts: Epilogue & Roboto Flex -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&amp;family=Roboto+Flex:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed-variant": "#005226",
+            "background": "#f9f9ff",
+            "on-primary-fixed-variant": "#6d3a00",
+            "secondary-fixed-dim": "#2fe378",
+            "on-tertiary-fixed": "#410007",
+            "secondary-container": "#54fd8f",
+            "secondary-fixed": "#62ff95",
+            "on-tertiary-fixed-variant": "#92001b",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-container": "#93011c",
+            "surface-bright": "#f9f9ff",
+            "surface-container": "#e7eeff",
+            "on-primary-container": "#6d3a00",
+            "outline": "#877365",
+            "on-surface-variant": "#544437",
+            "surface-dim": "#cfdaf2",
+            "surface-container-highest": "#d8e3fb",
+            "surface-container-high": "#dee8ff",
+            "on-error": "#ffffff",
+            "on-secondary-container": "#007237",
+            "surface-variant": "#d8e3fb",
+            "on-surface": "#111c2d",
+            "surface": "#f9f9ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#006d34",
+            "tertiary-fixed-dim": "#ffb3b0",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#ffdad8",
+            "on-secondary-fixed": "#00210b",
+            "on-background": "#111c2d",
+            "primary": "#8f4e00",
+            "surface-tint": "#8f4e00",
+            "primary-container": "#ff9f43",
+            "on-primary-fixed": "#2e1500",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#263143",
+            "on-primary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "primary-fixed-dim": "#ffb77a",
+            "tertiary": "#b52330",
+            "tertiary-container": "#ff9a98",
+            "primary-fixed": "#ffdcc2",
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#ecf1ff",
+            "inverse-primary": "#ffb77a",
+            "surface-container-low": "#f0f3ff",
+            "outline-variant": "#dac2b1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "body-lg": ["Roboto Flex"],
+            "badge-stamp": ["Roboto Flex"],
+            "headline-lg": ["Epilogue"],
+            "headline-md": ["Epilogue"],
+            "body-md": ["Roboto Flex"],
+            "headline-sm": ["Epilogue"],
+            "label-sm": ["Roboto Flex"],
+            "body-sm": ["Roboto Flex"],
+            "headline-xl": ["Epilogue"],
+            "label-md": ["Roboto Flex"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      vertical-align: middle;
+      display: inline-block;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-[#f8faff] text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-primary-container/30 selection:text-primary">
+<!-- TOP APP BAR / HEADER -->
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant/60 shadow-xs z-20">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-6xl mx-auto">
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-2.5 text-primary" href="#">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 border border-primary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[19px]">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[15px] font-headline-sm font-bold text-on-surface tracking-tight leading-none">SaanMura <span class="text-primary font-semibold">Admin Console</span></span>
+<span class="text-[10px] text-on-surface-variant font-label-sm tracking-wide mt-0.5">Republic of the Philippines</span>
+</div>
+</a>
+<div class="hidden sm:flex items-center gap-1.5 pl-3 border-l border-outline-variant/50 ml-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-secondary/10 text-secondary border border-secondary/20">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified_user</span> DTI • PhilSys Verified
+        </span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-primary text-[12px] font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">help_outline</span>
+<span class="">Help &amp; Support</span>
+</a>
+</div>
+</div>
+</header>
+<!-- MAIN AUTHENTICATION CANVAS -->
+<main class="flex-grow flex items-center justify-center px-4 py-8 relative">
+<!-- Subtle decorative ambient backdrop -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+<div class="w-[500px] h-[350px] bg-primary-container/10 rounded-full blur-3xl transform -translate-y-4"></div>
+</div>
+<!-- CENTERED COMPACT ADMIN LOGIN CARD -->
+<div class="relative w-full max-w-[420px] bg-surface-container-lowest rounded-2xl border border-outline-variant/70 shadow-lg shadow-on-surface/5 p-6 sm:p-7">
+<!-- Brand Icon & Header -->
+<div class="flex flex-col items-center text-center mb-6">
+<div class="w-12 h-12 rounded-xl bg-primary-container/20 border border-primary-container/40 flex items-center justify-center text-primary mb-3 shadow-xs">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+</div>
+<h1 class="text-[21px] font-headline-md font-bold text-on-surface tracking-tight">Admin Portal Login</h1>
+<p class="text-[12px] font-body-sm text-on-surface-variant mt-1 leading-relaxed max-w-[340px]">
+        Sign in to access price monitoring governance &amp; catalog administration
+      </p>
+</div>
+<!-- Mode Selector Tabs -->
+<div class="grid grid-cols-2 p-1 bg-surface-container-low rounded-xl border border-outline-variant/50 mb-5">
+<button class="py-1.5 px-3 rounded-lg text-[12px] font-semibold text-on-primary bg-primary shadow-xs transition-all duration-150" id="tab-gov" onclick="switchTab('gov')" type="button">
+        Agency Email
+      </button>
+<button class="py-1.5 px-3 rounded-lg text-[12px] font-medium text-on-surface-variant hover:text-on-surface transition-all duration-150" id="tab-master" onclick="switchTab('master')" type="button">
+        PhilSys Admin ID
+      </button>
+</div>
+<!-- Login Form -->
+<form class="space-y-4" onsubmit="event.preventDefault();">
+<!-- Identifier Field -->
+<div>
+<label class="block text-[12px] font-label-md font-semibold text-on-surface mb-1.5" for="admin-identifier" id="input-label">
+          Work Email Address
+        </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" id="input-icon">mail</span>
+</div>
+<input class="w-full pl-9 pr-3.5 py-2 text-[13px] font-body-md rounded-lg bg-surface border border-outline-variant/80 text-on-surface placeholder:text-outline/70 focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-primary transition-all duration-150" id="admin-identifier" name="admin_identifier" placeholder="e.g. juan.delacruz@dti.gov.ph" required="" type="text">
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="text-[12px] font-label-md font-semibold text-on-surface" for="admin-passkey">Password / Passkey</label>
+<a class="text-[11px] font-label-sm text-primary hover:underline font-semibold" href="#">Forgot credentials?</a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+<input class="w-full pl-9 pr-10 py-2 text-[13px] font-body-md rounded-lg bg-surface border border-outline-variant/80 text-on-surface placeholder:text-outline/70 focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-primary transition-all duration-150" id="admin-passkey" name="admin_passkey" placeholder="••••••••••••••••" required="" type="password">
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-primary transition-colors" onclick="togglePasswordVisibility()" type="button">
+<span class="material-symbols-outlined text-[18px]" id="pass-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Utility Row -->
+<div class="flex items-center justify-between pt-0.5">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-primary-container border-outline-variant/80" type="checkbox">
+<span class="text-[12px] font-label-sm text-on-surface">Remember this station</span>
+</label>
+<span class="inline-flex items-center gap-1 text-[11px] text-secondary font-medium">
+<span class="material-symbols-outlined text-[13px]">shield</span> SSL 256-bit
+        </span>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-2.5 px-4 mt-2 rounded-lg bg-primary hover:bg-[#7b4200] active:scale-[0.99] text-on-primary text-[13px] font-semibold flex items-center justify-center gap-2 shadow-sm transition-all duration-150" type="submit">
+<span class="">Sign In to Admin Console</span>
+<span class="material-symbols-outlined text-[17px]">arrow_forward</span>
+</button>
+</form>
+<!-- SSO Divider -->
+<div class="relative my-5">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/60"></div>
+</div>
+<div class="relative flex justify-center text-[11px]">
+<span class="px-2.5 bg-surface-container-lowest text-on-surface-variant font-medium">Or continue with</span>
+</div>
+</div>
+<!-- SSO Quick Button -->
+<div class="grid grid-cols-2 gap-2.5"><button class="w-full py-2 px-2.5 rounded-lg border border-outline-variant hover:border-primary/80 bg-surface-container-low hover:bg-surface-bright text-on-surface text-[12px] font-label-md font-medium flex items-center justify-center gap-2 transition-all duration-150 active:scale-[0.99]" type="button"><svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"></path><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.94H1.24v3.13C3.26 21.36 7.33 24 12 24z"></path><path fill="#FBBC05" d="M5.28 14.28c-.25-.72-.38-1.49-.38-2.28s.13-1.56.38-2.28V6.59H1.24C.45 8.16 0 9.98 0 12c0 2.02.45 3.84 1.24 5.41l4.04-3.13z"></path><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.24 6.59l4.04 3.13c.95-2.84 3.6-4.97 6.72-4.97z"></path></svg><span class="truncate">Google Workspace</span></button><button class="w-full py-2 px-2.5 rounded-lg border border-outline-variant hover:border-primary/80 bg-surface-container-low hover:bg-surface-bright text-on-surface text-[12px] font-label-md font-medium flex items-center justify-center gap-1.5 transition-all duration-150 active:scale-[0.99]" type="button"><span class="material-symbols-outlined text-primary text-[17px] shrink-0">account_balance</span><span class="truncate">eGov PH Single Sign-On</span></button></div>
+</div>
+</main>
+<!-- MINIMAL CLEAN FOOTER -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/60 z-20">
+<div class="flex flex-col sm:flex-row justify-between items-center w-full px-6 py-3 max-w-6xl mx-auto gap-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[15px]">verified_user</span>
+<p class="text-[11px] font-body-sm text-on-surface-variant">
+        © 2025 Republic of the Philippines • SaanMura Civic PriceWatch Network (RA 7581) • DTI Admin Gateway
+      </p>
+</div>
+<div class="flex items-center gap-3">
+<a class="text-[11px] font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<span class="text-outline-variant">•</span>
+<a class="text-[11px] font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Governance</a>
+</div>
+</div>
+</footer>
+<!-- Interactive helper scripts -->
+<script>
+  function togglePasswordVisibility() {
+    const passInput = document.getElementById('admin-passkey');
+    const passIcon = document.getElementById('pass-icon');
+    if (passInput.type === 'password') {
+      passInput.type = 'text';
+      passIcon.innerText = 'visibility_off';
+    } else {
+      passInput.type = 'password';
+      passIcon.innerText = 'visibility';
+    }
+  }
+
+  function switchTab(mode) {
+    const tabGov = document.getElementById('tab-gov');
+    const tabMaster = document.getElementById('tab-master');
+    const label = document.getElementById('input-label');
+    const input = document.getElementById('admin-identifier');
+    const icon = document.getElementById('input-icon');
+
+    if (mode === 'gov') {
+      tabGov.className = "py-1.5 px-3 rounded-lg text-[12px] font-semibold text-on-primary bg-primary shadow-xs transition-all duration-150";
+      tabMaster.className = "py-1.5 px-3 rounded-lg text-[12px] font-medium text-on-surface-variant hover:text-on-surface transition-all duration-150";
+      label.innerText = "Work Email Address";
+      input.placeholder = "e.g. juan.delacruz@dti.gov.ph";
+      input.type = "email";
+      icon.innerText = "mail";
+    } else {
+      tabMaster.className = "py-1.5 px-3 rounded-lg text-[12px] font-semibold text-on-primary bg-primary shadow-xs transition-all duration-150";
+      tabGov.className = "py-1.5 px-3 rounded-lg text-[12px] font-medium text-on-surface-variant hover:text-on-surface transition-all duration-150";
+      label.innerText = "PhilSys Admin ID / PSN Token";
+      input.placeholder = "e.g. PHILSYS-ADM-8839-204";
+      input.type = "text";
+      icon.innerText = "badge";
+    }
+  }
+</script>
+
+
+</body></html>

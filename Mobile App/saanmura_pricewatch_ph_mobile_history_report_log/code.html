@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SaanMura - Submission History</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Epilogue & Roboto Flex -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&amp;family=Roboto+Flex:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "outline": "#877365",
+            "on-secondary-fixed-variant": "#005226",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb3b0",
+            "surface-container-low": "#f0f3ff",
+            "tertiary-container": "#ff9a98",
+            "on-tertiary-container": "#93011c",
+            "background": "#f9f9ff",
+            "inverse-on-surface": "#ecf1ff",
+            "surface-dim": "#cfdaf2",
+            "on-primary-container": "#6d3a00",
+            "surface-container": "#e7eeff",
+            "on-tertiary-fixed-variant": "#92001b",
+            "secondary-fixed": "#62ff95",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#ffb77a",
+            "on-surface": "#111c2d",
+            "surface-tint": "#8f4e00",
+            "inverse-primary": "#ffb77a",
+            "tertiary-fixed": "#ffdad8",
+            "on-primary-fixed-variant": "#6d3a00",
+            "surface-variant": "#d8e3fb",
+            "inverse-surface": "#263143",
+            "surface": "#f9f9ff",
+            "surface-container-highest": "#d8e3fb",
+            "outline-variant": "#dac2b1",
+            "on-error": "#ffffff",
+            "surface-bright": "#f9f9ff",
+            "secondary-fixed-dim": "#2fe378",
+            "on-tertiary-fixed": "#410007",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#544437",
+            "on-secondary-fixed": "#00210b",
+            "primary-container": "#ff9f43",
+            "on-secondary-container": "#007237",
+            "primary": "#8f4e00",
+            "secondary-container": "#54fd8f",
+            "primary-fixed": "#ffdcc2",
+            "on-background": "#111c2d",
+            "on-primary-fixed": "#2e1500",
+            "surface-container-high": "#dee8ff",
+            "on-secondary": "#ffffff",
+            "secondary": "#006d34",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#b52330"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-md": "1.5rem",
+            "gutter-lg": "1.5rem",
+            "gutter": "1rem",
+            "gutter-md": "1.25rem",
+            "space-sm": "0.5rem",
+            "margin-lg": "2.5rem",
+            "margin": "1rem",
+            "space-xl": "2.25rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Roboto Flex"],
+            "headline-lg": ["Epilogue"],
+            "body-lg": ["Roboto Flex"],
+            "body-md": ["Roboto Flex"],
+            "headline-xl-mobile": ["Epilogue"],
+            "badge-stamp": ["Roboto Flex"],
+            "price-display-lg": ["Roboto Flex"],
+            "price-display-sm": ["Roboto Flex"],
+            "headline-md": ["Epilogue"],
+            "label-md": ["Roboto Flex"],
+            "label-sm": ["Roboto Flex"],
+            "headline-xl": ["Epilogue"],
+            "headline-sm": ["Epilogue"],
+            "headline-lg-mobile": ["Epilogue"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-xl-mobile": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "badge-stamp": ["10px", {"lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+            "price-display-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "price-display-sm": ["18px", {"lineHeight": "22px", "fontWeight": "700"}],
+            "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+            "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-24 selection:bg-primary-container selection:text-on-primary-container font-body-md text-body-md">
+<div class="max-w-[420px] mx-auto min-h-screen bg-background relative shadow-xl flex flex-col">
+<!-- Top App Bar (Shared Components compliant) -->
+<header class="sticky top-0 z-40 flex items-center justify-between w-full px-4 h-14 bg-surface/95 dark:bg-inverse-surface/95 backdrop-blur-md shadow-sm">
+<div class="flex items-center space-x-2">
+<button aria-label="Brand Home" class="p-1.5 rounded-full hover:bg-surface-container-high text-primary active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+</button>
+<div>
+<span class="text-headline-md font-headline-md font-extrabold text-primary tracking-tight block leading-none">SaanMura</span>
+<span class="text-badge-stamp font-badge-stamp text-on-surface-variant font-bold uppercase tracking-wider block mt-0.5">PriceWatch PH • RA 7581</span>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<button aria-label="Export or File Filter" class="p-2 rounded-full hover:bg-surface-container-high text-on-surface-variant active:scale-95 transition-transform relative" type="button">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+</button>
+<button aria-label="Notifications" class="p-2 rounded-full hover:bg-surface-container-high text-on-surface-variant active:scale-95 transition-transform relative" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary-container rounded-full ring-2 ring-surface"></span>
+</button>
+</div>
+</header>
+<!-- Page Title & Civic Tracker Headline -->
+<div class="px-4 pt-3.5 pb-2">
+<div class="flex items-center justify-between">
+<div>
+<h1 class="text-headline-sm font-headline-sm text-on-surface font-bold tracking-tight">Price Watch History</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Citizen crowd-audits &amp; scanned shelf prices</p>
+</div>
+<div class="inline-flex items-center gap-1.5 bg-primary-fixed/60 border border-outline-variant/40 px-2.5 py-1 rounded-full text-on-primary-fixed text-label-sm font-label-sm font-bold shadow-xs">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span>Tier-2 Scout</span>
+</div>
+</div>
+<!-- Quick Summary Subtitle Chip -->
+<div class="mt-2.5 flex items-center gap-2 bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-2.5 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[18px]">price_check</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline justify-between">
+<span class="text-label-md font-label-md text-on-surface font-bold">34 Reports Logged</span>
+<span class="text-label-sm font-label-sm font-semibold text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">trending_up</span> ₱1,420 Tracked
+            </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant truncate">Protecting Filipino consumers against unfair price markups</p>
+</div>
+</div>
+</div>
+<!-- Activity Summary 3-Column Metric Strip -->
+<section aria-label="Activity Metrics" class="px-4 py-2">
+<div class="grid grid-cols-3 gap-2">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-2.5 text-center shadow-xs">
+<div class="flex items-center justify-center gap-1 text-secondary mb-1">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span class="text-badge-stamp font-badge-stamp uppercase font-bold text-secondary tracking-wider">+4 this wk</span>
+</div>
+<div class="text-headline-sm font-headline-sm text-on-surface font-extrabold leading-none">34</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1">Total Logs</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-2.5 text-center shadow-xs">
+<div class="flex items-center justify-center gap-1 text-secondary mb-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-badge-stamp font-badge-stamp uppercase font-bold text-secondary tracking-wider">91% Score</span>
+</div>
+<div class="text-headline-sm font-headline-sm text-on-surface font-extrabold leading-none">31</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1">Verified</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-2.5 text-center shadow-xs">
+<div class="flex items-center justify-center gap-1 text-primary mb-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="text-badge-stamp font-badge-stamp uppercase font-bold text-primary tracking-wider">Civic Pts</span>
+</div>
+<div class="text-headline-sm font-headline-sm text-primary font-extrabold leading-none">850</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1">Price Scout</div>
+</div>
+</div>
+</section>
+<!-- Search & Date Filter Header -->
+<div class="px-4 pt-2 pb-1 space-y-2">
+<!-- Search Input -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full pl-9 pr-8 py-2 bg-surface-container-lowest border border-outline-variant/40 rounded-full text-body-md font-body-md placeholder:text-on-surface-variant/60 focus:outline-none focus:ring-2 focus:ring-primary-container text-on-surface shadow-xs" placeholder="Search item, barcode, or market store..." type="text"/>
+<button aria-label="Barcode Search" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant/80 hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">barcode_scanner</span>
+</button>
+</div>
+<!-- Quick Filter Pills & Date Picker Row -->
+<div class="flex items-center justify-between gap-2 pt-1">
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 text-label-sm font-label-sm">
+<button class="bg-on-surface text-surface px-3 py-1.5 rounded-full font-bold shadow-xs shrink-0 flex items-center gap-1" type="button">
+<span>All (34)</span>
+</button>
+<button class="bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant px-3 py-1.5 rounded-full hover:bg-surface-container-high transition-colors shrink-0" type="button">
+            Verified (31)
+          </button>
+<button class="bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant px-3 py-1.5 rounded-full hover:bg-surface-container-high transition-colors shrink-0" type="button">
+            Pending (2)
+          </button>
+<button class="bg-error-container/40 border border-error/30 text-on-error-container px-3 py-1.5 rounded-full hover:bg-error-container/70 transition-colors shrink-0 flex items-center gap-1" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span>Spike Flagged (1)</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant px-1 pt-1">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_month</span>
+<span>October 2025</span>
+<span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</div>
+<span class="text-badge-stamp font-badge-stamp uppercase font-bold text-on-surface-variant/70 tracking-wider">Sorted by Most Recent</span>
+</div>
+</div>
+<!-- Detailed Submission History Feed -->
+<main aria-label="History Feed" class="px-4 py-2 space-y-3 flex-1">
+<!-- Card 1: Purefoods Corned Beef 175g (PRICE SPIKE / ABOVE SRP) -->
+<article class="bg-surface-container-lowest rounded-xl border border-tertiary/20 p-3 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1 bg-tertiary"></div>
+<div class="flex gap-3">
+<!-- Thumbnail -->
+<div class="w-20 h-20 bg-surface-container-low rounded-lg shrink-0 overflow-hidden border border-outline-variant/20 p-1 flex items-center justify-center">
+<img alt="Purefoods Corned Beef tin can" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V5MPld9f5NEp76FWP8lXZwm2xoeYi66zuf3KjFoHwYFwFl829A5g9ZD46MtPHscPzYDcHBvu57gmNjJYxRx8muB2tUgUPcqYQIT3oPUXyqRfPUvF0m7sKoiQS1nSdGzK2ES92lUSp7tbIaSSGFP047AO_dD79rT814GlowfdTNT60KLrViyoeRaW5piQvKagzsCkDWlfuqw2K7nG-rjZCxUinRhX6dYcdG7Bo0r234"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase bg-tertiary-container/30 text-on-tertiary-container font-extrabold px-1.5 py-0.5 rounded tracking-wide inline-block mb-1">
+                  ▲ Price Spike Warning
+                </span>
+<h2 class="text-label-md font-label-md font-bold text-on-surface leading-tight truncate">Purefoods Corned Beef 150g</h2>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant shrink-0">10:45 AM</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary shrink-0">store</span>
+<span class="truncate">WalterMart Muñoz (Quezon City)</span>
+</p>
+<!-- Price Breakdown -->
+<div class="mt-2 flex items-baseline justify-between bg-surface-container-low/60 rounded-lg p-1.5 px-2">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">Reported Price</span>
+<span class="text-price-display-sm font-price-display-sm text-tertiary font-extrabold">₱42.00</span>
+</div>
+<div class="text-right">
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">DTI SRP Ceiling</span>
+<div class="flex items-center gap-1 justify-end">
+<span class="text-label-md font-label-md font-medium text-on-surface line-through">₱41.50</span>
+<span class="text-badge-stamp font-badge-stamp text-tertiary font-bold bg-tertiary-container/40 px-1 py-0.5 rounded">
+                    +₱0.50
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Verification Stamp Ribbon -->
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">4 Citizens &amp; DTI Insp. Villafuerte</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-primary hover:text-on-primary-container text-label-sm font-label-sm font-bold flex items-center gap-0.5 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[14px]">receipt</span> Receipt
+            </button>
+<button class="text-primary hover:text-on-primary-container text-label-sm font-label-sm font-bold flex items-center gap-0.5 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[14px]">query_stats</span> Trend
+            </button>
+</div>
+</div>
+</article>
+<!-- Card 2: Lucky Me! Instant Pancit Canton (BELOW SRP / VERIFIED) -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-3 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex gap-3">
+<!-- Thumbnail -->
+<div class="w-20 h-20 bg-surface-container-low rounded-lg shrink-0 overflow-hidden border border-outline-variant/20 p-1 flex items-center justify-center">
+<img alt="Lucky Me Instant Pancit Canton Kalamansi" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1X5e23SLHe56u7G4K5JJM6sd-Vd37j9SbqsMNKIXjs0qiT9mP6mkTLYQFdqE_MdjyRLSoXQ0tD8SR-9tT2aIc3Rcdrnvz0I8e0KEIvMJ0CXcJMk7QdO4GYbtXjlypMqIepoC4eJWEQJYLaprunICXpKUKjs4PxZrQ4_pKxVNzS9Gpssmo75Sju5hlV17uJVJ-LulO5rFNe7Vc3IW-u8NaXe_99E7gMbTualzZE_7Axj"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase bg-secondary-fixed/40 text-on-secondary-fixed-variant font-extrabold px-1.5 py-0.5 rounded tracking-wide inline-block mb-1">
+                  ✓ DTI Verified • Best Deal
+                </span>
+<h2 class="text-label-md font-label-md font-bold text-on-surface leading-tight truncate">Lucky Me! Pancit Canton 90g</h2>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant shrink-0">Yesterday</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary shrink-0">store</span>
+<span class="truncate">Puregold Paso de Blas (Valenzuela)</span>
+</p>
+<!-- Price Breakdown -->
+<div class="mt-2 flex items-baseline justify-between bg-surface-container-low/60 rounded-lg p-1.5 px-2">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">Reported Price</span>
+<span class="text-price-display-sm font-price-display-sm text-secondary font-extrabold">₱15.00</span>
+</div>
+<div class="text-right">
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">DTI SRP Baseline</span>
+<div class="flex items-center gap-1 justify-end">
+<span class="text-label-md font-label-md font-medium text-on-surface-variant">₱15.25</span>
+<span class="text-badge-stamp font-badge-stamp text-secondary font-bold bg-secondary-container/40 px-1 py-0.5 rounded">
+                    ▼ -₱0.25
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Verification Stamp Ribbon -->
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-sm font-label-sm text-secondary font-bold">Consensus Approved</span>
+</div>
+<div class="flex items-center gap-1 text-primary font-bold text-label-sm font-label-sm bg-primary-fixed/40 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>+25 Civic Points</span>
+</div>
+</div>
+</article>
+<!-- Card 3: Sinandomeng Premium White Rice (1kg) (WET MARKET / DA VALIDATED) -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-3 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex gap-3">
+<!-- Thumbnail -->
+<div class="w-20 h-20 bg-surface-container-low rounded-lg shrink-0 overflow-hidden border border-outline-variant/20 p-1 flex items-center justify-center">
+<img alt="Sinandomeng White Rice 25kg sack" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VN3UYDiXsfYsvyZs4kR-g0Cn0DHFWjLfyKsO95ovj3YI1D40wOwcv5qupXwltZgQPqTOTcLMwnRk3HJTGSj4ni6HWOKRX00UgYHmxGhImKvapKN7YaXI53dZoaqnlJFkig4Q3bkFTZNxOoytaCvdjmUMEm43T6xlt9zXmJfolxFSEEXHVx7VTTpJMhgVExJpgT208Fn8VOAbg6hSmw_T7NuU4VpHP3BwJeIo5b836f"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase bg-secondary-fixed/40 text-on-secondary-fixed-variant font-extrabold px-1.5 py-0.5 rounded tracking-wide inline-block mb-1">
+                  ✓ DA Reg IV Validated
+                </span>
+<h2 class="text-label-md font-label-md font-bold text-on-surface leading-tight truncate">Sinandomeng Rice (Per Kilo)</h2>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant shrink-0">Oct 24</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary shrink-0">storefront</span>
+<span class="truncate">Commonwealth Wet Market (Stall 42)</span>
+</p>
+<!-- Price Breakdown -->
+<div class="mt-2 flex items-baseline justify-between bg-surface-container-low/60 rounded-lg p-1.5 px-2">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">Reported Price</span>
+<span class="text-price-display-sm font-price-display-sm text-secondary font-extrabold">₱48.00<span class="text-body-sm font-normal text-on-surface-variant">/kg</span></span>
+</div>
+<div class="text-right">
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">DA Fair Ceiling</span>
+<div class="flex items-center gap-1 justify-end">
+<span class="text-label-md font-label-md font-medium text-on-surface-variant">₱50.00/kg</span>
+<span class="text-badge-stamp font-badge-stamp text-secondary font-bold bg-secondary-container/40 px-1 py-0.5 rounded">
+                    Fair Cap
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Verification Stamp Ribbon -->
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[16px]">groups</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Palengke Watch Consensus Met</span>
+</div>
+<button class="text-primary hover:text-on-primary-container text-label-sm font-label-sm font-bold flex items-center gap-0.5 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[14px]">query_stats</span> View History
+          </button>
+</div>
+</article>
+<!-- Card 4: Mega Sardines in Tomato Sauce 155g -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-3 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex gap-3">
+<!-- Thumbnail -->
+<div class="w-20 h-20 bg-surface-container-low rounded-lg shrink-0 overflow-hidden border border-outline-variant/20 p-1 flex items-center justify-center">
+<img alt="Mega Sardines can with tomato sauce" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XFjc-bvUFRRO0vwB7fdLtSoyOiraNjlkIsDe250HFXEmFSgm-1h2bNDbsPicaUJHL1nVjnoU7QLkhyMRBp6OmSgwmg-f5m3pyNucIUR_93-UiwtEH0IbylDd3b9tXbiPJ8Qv9Du8d3pbNxeveeOOt0CgmvsoITHPAriQczmpVbvckm8-CtzuYmm6JcfumvEfmKeY4zNKkGMRMN8PYWUx0X4cB2UjPqUFeOoFyDayw"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase bg-secondary-fixed/40 text-on-secondary-fixed-variant font-extrabold px-1.5 py-0.5 rounded tracking-wide inline-block mb-1">
+                  ✓ DTI Verified
+                </span>
+<h2 class="text-label-md font-label-md font-bold text-on-surface leading-tight truncate">Mega Sardines Tomato Sauce 155g</h2>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant shrink-0">Oct 22</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary shrink-0">store</span>
+<span class="truncate">Puregold Cubao (Aurora Blvd)</span>
+</p>
+<!-- Price Breakdown -->
+<div class="mt-2 flex items-baseline justify-between bg-surface-container-low/60 rounded-lg p-1.5 px-2">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">Reported Price</span>
+<span class="text-price-display-sm font-price-display-sm text-secondary font-extrabold">₱21.50</span>
+</div>
+<div class="text-right">
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">DTI SRP Baseline</span>
+<div class="flex items-center gap-1 justify-end">
+<span class="text-label-md font-label-md font-medium text-on-surface-variant">₱22.00</span>
+<span class="text-badge-stamp font-badge-stamp text-secondary font-bold bg-secondary-container/40 px-1 py-0.5 rounded">
+                    ▼ -₱0.50
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[16px]">receipt</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">POS Receipt OCR Matched</span>
+</div>
+<span class="text-badge-stamp font-badge-stamp text-on-surface-variant font-bold bg-surface-container-high px-2 py-0.5 rounded">
+            Audit ID #8841-B
+          </span>
+</div>
+</article>
+<!-- Card 5: Minola / Golden Harvest Cooking Oil 1L (PENDING CONFIRMATION) -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-3 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex gap-3">
+<!-- Thumbnail -->
+<div class="w-20 h-20 bg-surface-container-low rounded-lg shrink-0 overflow-hidden border border-outline-variant/20 p-1 flex items-center justify-center">
+<img alt="Golden Harvest Vegetable Cooking Oil pouch" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WMbC6IRDZ5vriWSArmMmocMgGlFreemw1XGQcXr9bL-0vitg6XVkjJttV30Jl4tVKQf7m2oFh8azm0S6Jv-OPvftc-qd4ACkFknSI58gaUL5nHoUvgqqkKwgZBmqJWF6UnXCYWzOlvRErTM3HVEnWpJv7i3jdwl4r6tM_g3rFklKm27ylyeFIOw2Bm_1fpuWkMSpXT8nyGatulyhjQSBAHrklbQmpWrWJBJ7TrGdA7"/>
+</div>
+<!-- Details -->
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-1">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase bg-primary-fixed text-on-primary-fixed-variant font-extrabold px-1.5 py-0.5 rounded tracking-wide inline-block mb-1">
+                  ⏳ Pending 1 Validator
+                </span>
+<h2 class="text-label-md font-label-md font-bold text-on-surface leading-tight truncate">Golden Harvest Cooking Oil 1L</h2>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant shrink-0">Oct 20</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-primary shrink-0">store</span>
+<span class="truncate">SM Hypermarket North EDSA</span>
+</p>
+<!-- Price Breakdown -->
+<div class="mt-2 flex items-baseline justify-between bg-surface-container-low/60 rounded-lg p-1.5 px-2">
+<div>
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">Reported Price</span>
+<span class="text-price-display-sm font-price-display-sm text-on-surface font-extrabold">₱112.00</span>
+</div>
+<div class="text-right">
+<span class="text-badge-stamp font-badge-stamp uppercase text-on-surface-variant block">DTI SRP Baseline</span>
+<div class="flex items-center gap-1 justify-end">
+<span class="text-label-md font-label-md font-medium text-on-surface-variant">₱116.50</span>
+<span class="text-badge-stamp font-badge-stamp text-secondary font-bold bg-secondary-container/40 px-1 py-0.5 rounded">
+                    ▼ -₱4.50
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[16px]">hourglass_top</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Awaiting community peer vote</span>
+</div>
+<button class="text-primary font-bold text-label-sm font-label-sm hover:underline" type="button">
+            Details →
+          </button>
+</div>
+</article>
+</main>
+<!-- Floating Quick Action for History Export -->
+<div class="px-4 py-2 sticky bottom-16 z-30 pointer-events-none">
+<div class="flex justify-center pointer-events-auto">
+<button class="bg-primary text-on-primary font-headline-sm text-label-md font-bold px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2 active:scale-95 transition-transform hover:bg-on-primary-container" type="button">
+<span class="material-symbols-outlined text-[18px]">document_scanner</span>
+<span>Log New Price Scan</span>
+</button>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Shared Components JSON Compliant) -->
+<!-- Destination 4: "History" is actively highlighted -->
+<nav aria-label="Global App Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-1.5 bg-surface dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(30,41,51,0.04)]">
+<!-- Catalog Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-2 py-1.5 active:scale-95 transition-transform hover:bg-surface-container" href="#catalog">
+<span class="material-symbols-outlined text-[22px]">store</span>
+<span class="text-label-sm font-label-sm mt-0.5">Catalog</span>
+</a>
+<!-- Scan Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-2 py-1.5 active:scale-95 transition-transform hover:bg-surface-container" href="#scan">
+<span class="material-symbols-outlined text-[22px]">barcode_scanner</span>
+<span class="text-label-sm font-label-sm mt-0.5">Scan</span>
+</a>
+<!-- Verify Tab (with badge) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-2 py-1.5 active:scale-95 transition-transform hover:bg-surface-container relative" href="#verify">
+<div class="relative">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+<span class="absolute -top-1 -right-2 bg-primary text-on-primary text-[9px] font-bold px-1 rounded-full leading-tight">18</span>
+</div>
+<span class="text-label-sm font-label-sm mt-0.5">Verify</span>
+</a>
+<!-- History Tab (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1.5 transition-all active:scale-95" href="#history">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-label-sm font-label-sm font-bold mt-0.5">History</span>
+</a>
+<!-- Profile Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-2 py-1.5 active:scale-95 transition-transform hover:bg-surface-container" href="#profile">
+<span class="material-symbols-outlined text-[22px]">person</span>
+<span class="text-label-sm font-label-sm mt-0.5">Profile</span>
+</a>
+</nav>
+</div>
+</body></html>
