@@ -6,6 +6,7 @@ import {
   TrendingDown, TrendingUp, AlertCircle, CheckCircle2, Shield,
   UploadCloud, Trash2, RefreshCw, Link as LinkIcon
 } from 'lucide-react';
+import { compressImagePreserveResolution, formatBytes } from '../lib/imageCompression';
 
 interface LogPriceObservationModalProps {
   isOpen: boolean;
@@ -116,26 +117,36 @@ export const LogPriceObservationModal: React.FC<LogPriceObservationModalProps> =
     );
   });
 
-  // Handle File from Device or Camera input
-  const handleProcessFile = (file: File) => {
+  // Handle File from Device or Camera input with Full-Resolution Compression
+  const handleProcessFile = async (file: File) => {
     if (!file.type.startsWith('image/')) {
       alert('Please select an image file (PNG, JPG, WebP, etc.).');
       return;
     }
-    if (file.size > 10 * 1024 * 1024) {
-      alert('Image file size exceeds 10MB. Please select a smaller photo.');
+    if (file.size > 15 * 1024 * 1024) {
+      alert('Image file size exceeds 15MB. Please select a smaller photo.');
       return;
     }
 
     setEvidenceFileName(file.name);
-    setEvidenceFileSize(`${(file.size / (1024 * 1024)).toFixed(2)} MB`);
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
-      setEvidencePreview(dataUrl);
-    };
-    reader.readAsDataURL(file);
+    try {
+      // Compresses payload by ~65-80% without reducing native pixel resolution
+      const compressed = await compressImagePreserveResolution(file, 0.65);
+      setEvidenceFileSize(
+        `${formatBytes(compressed.compressedSizeBytes)} (${compressed.compressionRatio}) • ${compressed.width}×${compressed.height}px (Full Res)`
+      );
+      setEvidencePreview(compressed.dataUrl);
+    } catch (err) {
+      console.warn('Compression fallback:', err);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const dataUrl = e.target?.result as string;
+        setEvidencePreview(dataUrl);
+        setEvidenceFileSize(`${(file.size / (1024 * 1024)).toFixed(2)} MB`);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -153,8 +164,8 @@ export const LogPriceObservationModal: React.FC<LogPriceObservationModalProps> =
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: { ideal: 'environment' },
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
+          width: { ideal: 1920 },
+          height: { ideal: 1080 },
         },
         audio: false,
       });
@@ -174,15 +185,18 @@ export const LogPriceObservationModal: React.FC<LogPriceObservationModalProps> =
     if (!videoRef.current) return;
     const video = videoRef.current;
     const canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth || 640;
-    canvas.height = video.videoHeight || 480;
+    canvas.width = video.videoWidth || 1280;
+    canvas.height = video.videoHeight || 720;
     const ctx = canvas.getContext('2d');
     if (ctx) {
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const dataUrl = canvas.toDataURL('image/jpeg', 0.88);
+      // Compress with 0.65 JPEG quality while keeping exact video stream resolution
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.65);
+      const base64Data = dataUrl.split(',')[1] || dataUrl;
+      const compressedSize = Math.round((base64Data.length * 3) / 4);
       setEvidencePreview(dataUrl);
       setEvidenceFileName(`Camera_Evidence_${new Date().toISOString().slice(11, 19).replace(/:/g, '')}.jpg`);
-      setEvidenceFileSize('Camera Snap');
+      setEvidenceFileSize(`${formatBytes(compressedSize)} (Compressed) • ${canvas.width}×${canvas.height}px (Full Res)`);
     }
     stopLiveCamera();
   };

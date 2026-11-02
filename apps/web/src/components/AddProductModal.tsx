@@ -6,6 +6,7 @@ import {
   Trash2, Sparkles, Building2, MapPin, Tag, Search
 } from 'lucide-react';
 import { Html5Qrcode } from 'html5-qrcode';
+import { compressImagePreserveResolution, formatBytes } from '../lib/imageCompression';
 
 interface AddProductModalProps {
   isOpen: boolean;
@@ -204,8 +205,8 @@ export const AddProductModal: React.FC<AddProductModalProps> = ({
     }
   };
 
-  // Handle Product Image Upload
-  const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Handle Product Image Upload with Full-Resolution Compression
+  const handleImageFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -214,21 +215,33 @@ export const AddProductModal: React.FC<AddProductModalProps> = ({
       return;
     }
 
-    if (file.size > 8 * 1024 * 1024) {
-      alert('Image size exceeds 8MB. Please select a smaller photo.');
+    if (file.size > 15 * 1024 * 1024) {
+      alert('Image size exceeds 15MB. Please select a smaller photo.');
       return;
     }
 
     setImageFileName(file.name);
-    setImageFileSize((file.size / (1024 * 1024)).toFixed(2) + ' MB');
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      setImagePreview(result);
-      setImageUrl(result);
-    };
-    reader.readAsDataURL(file);
+    try {
+      // Compresses file payload by ~65-80% while strictly preserving full natural resolution
+      const compressed = await compressImagePreserveResolution(file, 0.65);
+      setImageFileSize(
+        `${formatBytes(compressed.compressedSizeBytes)} (${compressed.compressionRatio}) • ${compressed.width}×${compressed.height}px (Full Res)`
+      );
+      setImagePreview(compressed.dataUrl);
+      setImageUrl(compressed.dataUrl);
+    } catch (err) {
+      console.warn('Image compression fallback:', err);
+      // Graceful fallback to FileReader
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as string;
+        setImagePreview(result);
+        setImageUrl(result);
+        setImageFileSize(`${(file.size / (1024 * 1024)).toFixed(2)} MB`);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleRemoveImage = () => {

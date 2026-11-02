@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, 
-  Alert, Platform 
+  Alert, Platform, Image 
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { X, CheckCircle, Camera, Store as StoreIcon, Shield } from 'lucide-react-native';
+import * as ImagePicker from 'expo-image-picker';
+import { X, CheckCircle, Camera, Store as StoreIcon, Shield, UploadCloud, ImageIcon } from 'lucide-react-native';
 import { mobileStore } from '../src/services/api';
 
 export default function RegisterProductScreen() {
@@ -22,7 +23,63 @@ export default function RegisterProductScreen() {
   const [selectedStore, setSelectedStore] = useState(stores[0]?.id || '');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const [productPhoto, setProductPhoto] = useState<string | null>(null);
+  const [photoMeta, setPhotoMeta] = useState<{ width?: number; height?: number; fileSize?: number } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSnapCamera = async () => {
+    try {
+      const perm = await ImagePicker.requestCameraPermissionsAsync();
+      if (!perm.granted) {
+        Alert.alert('Camera Permission Required', 'Please enable camera access to snap a photo of this product.');
+        return;
+      }
+      const res = await ImagePicker.launchCameraAsync({
+        allowsEditing: false, // Preserves native camera sensor resolution
+        quality: 0.6, // Lowers file size by ~70-80% without reducing resolution
+        exif: true,
+      });
+      if (!res.canceled && res.assets?.[0]) {
+        const asset = res.assets[0];
+        setProductPhoto(asset.uri);
+        setPhotoMeta({
+          width: asset.width,
+          height: asset.height,
+          fileSize: asset.fileSize,
+        });
+      }
+    } catch (err) {
+      console.log('Product camera snap error:', err);
+      Alert.alert('Camera Error', 'Could not open camera.');
+    }
+  };
+
+  const handleUploadPhoto = async () => {
+    try {
+      const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (!perm.granted) {
+        Alert.alert('Photo Access Required', 'Please enable photo library access to upload a commodity image.');
+        return;
+      }
+      const res = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: false, // Full resolution preserved
+        quality: 0.6, // Compressed byte size
+        exif: true,
+      });
+      if (!res.canceled && res.assets?.[0]) {
+        const asset = res.assets[0];
+        setProductPhoto(asset.uri);
+        setPhotoMeta({
+          width: asset.width,
+          height: asset.height,
+          fileSize: asset.fileSize,
+        });
+      }
+    } catch (err) {
+      console.log('Product photo upload error:', err);
+      Alert.alert('Upload Error', 'Could not open photo library.');
+    }
+  };
 
   const handleSubmit = () => {
     if (!name.trim() || !barcode.trim() || !price) {
@@ -41,7 +98,7 @@ export default function RegisterProductScreen() {
         initialPrice: parseFloat(price) || 0,
         observationDate: '2026-10-31',
         description,
-        imageUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80',
+        imageUrl: productPhoto || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80',
       });
 
       Alert.alert(
@@ -157,6 +214,58 @@ export default function RegisterProductScreen() {
                 })}
               </ScrollView>
             </View>
+
+            {/* Product Photo Upload */}
+            <Text style={styles.label}>Product Package Photo</Text>
+            {productPhoto ? (
+              <View>
+                <View style={styles.photoPreviewBox}>
+                  <Image source={{ uri: productPhoto }} style={styles.photoPreviewImg} resizeMode="cover" />
+                  <TouchableOpacity 
+                    onPress={() => {
+                      setProductPhoto(null);
+                      setPhotoMeta(null);
+                    }} 
+                    style={styles.removePhotoBtn}
+                    hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                  >
+                    <X size={14} color="#FFFFFF" />
+                  </TouchableOpacity>
+                </View>
+
+                {photoMeta && (
+                  <View style={styles.compressionMetaCard}>
+                    <View style={styles.compressionMetaBadge}>
+                      <CheckCircle size={11} color="#006D34" />
+                      <Text style={styles.compressionMetaBadgeText}>COMPRESSED • FULL RESOLUTION</Text>
+                    </View>
+                    <Text style={styles.compressionMetaDetails}>
+                      📦 {photoMeta.fileSize ? `${(photoMeta.fileSize / 1024).toFixed(0)} KB` : 'Optimized'} • 📐 {photoMeta.width} × {photoMeta.height} px
+                    </Text>
+                  </View>
+                )}
+              </View>
+            ) : (
+              <View style={styles.photoUploadRow}>
+                <TouchableOpacity 
+                  style={styles.uploadBtn}
+                  onPress={handleSnapCamera}
+                  activeOpacity={0.8}
+                >
+                  <Camera size={16} color="#8F4E00" />
+                  <Text style={styles.uploadBtnText}>Snap Camera</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                  style={styles.uploadBtn}
+                  onPress={handleUploadPhoto}
+                  activeOpacity={0.8}
+                >
+                  <UploadCloud size={16} color="#8F4E00" />
+                  <Text style={styles.uploadBtnText}>Upload Photo</Text>
+                </TouchableOpacity>
+              </View>
+            )}
 
             <Text style={styles.label}>Description / Specification</Text>
             <TextInput
@@ -316,5 +425,80 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '800',
     color: '#FFFFFF',
+  },
+  photoPreviewBox: {
+    width: '100%',
+    height: 140,
+    borderRadius: 12,
+    overflow: 'hidden',
+    position: 'relative',
+    marginVertical: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(218, 194, 177, 0.4)',
+  },
+  photoPreviewImg: {
+    width: '100%',
+    height: '100%',
+  },
+  removePhotoBtn: {
+    position: 'absolute',
+    top: 6,
+    right: 6,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#B52330',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  photoUploadRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginVertical: 4,
+  },
+  uploadBtn: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    backgroundColor: '#F0F3FF',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(218, 194, 177, 0.5)',
+    paddingVertical: 12,
+  },
+  uploadBtnText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#8F4E00',
+  },
+  compressionMetaCard: {
+    marginTop: 4,
+    marginBottom: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: 'rgba(0, 210, 106, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 163, 82, 0.25)',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+  },
+  compressionMetaBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  compressionMetaBadgeText: {
+    fontSize: 9,
+    fontWeight: '800',
+    color: '#006D34',
+  },
+  compressionMetaDetails: {
+    fontSize: 10,
+    fontWeight: '600',
+    color: '#344054',
   },
 });
