@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, 
-  SafeAreaView, Platform 
+  Platform 
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { 
   ArrowLeft, Share2, Bookmark, ShieldCheck, Store, MapPin, 
@@ -114,7 +115,7 @@ export default function ProductDetailScreen() {
                 <Image
                   source={{ uri: product.image_url || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' }}
                   style={styles.prodImage}
-                  resizeMode="contain"
+                  resizeMode="cover"
                 />
               </View>
 
@@ -385,7 +386,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F3FF',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 4,
+    overflow: 'hidden',
   },
   prodImage: {
     width: '100%',

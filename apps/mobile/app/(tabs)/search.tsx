@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { 
   View, Text, StyleSheet, TextInput, TouchableOpacity, 
-  FlatList, Image, SafeAreaView, Platform 
+  FlatList, Image, Platform 
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Search, X, SlidersHorizontal, ArrowUpDown, Store, ShieldCheck } from 'lucide-react-native';
 import { mobileStore } from '../../src/services/api';
@@ -80,7 +81,7 @@ export default function SearchScreen() {
                   <Image
                     source={{ uri: item.image_url || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' }}
                     style={styles.cardImage}
-                    resizeMode="contain"
+                    resizeMode="cover"
                   />
                 </View>
 
@@ -211,7 +212,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F3FF',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 4,
+    overflow: 'hidden',
   },
   cardImage: {
     width: '100%',

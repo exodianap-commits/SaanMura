@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, 
-  Image, FlatList, SafeAreaView, Platform 
+  Image, FlatList, Platform 
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { 
   Store, Bell, Barcode, Search, Camera, ChevronDown, 
@@ -64,7 +65,11 @@ export default function HomeScreen() {
         </View>
 
         {/* 2. Hero Action: Instant Barcode Scanner Banner */}
-        <View style={styles.scannerBanner}>
+        <TouchableOpacity 
+          style={styles.scannerBanner}
+          onPress={() => router.push('/(tabs)/scan')}
+          activeOpacity={0.9}
+        >
           <View style={styles.bannerContent}>
             <View style={styles.bannerTag}>
               <Text style={styles.bannerTagText}>⚡ INSTANT SHELF SCAN</Text>
@@ -75,15 +80,11 @@ export default function HomeScreen() {
             </Text>
           </View>
 
-          <TouchableOpacity 
-            style={styles.bannerScanButton}
-            onPress={() => router.push('/(tabs)/scan')}
-            activeOpacity={0.85}
-          >
+          <View style={styles.bannerScanButton}>
             <Camera size={26} color="#8F4E00" />
             <Text style={styles.bannerButtonLabel}>SCAN</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
 
         {/* 3. Search Bar with instant barcode trigger */}
         <View style={styles.searchBarContainer}>
@@ -169,7 +170,7 @@ export default function HomeScreen() {
                     <Image
                       source={{ uri: item.image_url || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' }}
                       style={styles.productImage}
-                      resizeMode="contain"
+                      resizeMode="cover"
                     />
                   </View>
 
@@ -486,8 +487,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   productImage: {
-    width: '90%',
-    height: '90%',
+    width: '100%',
+    height: '100%',
   },
   productDetails: {
     flex: 1,

@@ -1,8 +1,9 @@
 import React from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, 
-  SafeAreaView, Platform 
+  Platform 
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { 
   ShieldCheck, Award, Star, Calendar, QrCode, Settings, 
   Check, ChevronRight, Database, LogOut, HardDriveDownload 

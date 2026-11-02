@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, 
-  SafeAreaView, Platform, Image, Alert 
+  Platform, Image, Alert 
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { 
   X, Camera, Image as ImageIcon, Store as StoreIcon, 
@@ -87,7 +88,7 @@ export default function SubmitPriceScreen() {
             <Image
               source={{ uri: product.image_url || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' }}
               style={styles.targetImage}
-              resizeMode="contain"
+              resizeMode="cover"
             />
             <View style={styles.targetInfo}>
               <Text style={styles.targetName}>{product.name}</Text>

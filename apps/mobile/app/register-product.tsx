@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, 
-  SafeAreaView, Alert, Platform 
+  Alert, Platform 
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { X, CheckCircle, Camera, Store as StoreIcon, Shield } from 'lucide-react-native';
 import { mobileStore } from '../src/services/api';

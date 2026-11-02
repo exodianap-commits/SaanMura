@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   View, Text, StyleSheet, TouchableOpacity, Image, 
-  SafeAreaView, Platform, ScrollView, Modal 
+  Platform, ScrollView, Modal 
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { CameraView, useCameraPermissions } from 'expo-camera';
 import { useRouter } from 'expo-router';
 import { 
-  Camera, Zap, RotateCcw, X, Search, PlusCircle, 
+  Camera as CameraIcon, Zap, RotateCcw, X, Search, PlusCircle, 
   ShieldCheck, ArrowRight, Store, Check, Barcode 
 } from 'lucide-react-native';
 import { mobileStore } from '../../src/services/api';
@@ -14,10 +16,18 @@ import type { Product } from '@saanmura/shared-types';
 
 export default function ScanScreen() {
   const router = useRouter();
+  const [permission, requestPermission] = useCameraPermissions();
+  const [facing, setFacing] = useState<'back' | 'front'>('back');
   const [isTorchOn, setIsTorchOn] = useState(false);
   const [matchedProduct, setMatchedProduct] = useState<Product | null>(null);
   const [unknownBarcode, setUnknownBarcode] = useState<string | null>(null);
   const [isScanning, setIsScanning] = useState(true);
+
+  useEffect(() => {
+    if (!permission?.granted && permission?.canAskAgain) {
+      requestPermission();
+    }
+  }, [permission]);
 
   // Handles barcode lookup
   const handleBarcodeScanned = (scannedCode: string) => {
@@ -57,18 +67,62 @@ export default function ScanScreen() {
             <Text style={styles.topBarSubtitle}>EAN-13 • UPC-A • QR Tag</Text>
           </View>
 
-          <TouchableOpacity 
-            style={[styles.topBarButton, isTorchOn && styles.topBarButtonActive]}
-            onPress={() => setIsTorchOn(!isTorchOn)}
-          >
-            <Zap size={20} color={isTorchOn ? '#FF9F43' : '#FFFFFF'} />
-          </TouchableOpacity>
+          <View style={styles.topBarRight}>
+            <TouchableOpacity 
+              style={styles.topBarButton}
+              onPress={() => setFacing((curr) => (curr === 'back' ? 'front' : 'back'))}
+            >
+              <RotateCcw size={18} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              style={[styles.topBarButton, isTorchOn && styles.topBarButtonActive]}
+              onPress={() => setIsTorchOn(!isTorchOn)}
+            >
+              <Zap size={18} color={isTorchOn ? '#FF9F43' : '#FFFFFF'} />
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* Camera Viewfinder Area */}
         <View style={styles.viewfinderContainer}>
+          {permission?.granted ? (
+            <CameraView
+              style={StyleSheet.absoluteFillObject}
+              facing={facing}
+              enableTorch={isTorchOn}
+              barcodeScannerSettings={{
+                barcodeTypes: [
+                  'qr',
+                  'ean13',
+                  'ean8',
+                  'upc_a',
+                  'upc_e',
+                  'code128',
+                  'code39',
+                ],
+              }}
+              onBarcodeScanned={isScanning ? ({ data }) => handleBarcodeScanned(data) : undefined}
+            />
+          ) : (
+            <View style={styles.permissionFallback}>
+              <CameraIcon size={44} color="#FF9F43" />
+              <Text style={styles.permissionTitle}>Camera Access Required</Text>
+              <Text style={styles.permissionSubtitle}>
+                Allow camera access to point at shelf barcodes and compare against DTI SRP in real-time.
+              </Text>
+              <TouchableOpacity 
+                style={styles.permissionButton}
+                onPress={requestPermission}
+                activeOpacity={0.8}
+              >
+                <Text style={styles.permissionButtonText}>Enable Camera</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+
           {/* Viewfinder Target Frame */}
-          <View style={styles.targetFrame}>
+          <View style={styles.targetFrame} pointerEvents="none">
             {/* Corner brackets */}
             <View style={[styles.corner, styles.cornerTL]} />
             <View style={[styles.corner, styles.cornerTR]} />
@@ -84,7 +138,7 @@ export default function ScanScreen() {
           </View>
 
           {/* HUD Telemetry Overlay */}
-          <View style={styles.hudOverlay}>
+          <View style={styles.hudOverlay} pointerEvents="none">
             <View style={styles.hudBadge}>
               <View style={styles.recDot} />
               <Text style={styles.hudBadgeText}>AI OCR • ACTIVE</Text>
@@ -145,7 +199,7 @@ export default function ScanScreen() {
                 <Image 
                   source={{ uri: matchedProduct.image_url || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' }}
                   style={styles.cardThumbnail}
-                  resizeMode="contain"
+                  resizeMode="cover"
                 />
               </View>
 
@@ -273,6 +327,10 @@ const styles = StyleSheet.create({
   topBarCenter: {
     alignItems: 'center',
   },
+  topBarRight: {
+    flexDirection: 'row',
+    gap: 8,
+  },
   topBarTitle: {
     fontSize: 15,
     fontWeight: '700',
@@ -288,6 +346,39 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+    backgroundColor: '#0F172A',
+  },
+  permissionFallback: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 32,
+    zIndex: 5,
+  },
+  permissionTitle: {
+    fontSize: 17,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginTop: 14,
+    marginBottom: 6,
+    textAlign: 'center',
+  },
+  permissionSubtitle: {
+    fontSize: 12,
+    color: '#94A3B8',
+    textAlign: 'center',
+    lineHeight: 18,
+    marginBottom: 20,
+  },
+  permissionButton: {
+    backgroundColor: '#FF9F43',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+  },
+  permissionButtonText: {
+    color: '#2E1500',
+    fontWeight: '800',
+    fontSize: 13,
   },
   targetFrame: {
     width: 260,
@@ -487,7 +578,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F3FF',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 4,
+    overflow: 'hidden',
   },
   cardThumbnail: {
     width: '100%',
