@@ -61,8 +61,35 @@ export default function ScanScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
+    <View style={styles.root}>
+      {permission?.granted ? (
+        <CameraView
+          ref={cameraRef}
+          style={StyleSheet.absoluteFillObject}
+          facing={facing}
+          enableTorch={isTorchOn}
+          barcodeScannerSettings={{
+            barcodeTypes: [
+              'qr',
+              'ean13',
+              'ean8',
+              'upc_a',
+              'upc_e',
+              'code128',
+              'code39',
+            ],
+          }}
+          onCameraReady={() => {
+            console.log('>>> EXPO CAMERA READY!');
+          }}
+          onMountError={(e) => {
+            console.log('>>> EXPO CAMERA MOUNT ERROR:', e);
+          }}
+          onBarcodeScanned={isScanning ? ({ data }) => handleBarcodeScanned(data) : undefined}
+        />
+      ) : null}
+
+      <SafeAreaView style={styles.safeAreaOverlay} pointerEvents="box-none">
         {/* Top App Bar with Flash and Camera switch */}
         <View style={styles.topBar}>
           <TouchableOpacity 
@@ -94,36 +121,9 @@ export default function ScanScreen() {
           </View>
         </View>
 
-        {/* Camera Viewfinder Area */}
-        <View style={styles.viewfinderContainer}>
-          {permission?.granted ? (
-            <CameraView
-              ref={cameraRef}
-              style={styles.camera}
-              facing={facing}
-              ratio="16:9"
-              autofocus="on"
-              enableTorch={isTorchOn}
-              barcodeScannerSettings={{
-                barcodeTypes: [
-                  'qr',
-                  'ean13',
-                  'ean8',
-                  'upc_a',
-                  'upc_e',
-                  'code128',
-                  'code39',
-                ],
-              }}
-              onCameraReady={() => {
-                console.log('>>> EXPO CAMERA READY!');
-              }}
-              onMountError={(e) => {
-                console.log('>>> EXPO CAMERA MOUNT ERROR:', e);
-              }}
-              onBarcodeScanned={isScanning ? ({ data }) => handleBarcodeScanned(data) : undefined}
-            />
-          ) : (
+        {/* Viewfinder Target Area or Fallback */}
+        <View style={styles.viewfinderContainer} pointerEvents="box-none">
+          {!permission?.granted && (
             <View style={styles.permissionFallback}>
               <CameraIcon size={44} color="#FF9F43" />
               <Text style={styles.permissionTitle}>Camera Access Required</Text>
@@ -310,19 +310,19 @@ export default function ScanScreen() {
             </View>
           </View>
         )}
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  root: {
     flex: 1,
-    backgroundColor: '#0F172A',
+    backgroundColor: '#000000',
   },
-  container: {
+  safeAreaOverlay: {
     flex: 1,
-    backgroundColor: '#0F172A',
+    backgroundColor: 'transparent',
   },
   topBar: {
     flexDirection: 'row',
@@ -330,6 +330,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 12,
+    backgroundColor: 'rgba(15, 23, 42, 0.75)',
+    marginHorizontal: 12,
+    marginTop: 6,
+    borderRadius: 16,
     zIndex: 10,
   },
   topBarButton: {

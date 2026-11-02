@@ -1,0 +1,8 @@
+diff --git a/node_modules/expo-camera/android/src/main/java/expo/modules/camera/ExpoCameraView.kt b/node_modules/expo-camera/android/src/main/java/expo/modules/camera/ExpoCameraView.kt
+--- a/android/src/main/java/expo/modules/camera/ExpoCameraView.kt
++++ b/android/src/main/java/expo/modules/camera/ExpoCameraView.kt
+@@ -133,3 +133,4 @@
+   private var previewView = PreviewView(context).apply {
++    implementationMode = PreviewView.ImplementationMode.COMPATIBLE
+     elevation = 0f
+   }
