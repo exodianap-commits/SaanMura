@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   View, Text, StyleSheet, TouchableOpacity, Image, 
   Platform, ScrollView, Modal 
@@ -16,6 +16,7 @@ import type { Product } from '@saanmura/shared-types';
 
 export default function ScanScreen() {
   const router = useRouter();
+  const cameraRef = useRef<CameraView>(null);
   const [permission, requestPermission] = useCameraPermissions();
   const [facing, setFacing] = useState<'back' | 'front'>('back');
   const [isTorchOn, setIsTorchOn] = useState(false);
@@ -28,6 +29,15 @@ export default function ScanScreen() {
       requestPermission();
     }
   }, [permission]);
+
+  useEffect(() => {
+    if (permission?.granted) {
+      const timer = setTimeout(() => {
+        cameraRef.current?.resumePreview();
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [permission?.granted, facing]);
 
   // Handles barcode lookup
   const handleBarcodeScanned = (scannedCode: string) => {
@@ -88,8 +98,11 @@ export default function ScanScreen() {
         <View style={styles.viewfinderContainer}>
           {permission?.granted ? (
             <CameraView
-              style={StyleSheet.absoluteFillObject}
+              ref={cameraRef}
+              style={styles.camera}
               facing={facing}
+              ratio="16:9"
+              autofocus="on"
               enableTorch={isTorchOn}
               barcodeScannerSettings={{
                 barcodeTypes: [
@@ -101,6 +114,12 @@ export default function ScanScreen() {
                   'code128',
                   'code39',
                 ],
+              }}
+              onCameraReady={() => {
+                console.log('>>> EXPO CAMERA READY!');
+              }}
+              onMountError={(e) => {
+                console.log('>>> EXPO CAMERA MOUNT ERROR:', e);
               }}
               onBarcodeScanned={isScanning ? ({ data }) => handleBarcodeScanned(data) : undefined}
             />
@@ -346,7 +365,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
-    backgroundColor: '#0F172A',
+  },
+  camera: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
   },
   permissionFallback: {
     alignItems: 'center',
