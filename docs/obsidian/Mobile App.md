@@ -44,9 +44,11 @@ stateDiagram-v2
 ---
 
 ## 🛠️ Native Device Integrations
-1. **Camera API (`expo-camera`)**: Fast barcode detection and shelf tag photo auditing.
-2. **Geolocation (`expo-location`)**: Automatic proximity detection of the nearest registered palengke or supermarket.
-3. **Secure Storage (`expo-secure-store`)**: Encrypted credential storage for authenticated Scout sessions.
+1. **Camera API (`expo-camera` with `TextureView` COMPATIBLE mode)**: Fast barcode detection (EAN-13, UPC-A, QR, Code128) and shelf tag photo auditing. Configured with `PreviewView.ImplementationMode.COMPATIBLE` to guarantee hardware-accelerated preview rendering and clean screen-captures across Android 14/15/16 devices.
+2. **Geolocation (`expo-location`)**: Automatic proximity detection of the nearest registered palengke or supermarket via Haversine distance, plus reverse-geocoding of device coordinates into municipality/city badges (`📍 Kidapawan (SOCCSKSARGEN)`).
+3. **Image Picker (`expo-image-picker`)**: High-resolution camera snapshot and gallery upload for real receipt/shelf evidence.
+4. **Secure Storage (`expo-secure-store`)**: Encrypted credential storage for authenticated Scout sessions.
+5. **Safe Area (`react-native-safe-area-context`)**: Full edge-to-edge layout management adapting to punch-hole cameras, status bars, and navigation handles.
 
 ---
 

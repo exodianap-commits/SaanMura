@@ -55,10 +55,10 @@ graph TD
 - **Architecture Note**: Android 16 introduces 16KB memory page enforcement. Upgrading to Expo SDK 58 or deploying native debug APKs ensures compatibility with Android 16 Bionic libc.
 
 ### 3. Android Studio Integration
-- **Project Location**: `D:\Projects_Vibe\SaanMura\apps\mobile\android`
-- **Configuration**: Native Gradle project generated via `npx expo prebuild --platform android`.
-- **Runtime**: JDK 21 (`21.0.11`) configured with Gradle 8.10.2.
-- **Tool Window**: Screen mirroring enabled through the **Running Devices** tab.
+- **Project Root**: Always open `D:\Projects_Vibe\SaanMura\apps\mobile\android` (the Gradle root, **not** `apps/mobile`). Opening `apps/mobile` results in no Android Run Configuration and displays "Edit Configurations..." when clicking Run.
+- **Gradle Sync & JDK 21**: Android Studio uses JDK 21 (`21.0.11`) with Gradle 8.10.2. Wait for the initial Gradle sync and JDK download to complete before triggering the build.
+- **Android 16 KB Alignment Warning**: Android Studio displays `APK app-debug.apk is not compatible with 16 KB devices` because some 3rd-party C++ libraries have 4KB-aligned ELF segments. Current commercial devices (including Honor MagicOS / Android 16) run 4KB kernels, so this warning is informational and does not prevent normal execution.
+- **CameraX TextureView Mode**: In `ExpoCameraView.kt`, `PreviewView.ImplementationMode.COMPATIBLE` is enforced so that the camera preview is rendered as a standard hardware-accelerated `TextureView` in the Android View tree. This prevents `SurfaceView` black-screen occlusion and allows native screenshots and screen sharing.
 
 ---
 

@@ -24,6 +24,7 @@ graph TD
     CHANGES["✨ UX & UI Changelog"]:::log
     ANDROID["🤖 Android & Emulation Guide"]:::android
     API["📦 API & Data Contracts"]:::api
+    NATIVE["📸 Camera, GPS & Native Troubleshooting"]:::trouble
 
     MOC --> ARCH
     MOC --> WEB
@@ -33,6 +34,7 @@ graph TD
     MOC --> CHANGES
     MOC --> ANDROID
     MOC --> API
+    MOC --> NATIVE
 
     ARCH --> WEB
     ARCH --> MOB
@@ -42,8 +44,10 @@ graph TD
     MOB --> QUORUM
     MOB --> ANDROID
     MOB --> CHANGES
+    MOB --> NATIVE
     DB --> QUORUM
     API --> DB
+    ANDROID --> NATIVE
 
     classDef core fill:#ff9f43,stroke:#e67e22,stroke-width:3px,color:#fff;
     classDef arch fill:#2980b9,stroke:#1f618d,stroke-width:2px,color:#fff;
@@ -54,6 +58,7 @@ graph TD
     classDef log fill:#f39c12,stroke:#b9770e,stroke-width:2px,color:#fff;
     classDef android fill:#2c3e50,stroke:#1a252f,stroke-width:2px,color:#fff;
     classDef api fill:#7f8c8d,stroke:#515a5a,stroke-width:2px,color:#fff;
+    classDef trouble fill:#c0392b,stroke:#962d22,stroke-width:2px,color:#fff;
 ```
 
 ---
@@ -75,6 +80,7 @@ graph TD
 ### 4. Implementation Evolution & Operations
 - [[UX & UI Changelog]] — Documented log of recent UI polishes: modal scrollbars, store photo upload/capture, category deduplication, and streamlined price logging.
 - [[Android Native & Emulation Guide]] — Pixel 7 emulator setup, Android CLI installation, Android Studio Gradle sync, and USB reverse tethering.
+- [[Mobile Camera, Geolocation & Native Verification Troubleshooting]] — TextureView compatible mode, SurfaceView hole-punching fix, real-time reverse geocoding pin, GPS geofencing, and fullscreen lightbox modals.
 
 ---
 

@@ -56,6 +56,30 @@ timeline
 - **Issue**: System scrollbars leaked outside modal boundaries and looked heavy.
 - **Solution**: Styled custom Webkit scrollbars (`scrollbar-thin`, muted track, subtle thumb) that sit strictly inside the modal container and only become visible when hovered or focused.
 
+### 7. Mobile Dynamic GPS Geolocation Pin
+- **Issue**: Header location pin was statically hardcoded to "Metro Manila (NCR)" regardless of device location.
+- **Solution**: Integrated `expo-location` reverse geocoding to dynamically resolve device coordinates to the current municipality/city and region (e.g., `📍 Kidapawan (SOCCSKSARGEN)`).
+
+### 8. Mobile Redundant Barcode Scanner Removal
+- **Issue**: The home screen header displayed a barcode icon next to the notification bell in addition to the prominent instant scanner banner and floating bottom tab scanner.
+- **Solution**: Removed the redundant header icon, reserving `headerRight` exclusively for unread civic notifications.
+
+### 9. Instant Search Clear ("X") Button
+- **Issue**: Scouts had to manually backspace or select all text to clear search queries.
+- **Solution**: Added an inline circular `(X)` dismiss button inside the search input that dynamically renders when `searchQuery.length > 0` and instantly resets the query.
+
+### 10. GPS Geofenced Nearest Store Prioritization & Unlisted Store Submission
+- **Issue**: Store selection in Price Observation was alphabetical and did not reflect proximity to the scout's actual location.
+- **Solution**: Computed Haversine geographical distances between the scout's GPS position and registered supermarkets/markets. The nearest store is badged (`🎯 Nearest (~X km)`) and pre-selected. Added a dashed `+ Add Unlisted Store` chip routing to `/suggest-store` ("Subject to verification and pending approval").
+
+### 11. Fullscreen Clickable Image Lightbox
+- **Issue**: Product thumbnails were small with fixed dimensions and could not be inspected in detail.
+- **Solution**: Made commodity pictures and evidence photos tap-to-expand into a fullscreen semi-transparent lightbox modal with zoom badge and safe-area close target.
+
+### 12. Camera Viewfinder TextureView Compatible Mode
+- **Issue**: `expo-camera` rendered a black screen on physical Android devices due to `SurfaceView` hardware layer occlusion beneath opaque parent views and compositor bypass during screenshots.
+- **Solution**: Swapped CameraX `PreviewView` to `ImplementationMode.COMPATIBLE` (`TextureView`), made camera overlay containers transparent with `pointerEvents="box-none"`, enabling 60 FPS live camera footage directly visible on device and capturable in screenshots.
+
 ---
 
 ## 🔗 Related Notes
