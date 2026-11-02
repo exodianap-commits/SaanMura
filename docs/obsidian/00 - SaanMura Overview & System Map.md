@@ -25,6 +25,7 @@ graph TD
     ANDROID["🤖 Android & Emulation Guide"]:::android
     API["📦 API & Data Contracts"]:::api
     NATIVE["📸 Camera, GPS & Native Troubleshooting"]:::trouble
+    INGEST["📊 DTI SRP Ingestion & Comparison Engine"]:::dti
 
     MOC --> ARCH
     MOC --> WEB
@@ -35,19 +36,23 @@ graph TD
     MOC --> ANDROID
     MOC --> API
     MOC --> NATIVE
+    MOC --> INGEST
 
     ARCH --> WEB
     ARCH --> MOB
     ARCH --> API
     WEB --> QUORUM
     WEB --> CHANGES
+    WEB --> INGEST
     MOB --> QUORUM
     MOB --> ANDROID
     MOB --> CHANGES
     MOB --> NATIVE
+    MOB --> INGEST
     DB --> QUORUM
     API --> DB
     ANDROID --> NATIVE
+    INGEST --> QUORUM
 
     classDef core fill:#ff9f43,stroke:#e67e22,stroke-width:3px,color:#fff;
     classDef arch fill:#2980b9,stroke:#1f618d,stroke-width:2px,color:#fff;
@@ -59,6 +64,7 @@ graph TD
     classDef android fill:#2c3e50,stroke:#1a252f,stroke-width:2px,color:#fff;
     classDef api fill:#7f8c8d,stroke:#515a5a,stroke-width:2px,color:#fff;
     classDef trouble fill:#c0392b,stroke:#962d22,stroke-width:2px,color:#fff;
+    classDef dti fill:#0284c7,stroke:#0369a1,stroke-width:2px,color:#fff;
 ```
 
 ---
@@ -76,6 +82,7 @@ graph TD
 
 ### 3. Verification & Governance
 - [[DTI SRP & Civic Quorum Protocol]] — Dual-verifier threshold rules ($\ge 2$ independent signatures), PhilSys trust weighting, and variance calculations.
+- [[DTI SRP Data Ingestion & Comparison Engine]] — How prices are parsed from DTI image/infographic bulletins (`https://www.dti.gov.ph/dti-consumer-space/...`), normalized to SKUs, and evaluated.
 
 ### 4. Implementation Evolution & Operations
 - [[UX & UI Changelog]] — Documented log of recent UI polishes: modal scrollbars, store photo upload/capture, category deduplication, and streamlined price logging.
