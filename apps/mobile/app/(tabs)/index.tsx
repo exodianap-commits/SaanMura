@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, 
   Image, FlatList, Platform 
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import * as Location from 'expo-location';
 import { 
   Store, Bell, Barcode, Search, Camera, ChevronDown, 
-  ShieldCheck, ArrowUpRight, TrendingDown, LayoutGrid, ListFilter 
+  ShieldCheck, ArrowUpRight, TrendingDown, LayoutGrid, ListFilter, X, MapPin 
 } from 'lucide-react-native';
 import { mobileStore } from '../../src/services/api';
 import { formatPeso, evaluateSrpStatus } from '@saanmura/domain';
@@ -18,6 +19,36 @@ export default function HomeScreen() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isGridView, setIsGridView] = useState(false);
+  const [municipalityName, setMunicipalityName] = useState('Metro Manila (NCR)');
+  const [isLocating, setIsLocating] = useState(false);
+
+  const detectLocation = async () => {
+    try {
+      setIsLocating(true);
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') return;
+
+      const loc = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
+      const [geo] = await Location.reverseGeocodeAsync({
+        latitude: loc.coords.latitude,
+        longitude: loc.coords.longitude,
+      });
+
+      if (geo) {
+        const cityOrMuni = geo.city || geo.subregion || geo.district || geo.name || 'Metro Manila';
+        const provinceOrRegion = geo.region || geo.country || 'NCR';
+        setMunicipalityName(`${cityOrMuni} (${provinceOrRegion})`);
+      }
+    } catch (err) {
+      console.log('Location detection error:', err);
+    } finally {
+      setIsLocating(false);
+    }
+  };
+
+  useEffect(() => {
+    detectLocation();
+  }, []);
 
   const categories = mobileStore.categories;
   const products = mobileStore.getProducts({
@@ -39,8 +70,14 @@ export default function HomeScreen() {
             </View>
             <View>
               <Text style={styles.brandTitle}>SaanMura</Text>
-              <TouchableOpacity style={styles.locationSelector} activeOpacity={0.7}>
-                <Text style={styles.locationText}>📍 Metro Manila (NCR)</Text>
+              <TouchableOpacity 
+                style={styles.locationSelector} 
+                activeOpacity={0.7}
+                onPress={detectLocation}
+              >
+                <Text style={styles.locationText}>
+                  📍 {isLocating ? 'Detecting GPS...' : municipalityName}
+                </Text>
                 <ChevronDown size={14} color="#544437" />
               </TouchableOpacity>
             </View>
@@ -53,13 +90,6 @@ export default function HomeScreen() {
             >
               <Bell size={20} color="#544437" />
               <View style={styles.notificationDot} />
-            </TouchableOpacity>
-
-            <TouchableOpacity 
-              style={styles.iconButton}
-              onPress={() => router.push('/(tabs)/scan')}
-            >
-              <Barcode size={20} color="#8F4E00" />
             </TouchableOpacity>
           </View>
         </View>
@@ -96,6 +126,15 @@ export default function HomeScreen() {
             onChangeText={setSearchQuery}
             style={styles.searchInput}
           />
+          {searchQuery.length > 0 && (
+            <TouchableOpacity 
+              onPress={() => setSearchQuery('')}
+              style={styles.clearSearchBtn}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            >
+              <X size={16} color="#877365" />
+            </TouchableOpacity>
+          )}
           <View style={styles.searchDivider} />
           <TouchableOpacity 
             onPress={() => router.push('/(tabs)/scan')}
@@ -380,6 +419,10 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 13,
     color: '#111C2D',
+  },
+  clearSearchBtn: {
+    padding: 4,
+    marginRight: 4,
   },
   searchDivider: {
     width: 1,

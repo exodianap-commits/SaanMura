@@ -1,16 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, 
-  Platform, Image, Alert 
+  Platform, Image, Alert, Modal 
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import * as Location from 'expo-location';
+import * as ImagePicker from 'expo-image-picker';
 import { 
   X, Camera, Image as ImageIcon, Store as StoreIcon, 
-  TrendingDown, TrendingUp, CheckCircle, Shield 
+  TrendingDown, TrendingUp, CheckCircle, Shield, 
+  MapPin, PlusCircle, Maximize2, AlertCircle 
 } from 'lucide-react-native';
 import { mobileStore } from '../src/services/api';
 import { formatPeso, calculatePriceDelta } from '@saanmura/domain';
+
+function calculateDistanceKm(lat1: number, lon1: number, lat2: number, lon2: number) {
+  const R = 6371; // km
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
 
 export default function SubmitPriceScreen() {
   const router = useRouter();
@@ -19,22 +36,103 @@ export default function SubmitPriceScreen() {
   const product = mobileStore.getProductById(productId || 'prod-2') || mobileStore.products[1];
   const stores = mobileStore.stores;
 
+  const [userCoords, setUserCoords] = useState<{ latitude: number; longitude: number } | null>(null);
   const [selectedStoreId, setSelectedStoreId] = useState(stores[0]?.id || '');
-  const [observedPrice, setObservedPrice] = useState('39.50');
-  const [observationDate, setObservationDate] = useState('2026-10-31');
-  const [evidencePhoto, setEvidencePhoto] = useState<string | null>(
-    'https://images.unsplash.com/photo-1554415707-9e49fe74a659?auto=format&fit=crop&w=400&q=80'
-  );
+  const [observedPrice, setObservedPrice] = useState(product.lowest_verified_price?.toFixed(2) || '39.50');
+  const [observationDate, setObservationDate] = useState(() => new Date().toISOString().split('T')[0]);
+  const [evidencePhoto, setEvidencePhoto] = useState<string | null>(null);
   const [remarks, setRemarks] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [previewModalUri, setPreviewModalUri] = useState<string | null>(null);
+
+  // Request location & geofence stores
+  useEffect(() => {
+    (async () => {
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync();
+        if (status === 'granted') {
+          const loc = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
+          setUserCoords({
+            latitude: loc.coords.latitude,
+            longitude: loc.coords.longitude,
+          });
+        }
+      } catch (err) {
+        console.log('Location error in submit-price:', err);
+      }
+    })();
+  }, []);
+
+  // Compute distance and sort stores with the nearest first
+  const storesWithDistance = useMemo(() => {
+    return stores.map((s) => {
+      let distanceKm: number | null = null;
+      if (userCoords && s.latitude && s.longitude) {
+        distanceKm = calculateDistanceKm(userCoords.latitude, userCoords.longitude, s.latitude, s.longitude);
+      }
+      return { ...s, distanceKm };
+    }).sort((a, b) => {
+      if (a.distanceKm !== null && b.distanceKm !== null) return a.distanceKm - b.distanceKm;
+      if (a.distanceKm !== null) return -1;
+      if (b.distanceKm !== null) return 1;
+      return 0;
+    });
+  }, [stores, userCoords]);
+
+  // Set default to nearest store once GPS is acquired
+  useEffect(() => {
+    if (storesWithDistance[0]?.id && !selectedStoreId) {
+      setSelectedStoreId(storesWithDistance[0].id);
+    }
+  }, [storesWithDistance, selectedStoreId]);
 
   const prevPrice = product.lowest_verified_price || 41.50;
   const numPrice = parseFloat(observedPrice) || 0;
   const delta = calculatePriceDelta(numPrice, prevPrice);
 
+  const handleSnapCamera = async () => {
+    try {
+      const perm = await ImagePicker.requestCameraPermissionsAsync();
+      if (!perm.granted) {
+        Alert.alert('Camera Access Needed', 'Please allow camera permission to capture shelf barcode or receipt.');
+        return;
+      }
+      const res = await ImagePicker.launchCameraAsync({
+        allowsEditing: true,
+        quality: 0.85,
+      });
+      if (!res.canceled && res.assets?.[0]?.uri) {
+        setEvidencePhoto(res.assets[0].uri);
+      }
+    } catch (err) {
+      console.log('Camera snap error:', err);
+      Alert.alert('Camera Error', 'Could not open camera.');
+    }
+  };
+
+  const handleUploadPhoto = async () => {
+    try {
+      const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (!perm.granted) {
+        Alert.alert('Photo Access Needed', 'Please allow access to your photo library to select receipt evidence.');
+        return;
+      }
+      const res = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        quality: 0.85,
+      });
+      if (!res.canceled && res.assets?.[0]?.uri) {
+        setEvidencePhoto(res.assets[0].uri);
+      }
+    } catch (err) {
+      console.log('Upload photo error:', err);
+      Alert.alert('Upload Error', 'Could not open photo library.');
+    }
+  };
+
   const handleSubmit = () => {
     if (numPrice <= 0) {
-      alert('Please enter a valid observed price.');
+      Alert.alert('Invalid Price', 'Please enter a valid observed shelf price.');
       return;
     }
     setIsSubmitting(true);
@@ -61,11 +159,13 @@ export default function SubmitPriceScreen() {
         ]
       );
     } catch (err: unknown) {
-      alert((err as Error).message);
+      Alert.alert('Error', (err as Error).message);
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const productImageUrl = product.image_url || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80';
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -83,16 +183,27 @@ export default function SubmitPriceScreen() {
         </View>
 
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll}>
-          {/* Target Product Summary */}
+          {/* Target Product Summary with Clickable Image */}
           <View style={styles.targetCard}>
-            <Image
-              source={{ uri: product.image_url || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' }}
-              style={styles.targetImage}
-              resizeMode="cover"
-            />
+            <TouchableOpacity 
+              activeOpacity={0.85}
+              onPress={() => setPreviewModalUri(productImageUrl)}
+              style={styles.targetImageWrapper}
+            >
+              <Image
+                source={{ uri: productImageUrl }}
+                style={styles.targetImage}
+                resizeMode="cover"
+              />
+              <View style={styles.zoomHintBadge}>
+                <Maximize2 size={10} color="#FFFFFF" />
+              </View>
+            </TouchableOpacity>
+
             <View style={styles.targetInfo}>
               <Text style={styles.targetName}>{product.name}</Text>
               <Text style={styles.targetSku}>Barcode: {product.barcode}</Text>
+              <Text style={styles.tapToViewText}>🔍 Tap image to view full size</Text>
             </View>
           </View>
 
@@ -132,25 +243,62 @@ export default function SubmitPriceScreen() {
 
           {/* Form Fields */}
           <View style={styles.formSection}>
-            {/* Store Picker */}
-            <Text style={styles.fieldLabel}>Select Store / Wet Market *</Text>
+            {/* Store Picker with Geofence Distance */}
+            <View style={styles.storeHeaderRow}>
+              <Text style={styles.fieldLabel}>Select Store / Wet Market *</Text>
+              {userCoords ? (
+                <View style={styles.geoBadge}>
+                  <MapPin size={11} color="#006D34" />
+                  <Text style={styles.geoBadgeText}>GPS Geofence Nearest</Text>
+                </View>
+              ) : (
+                <Text style={styles.geoSearchingText}>📍 Locating nearest store...</Text>
+              )}
+            </View>
+
             <View style={styles.storePicker}>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.storeScroll}>
-                {stores.map((s: any) => {
+                {storesWithDistance.map((s, index) => {
                   const isSelected = selectedStoreId === s.id;
+                  const isNearest = index === 0 && s.distanceKm !== null;
                   return (
                     <TouchableOpacity
                       key={s.id}
                       onPress={() => setSelectedStoreId(s.id)}
-                      style={[styles.storeChip, isSelected && styles.storeChipSelected]}
+                      style={[
+                        styles.storeChip, 
+                        isSelected && styles.storeChipSelected,
+                        isNearest && styles.storeChipNearest
+                      ]}
+                      activeOpacity={0.8}
                     >
-                      <StoreIcon size={13} color={isSelected ? '#8F4E00' : '#544437'} />
-                      <Text style={[styles.storeChipText, isSelected && styles.storeChipTextSelected]}>
-                        {s.name} ({s.branch_name})
-                      </Text>
+                      <StoreIcon size={14} color={isSelected ? '#8F4E00' : isNearest ? '#006D34' : '#544437'} />
+                      <View>
+                        <Text style={[styles.storeChipText, isSelected && styles.storeChipTextSelected]}>
+                          {s.name} ({s.branch_name})
+                        </Text>
+                        {s.distanceKm !== null && (
+                          <Text style={[styles.storeDistText, isSelected && styles.storeDistTextSelected]}>
+                            {isNearest ? `🎯 Nearest (~${s.distanceKm < 1 ? Math.round(s.distanceKm * 1000) + 'm' : s.distanceKm.toFixed(1) + 'km'})` : `~${s.distanceKm.toFixed(1)} km away`}
+                          </Text>
+                        )}
+                      </View>
                     </TouchableOpacity>
                   );
                 })}
+
+                {/* Option to Add New Store (Pending Verification) */}
+                <TouchableOpacity
+                  style={styles.addStoreChip}
+                  onPress={() => router.push('/suggest-store')}
+                  activeOpacity={0.8}
+                >
+                  <PlusCircle size={15} color="#8F4E00" />
+                  <View>
+                    <Text style={styles.addStoreChipText}>+ Add Unlisted Store</Text>
+                    <Text style={styles.addStoreSubtext}>Subject to verification</Text>
+                  </View>
+                </TouchableOpacity>
               </ScrollView>
             </View>
 
@@ -180,10 +328,26 @@ export default function SubmitPriceScreen() {
             <Text style={styles.fieldLabel}>Shelf Barcode or Receipt Photo Evidence</Text>
             {evidencePhoto ? (
               <View style={styles.evidenceBox}>
-                <Image source={{ uri: evidencePhoto }} style={styles.evidenceImg} />
+                <TouchableOpacity 
+                  activeOpacity={0.9} 
+                  onPress={() => setPreviewModalUri(evidencePhoto)}
+                  style={styles.evidenceTouchable}
+                >
+                  <Image 
+                    source={{ uri: evidencePhoto }} 
+                    style={styles.evidenceImg} 
+                    resizeMode="cover"
+                  />
+                  <View style={styles.viewFullOverlay}>
+                    <Maximize2 size={12} color="#FFFFFF" />
+                    <Text style={styles.viewFullText}>Tap to view full screen</Text>
+                  </View>
+                </TouchableOpacity>
+
                 <TouchableOpacity 
                   onPress={() => setEvidencePhoto(null)} 
                   style={styles.removePhoto}
+                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
                 >
                   <X size={14} color="#FFFFFF" />
                 </TouchableOpacity>
@@ -192,7 +356,8 @@ export default function SubmitPriceScreen() {
               <View style={styles.photoUploadRow}>
                 <TouchableOpacity 
                   style={styles.uploadBtn}
-                  onPress={() => setEvidencePhoto('https://images.unsplash.com/photo-1554415707-9e49fe74a659?auto=format&fit=crop&w=400&q=80')}
+                  onPress={handleSnapCamera}
+                  activeOpacity={0.8}
                 >
                   <Camera size={18} color="#8F4E00" />
                   <Text style={styles.uploadBtnText}>Snap Camera</Text>
@@ -200,7 +365,8 @@ export default function SubmitPriceScreen() {
 
                 <TouchableOpacity 
                   style={styles.uploadBtn}
-                  onPress={() => setEvidencePhoto('https://images.unsplash.com/photo-1554415707-9e49fe74a659?auto=format&fit=crop&w=400&q=80')}
+                  onPress={handleUploadPhoto}
+                  activeOpacity={0.8}
                 >
                   <ImageIcon size={18} color="#8F4E00" />
                   <Text style={styles.uploadBtnText}>Upload Photo</Text>
@@ -233,6 +399,38 @@ export default function SubmitPriceScreen() {
             </Text>
           </TouchableOpacity>
         </ScrollView>
+
+        {/* Fullscreen Photo Lightbox Modal */}
+        <Modal
+          visible={!!previewModalUri}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setPreviewModalUri(null)}
+        >
+          <View style={styles.modalBackdrop}>
+            <SafeAreaView style={styles.modalSafeArea}>
+              <View style={styles.modalHeader}>
+                <Text style={styles.modalTitle}>Image Preview</Text>
+                <TouchableOpacity 
+                  onPress={() => setPreviewModalUri(null)}
+                  style={styles.modalCloseBtn}
+                >
+                  <X size={22} color="#FFFFFF" />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.modalImageWrapper}>
+                {previewModalUri && (
+                  <Image 
+                    source={{ uri: previewModalUri }} 
+                    style={styles.modalImage}
+                    resizeMode="contain"
+                  />
+                )}
+              </View>
+            </SafeAreaView>
+          </View>
+        </Modal>
       </View>
     </SafeAreaView>
   );
@@ -248,13 +446,13 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(218, 194, 177, 0.3)',
+    borderBottomColor: 'rgba(218, 194, 177, 0.4)',
+    backgroundColor: '#FFFFFF',
   },
   closeBtn: {
     padding: 6,
@@ -269,21 +467,21 @@ const styles = StyleSheet.create({
   secureBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 3,
-    backgroundColor: 'rgba(0, 210, 106, 0.15)',
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 10,
+    gap: 4,
+    backgroundColor: 'rgba(0, 109, 52, 0.1)',
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 6,
   },
   secureText: {
-    fontSize: 9,
+    fontSize: 10,
     fontWeight: '800',
     color: '#006D34',
   },
   scroll: {
     padding: 16,
-    gap: 12,
     paddingBottom: 40,
+    gap: 14,
   },
   targetCard: {
     flexDirection: 'row',
@@ -295,11 +493,25 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(218, 194, 177, 0.4)',
     padding: 10,
   },
-  targetImage: {
-    width: 50,
-    height: 50,
+  targetImageWrapper: {
+    width: 60,
+    height: 60,
     borderRadius: 8,
+    overflow: 'hidden',
+    position: 'relative',
     backgroundColor: '#F0F3FF',
+  },
+  targetImage: {
+    width: '100%',
+    height: '100%',
+  },
+  zoomHintBadge: {
+    position: 'absolute',
+    bottom: 2,
+    right: 2,
+    backgroundColor: 'rgba(0, 0, 0, 0.55)',
+    borderRadius: 4,
+    padding: 2,
   },
   targetInfo: {
     flex: 1,
@@ -310,14 +522,20 @@ const styles = StyleSheet.create({
     color: '#111C2D',
   },
   targetSku: {
-    fontSize: 10,
+    fontSize: 11,
     color: '#877365',
     fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
     marginTop: 2,
   },
+  tapToViewText: {
+    fontSize: 10,
+    color: '#8F4E00',
+    fontWeight: '600',
+    marginTop: 3,
+  },
   deltaCard: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 14,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: 'rgba(218, 194, 177, 0.4)',
     padding: 12,
@@ -328,21 +546,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   deltaLabel: {
-    fontSize: 9,
-    fontWeight: '700',
+    fontSize: 10,
     color: '#877365',
-    textTransform: 'uppercase',
+    fontWeight: '600',
+    marginBottom: 2,
   },
   deltaOldPrice: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '800',
     color: '#111C2D',
-    marginTop: 2,
   },
   deltaDifference: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '800',
-    marginTop: 2,
+  },
+  deltaDivider: {
+    width: 1,
+    height: 28,
+    backgroundColor: 'rgba(218, 194, 177, 0.5)',
   },
   greenText: {
     color: '#006D34',
@@ -350,41 +571,63 @@ const styles = StyleSheet.create({
   redText: {
     color: '#B52330',
   },
-  deltaDivider: {
-    width: 1,
-    height: 30,
-    backgroundColor: 'rgba(218, 194, 177, 0.4)',
-  },
   formSection: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
+    borderRadius: 14,
     borderWidth: 1,
     borderColor: 'rgba(218, 194, 177, 0.4)',
     padding: 14,
-    gap: 8,
+    gap: 10,
+  },
+  storeHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   fieldLabel: {
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: '700',
     color: '#111C2D',
     marginTop: 4,
+  },
+  geoBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: 'rgba(0, 109, 52, 0.1)',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+  },
+  geoBadgeText: {
+    fontSize: 9,
+    fontWeight: '700',
+    color: '#006D34',
+  },
+  geoSearchingText: {
+    fontSize: 9,
+    color: '#877365',
   },
   storePicker: {
     marginBottom: 4,
   },
   storeScroll: {
-    gap: 6,
+    gap: 8,
   },
   storeChip: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    gap: 6,
     backgroundColor: '#F0F3FF',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: 'rgba(218, 194, 177, 0.4)',
+  },
+  storeChipNearest: {
+    borderColor: '#006D34',
+    borderWidth: 1.5,
   },
   storeChipSelected: {
     backgroundColor: '#FFDCC2',
@@ -398,6 +641,37 @@ const styles = StyleSheet.create({
   storeChipTextSelected: {
     color: '#8F4E00',
     fontWeight: '800',
+  },
+  storeDistText: {
+    fontSize: 9,
+    color: '#006D34',
+    fontWeight: '600',
+    marginTop: 1,
+  },
+  storeDistTextSelected: {
+    color: '#8F4E00',
+    fontWeight: '700',
+  },
+  addStoreChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: '#FFF7F0',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: '#FF9F43',
+  },
+  addStoreChipText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#8F4E00',
+  },
+  addStoreSubtext: {
+    fontSize: 9,
+    color: '#877365',
   },
   inputBox: {
     flexDirection: 'row',
@@ -433,25 +707,46 @@ const styles = StyleSheet.create({
   },
   evidenceBox: {
     position: 'relative',
-    height: 120,
+    height: 140,
     borderRadius: 10,
     overflow: 'hidden',
-    backgroundColor: '#F0F3FF',
+    backgroundColor: '#111C2D',
+  },
+  evidenceTouchable: {
+    flex: 1,
   },
   evidenceImg: {
     width: '100%',
     height: '100%',
   },
+  viewFullOverlay: {
+    position: 'absolute',
+    bottom: 6,
+    left: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: 'rgba(0, 0, 0, 0.65)',
+    paddingHorizontal: 6,
+    paddingVertical: 3,
+    borderRadius: 4,
+  },
+  viewFullText: {
+    fontSize: 9,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
   removePhoto: {
     position: 'absolute',
     top: 6,
     right: 6,
-    width: 22,
-    height: 22,
-    borderRadius: 11,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
     backgroundColor: '#B52330',
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 10,
   },
   photoUploadRow: {
     flexDirection: 'row',
@@ -467,10 +762,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'rgba(218, 194, 177, 0.5)',
-    paddingVertical: 12,
+    paddingVertical: 14,
   },
   uploadBtnText: {
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: '700',
     color: '#8F4E00',
   },
@@ -492,5 +787,39 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '800',
     color: '#FFFFFF',
+  },
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.92)',
+  },
+  modalSafeArea: {
+    flex: 1,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  modalTitle: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '800',
+  },
+  modalCloseBtn: {
+    padding: 6,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+  },
+  modalImageWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 12,
+  },
+  modalImage: {
+    width: '100%',
+    height: '100%',
   },
 });

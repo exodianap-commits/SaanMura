@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, 
-  Platform 
+  Platform, Modal 
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { 
   ArrowLeft, Share2, Bookmark, ShieldCheck, Store, MapPin, 
-  PlusCircle, AlertTriangle, TrendingDown, Clock, Award 
+  PlusCircle, AlertTriangle, TrendingDown, Clock, Award, X, Maximize2 
 } from 'lucide-react-native';
 import { mobileStore } from '../../src/services/api';
 import { formatPeso, evaluateSrpStatus } from '@saanmura/domain';
@@ -16,6 +16,7 @@ export default function ProductDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const [selectedRange, setSelectedRange] = useState<'7D' | '30D' | '3M' | '1Y'>('30D');
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const product = mobileStore.getProductById(id || 'prod-2') || mobileStore.products[1];
   const srpEval = evaluateSrpStatus(product.lowest_verified_price || 0, product.srp_price);
@@ -111,13 +112,20 @@ export default function ProductDetailScreen() {
             </View>
 
             <View style={styles.productMainRow}>
-              <View style={styles.imageBox}>
+              <TouchableOpacity 
+                style={styles.imageBox}
+                activeOpacity={0.85}
+                onPress={() => setIsImageModalOpen(true)}
+              >
                 <Image
                   source={{ uri: product.image_url || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' }}
                   style={styles.prodImage}
                   resizeMode="cover"
                 />
-              </View>
+                <View style={styles.zoomBadge}>
+                  <Maximize2 size={11} color="#FFFFFF" />
+                </View>
+              </TouchableOpacity>
 
               <View style={styles.mainInfo}>
                 <Text style={styles.productName}>{product.name}</Text>
@@ -283,6 +291,36 @@ export default function ProductDetailScreen() {
             <Text style={styles.addPriceCTAText}>Log Observed Price at Another Store</Text>
           </TouchableOpacity>
         </View>
+
+        {/* Full Image Preview Modal */}
+        <Modal
+          visible={isImageModalOpen}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setIsImageModalOpen(false)}
+        >
+          <View style={styles.modalBackdrop}>
+            <SafeAreaView style={styles.modalSafeArea}>
+              <View style={styles.modalHeader}>
+                <Text style={styles.modalTitle}>{product.name}</Text>
+                <TouchableOpacity 
+                  onPress={() => setIsImageModalOpen(false)}
+                  style={styles.modalCloseBtn}
+                >
+                  <X size={22} color="#FFFFFF" />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.modalImageWrapper}>
+                <Image 
+                  source={{ uri: product.image_url || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80' }} 
+                  style={styles.modalImage}
+                  resizeMode="contain"
+                />
+              </View>
+            </SafeAreaView>
+          </View>
+        </Modal>
       </View>
     </SafeAreaView>
   );
@@ -387,6 +425,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
+    position: 'relative',
+  },
+  zoomBadge: {
+    position: 'absolute',
+    bottom: 3,
+    right: 3,
+    backgroundColor: 'rgba(0, 0, 0, 0.55)',
+    borderRadius: 4,
+    padding: 2,
   },
   prodImage: {
     width: '100%',
@@ -743,5 +790,41 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '800',
     color: '#FFFFFF',
+  },
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.92)',
+  },
+  modalSafeArea: {
+    flex: 1,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  modalTitle: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '800',
+    flex: 1,
+    marginRight: 10,
+  },
+  modalCloseBtn: {
+    padding: 6,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+  },
+  modalImageWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 14,
+  },
+  modalImage: {
+    width: '100%',
+    height: '100%',
   },
 });
